@@ -12,6 +12,8 @@ const Campus = conn.define('campus', {
   image_url: {
     type: Sequelize.STRING
   }
+}, {
+  underscored: true
 })
 
 module.exports = Campus;

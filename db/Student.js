@@ -18,6 +18,8 @@ const Student = conn.define('student', {
   image_url: {
     type: Sequelize.STRING,
   }
+}, {
+  underscored: true
 })
 
 module.exports = Student
