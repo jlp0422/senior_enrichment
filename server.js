@@ -12,18 +12,6 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
-// app.get('/api/students', (req, res, next) => {
-//   Student.findAll()
-//     .then( students => res.send(students))
-//     .catch(next)
-// })
-
-// app.get('/api/campuses', (req, res, next) => {
-//   Campus.findAll()
-//     .then( campuses => res.send(campuses))
-//     .catch(next)
-// })
-
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`port of call: ${port}`))
 
