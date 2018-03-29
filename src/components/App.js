@@ -24,12 +24,14 @@ class App extends React.Component {
       <Router>
         <div>
         <Route path='/' component={ Nav } />
-          <Switch>
-            <Route exact path='/students' component={ Students } />
-            <Route exact path='/students/:id' render={({ match }) => (
-              <StudentInfo id={ match.params.id * 1} />
-            )} />
-          </Switch>
+          <div className="container">
+            <Switch>
+              <Route exact path='/students' component={ Students } />
+              <Route exact path='/students/:id' render={({ match }) => (
+                <StudentInfo id={ match.params.id * 1} />
+              )} />
+            </Switch>
+          </div>
         </div>
       </Router>
     )

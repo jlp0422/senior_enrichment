@@ -4,8 +4,8 @@ import StudentCard from './StudentCard';
 
 const Students = ({ students, campuses }) => {
   return (
-    <div className="container">
-    <h1>Students</h1>
+    <div>
+    <h1>All Students</h1>
     <div className="card-group">
     {
       students && campuses &&

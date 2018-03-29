@@ -9,7 +9,6 @@ class StudentInfo extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props)
     this.setState(this.props.student)
   }
 
@@ -21,7 +20,6 @@ class StudentInfo extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     const { student, campus } = this.props
     return (
       <div>
