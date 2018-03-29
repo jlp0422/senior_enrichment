@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from './Nav';
 import Students from './Students';
-// import StudentCard from'./StudentCard';
+import StudentInfo from'./StudentInfo';
 import { getCampusesFromServer } from '../store/campuses';
 import { getStudentsFromServer } from '../store/students';
 
@@ -26,7 +26,9 @@ class App extends React.Component {
         <Route path='/' component={ Nav } />
           <Switch>
             <Route exact path='/students' component={ Students } />
-            {/*<Route exact path='/students/card' component={StudentCard} />*/}
+            <Route exact path='/students/:id' render={({ match }) => (
+              <StudentInfo id={ match.params.id * 1} />
+            )} />
           </Switch>
         </div>
       </Router>

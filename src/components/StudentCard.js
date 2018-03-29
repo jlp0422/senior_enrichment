@@ -15,7 +15,6 @@ const StudentCard = ({ student, campus }) => {
           <button className="btn btn-primary">Edit Student</button>
         </Link>
       </div>
-
     </div>
   )
 }
