@@ -19,6 +19,11 @@ const Student = conn.define('student', {
     type: Sequelize.STRING,
   }
 }, {
+  getterMethods: {
+    full_name: function() {
+      return `${this.first_name} ${this.last_name}`
+    }
+  },
   underscored: true
 })
 

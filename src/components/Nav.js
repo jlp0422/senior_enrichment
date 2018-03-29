@@ -7,7 +7,7 @@ const Nav = () => {
       <nav className="navbar navbar-light bg-light">
         <a className="navbar-brand" href="#">
           <img className="d-inline-block align-top" style={{ width: '30px'}} src="../../vendor/images/logo_black.jpg" />&nbsp;
-          Campuses and Students
+          Home
         </a>
 
       <ul className="nav">
