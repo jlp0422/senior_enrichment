@@ -26425,33 +26425,33 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Students = function Students(_ref) {
   var students = _ref.students,
-      student = _ref.student;
+      campuses = _ref.campuses;
 
-  console.log(students);
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'container' },
     _react2.default.createElement(
       'h1',
       null,
       'Students'
     ),
-
-    // students &&
-    // students.map( student => (
-    //   <StudentCard key={ student.id } student={ student } />
-    // ))
-    student && _react2.default.createElement(_StudentCard2.default, { key: student.id, student: student })
+    _react2.default.createElement(
+      'div',
+      { className: 'card-group' },
+      students && campuses && students.map(function (student) {
+        return _react2.default.createElement(_StudentCard2.default, { key: student.id, student: student, campus: campuses.find(function (campus) {
+            return campus.id === student.campus_id;
+          }) });
+      })
+    )
   );
 };
 
 var mapState = function mapState(_ref2) {
-  var students = _ref2.students;
+  var students = _ref2.students,
+      campuses = _ref2.campuses;
 
-  var student = students.find(function (s) {
-    return s.id === 1;
-  });
-  return { students: students, student: student };
+  return { students: students, campuses: campuses };
 };
 
 exports.default = (0, _reactRedux.connect)(mapState)(Students);
@@ -26473,26 +26473,51 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(13);
 
+var _reactRouterDom = __webpack_require__(43);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable */
 var StudentCard = function StudentCard(_ref) {
-  var student = _ref.student;
+  var student = _ref.student,
+      campus = _ref.campus;
 
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'card', style: { minWidth: '30%', margin: '10px' } },
+    _react2.default.createElement('img', { className: 'card-img-top', src: student.image_url }),
     _react2.default.createElement(
-      'h1',
-      null,
-      'Student: ',
-      student.full_name,
-      ' '
-    ),
-    _react2.default.createElement('img', { src: student.image_url })
+      'div',
+      { className: 'card-body' },
+      _react2.default.createElement(
+        'h4',
+        { className: 'card-title' },
+        student.full_name
+      ),
+      _react2.default.createElement(
+        'h6',
+        { className: 'card-text' },
+        'GPA: ',
+        student.gpa,
+        ' '
+      ),
+      _react2.default.createElement(
+        'h6',
+        null,
+        'Campus: ',
+        campus.name
+      ),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/students/' + student.id },
+        _react2.default.createElement(
+          'button',
+          { className: 'btn btn-primary' },
+          'Edit Student'
+        )
+      )
+    )
   );
-};
-
+}; /* eslint-disable */
 exports.default = StudentCard;
 
 /***/ }),

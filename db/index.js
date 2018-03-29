@@ -14,7 +14,7 @@ const generateStudent = () => {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     email: faker.internet.email(),
-    gpa: Math.round((Math.random() * 4) * 100) / 100,
+    gpa: Math.round((Math.random() * 3) * 100) / 100 + 1,
     image_url: avatar.generate_avatar()
   }
 }

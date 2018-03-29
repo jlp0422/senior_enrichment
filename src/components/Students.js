@@ -2,26 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import StudentCard from './StudentCard';
 
-const Students = ({ students, student }) => {
-  console.log(students)
+const Students = ({ students, campuses }) => {
   return (
-    <div>
+    <div className="container">
     <h1>Students</h1>
+    <div className="card-group">
     {
-      // students &&
-      // students.map( student => (
-      //   <StudentCard key={ student.id } student={ student } />
-      // ))
-      student &&
-      <StudentCard key={ student.id } student={ student } />
+      students && campuses &&
+      students.map( student => (
+        <StudentCard key={ student.id } student={ student } campus={ campuses.find(campus => campus.id === student.campus_id) } />
+      ))
     }
+    </div>
   </div>
   )
 }
 
-const mapState = ({ students }) => {
-  const student = students.find(s => s.id === 1)
-  return { students, student }
+const mapState = ({ students, campuses }) => {
+  return { students, campuses }
 }
 
 export default connect(mapState)(Students);
