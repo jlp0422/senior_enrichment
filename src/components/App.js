@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Nav from './Nav';
 import { getCampusesFromServer } from '../store/campuses';
 import { getStudentsFromServer } from '../store/students';
 
@@ -20,17 +21,12 @@ class App extends React.Component {
     return (
       <Router>
         <div>
+        <Route to='/' component={ Nav } />
           <Switch>
           </Switch>
         </div>
       </Router>
     )
-  }
-}
-
-const mapState = (state) => {
-  return {
-    state
   }
 }
 
@@ -41,4 +37,4 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatch)(App);
+export default connect(null, mapDispatch)(App);

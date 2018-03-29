@@ -8,6 +8,7 @@ const { Student, Campus } = db.models;
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
+app.use('/vendor', express.static(path.join(__dirname, 'public')));
 app.use('/api', require('./routes'));
 // app.use(volleyball)
 
