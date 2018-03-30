@@ -26750,7 +26750,6 @@ var StudentInfo = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props);
       var _props = this.props,
           student = _props.student,
           campus = _props.campus,
@@ -26760,6 +26759,8 @@ var StudentInfo = function (_React$Component) {
       var onChange = this.onChange,
           onSave = this.onSave;
 
+      var match = student && student.campus_id === campus_id * 1 ? true : false;
+      console.log(match);
       if (!student) return null;
       return _react2.default.createElement(
         'div',
@@ -26837,25 +26838,29 @@ var StudentInfo = function (_React$Component) {
               'form',
               { onSubmit: onSave },
               _react2.default.createElement(
-                'label',
-                null,
-                'Change Campus'
-              ),
-              _react2.default.createElement(
-                'select',
-                { value: campus_id * 1, onChange: onChange },
-                campuses.map(function (campus) {
-                  return _react2.default.createElement(
-                    'option',
-                    { value: campus.id * 1, key: campus.id },
-                    campus.name
-                  );
-                })
-              ),
-              _react2.default.createElement(
-                'button',
-                null,
-                'Save Campus'
+                'div',
+                { className: 'form-row' },
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Change Campus'
+                ),
+                _react2.default.createElement(
+                  'select',
+                  { className: 'form-control col-md-5', value: campus_id * 1, onChange: onChange },
+                  campuses.map(function (campus) {
+                    return _react2.default.createElement(
+                      'option',
+                      { value: campus.id * 1, key: campus.id },
+                      campus.name
+                    );
+                  })
+                ),
+                _react2.default.createElement(
+                  'button',
+                  { disabled: match, className: match ? 'btn btn-outline-success' : 'btn btn-success' },
+                  'Save Campus'
+                )
               )
             ),
             _react2.default.createElement('img', { src: campus.image_url })
