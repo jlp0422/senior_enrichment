@@ -10,7 +10,7 @@ const Students = ({ students, campuses }) => {
     <h1>All Students</h1>
 
     <Link to='/students/create'>
-      <button>Add Student</button>
+      <button className="btn btn-outline-primary">Add Student</button>
     </Link>
     <div className="card-group">
     {

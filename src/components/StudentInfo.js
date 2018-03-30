@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteStudentFromServer } from '../store/students';
 
 class StudentInfo extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class StudentInfo extends React.Component {
   }
 
   render() {
-    const { student, campus } = this.props
+    const { student, campus, deleteStudent } = this.props
     if (!student || !campus) return null
     return (
       <div>
@@ -37,7 +38,7 @@ class StudentInfo extends React.Component {
             <Link to={`/students/${student.id}/edit`}>
               <button className="btn btn-outline-success">Edit</button>
             </Link>&nbsp;&nbsp;
-            <button className="btn btn-outline-danger">Delete</button>
+            <button onClick={() => deleteStudent(`${student.id}`)}className="btn btn-outline-danger">Delete</button>
           </div>
 
         </div>
@@ -58,7 +59,7 @@ const mapState = ({ students, campuses }, { id }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-
+    deleteStudent: (id) => dispatch(deleteStudentFromServer(id))
   }
 }
 

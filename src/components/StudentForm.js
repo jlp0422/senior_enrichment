@@ -13,7 +13,7 @@ class StudentForm extends React.Component {
       last_name: student ? student.last_name : '',
       email: student ? student.email : '',
       gpa: student ? student.gpa : '',
-      image_url: student ? student.image_url : ''
+      image_url: student ? student.image_url : '',
     }
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
@@ -42,6 +42,9 @@ class StudentForm extends React.Component {
     const { first_name, last_name, email, gpa, image_url } = this.state
     const { student, id } = this.props
     const { onChange, onSave } = this
+    const match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false
+    // console.log(this.props.student)
+    // console.log(this.state)
     return (
       <div>
         { student ? (
@@ -96,12 +99,16 @@ class StudentForm extends React.Component {
           </div>
           {
             student ? (
-              <button className="btn btn-success">Update Student</button>
+              <button disabled={match} className="btn btn-success">Update Student</button>
             ) : (
               <button className="btn btn-success">Save Student</button>
             )
           }
-
+          <br/><br/>
+          <Link to={/*`/students/${student.id}`*/'/students'}>
+            <button className="btn btn-secondary">Cancel Edit</button>
+          </Link>
+          { match }
         </form>
       </div>
     )
