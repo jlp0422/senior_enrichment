@@ -40,7 +40,6 @@ class StudentInfo extends React.Component {
     const { campus_id } = this.state
     const { onChange, onSave } = this
     const match = student && student.campus_id === campus_id * 1 ? true : false
-    console.log(match)
     if (!student) return null
     return (
       <div>
@@ -65,19 +64,23 @@ class StudentInfo extends React.Component {
             student && campus ? (
               <div>
                 <h2>{student.first_name} is registered to {campus.name} Campus</h2>
-                <form onSubmit={ onSave }>
-                  <div className="form-row">
+
+                <form className="form-inline" onSubmit={ onSave }>
+                  <div className="form-group mb-2">
                     <label>Change Campus</label>
-                    <select className="form-control col-md-5" value={campus_id * 1} onChange={onChange}>
+                  </div>
+                  <div className="form-group mx-sm-3 mb-2">
+                    <select className="form-control" value={campus_id * 1} onChange={onChange}>
                       {
                         campuses.map(campus => (
                           <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
                         ))
                       }
                     </select>
-                    <button disabled={match} className={match ? ('btn btn-outline-success') : ('btn btn-success')}>Save Campus</button>
                   </div>
+                  <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
                 </form>
+
                 <img src={campus.image_url} />
 
               </div>

@@ -26760,7 +26760,6 @@ var StudentInfo = function (_React$Component) {
           onSave = this.onSave;
 
       var match = student && student.campus_id === campus_id * 1 ? true : false;
-      console.log(match);
       if (!student) return null;
       return _react2.default.createElement(
         'div',
@@ -26836,18 +26835,22 @@ var StudentInfo = function (_React$Component) {
             ),
             _react2.default.createElement(
               'form',
-              { onSubmit: onSave },
+              { className: 'form-inline', onSubmit: onSave },
               _react2.default.createElement(
                 'div',
-                { className: 'form-row' },
+                { className: 'form-group mb-2' },
                 _react2.default.createElement(
                   'label',
                   null,
                   'Change Campus'
-                ),
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-group mx-sm-3 mb-2' },
                 _react2.default.createElement(
                   'select',
-                  { className: 'form-control col-md-5', value: campus_id * 1, onChange: onChange },
+                  { className: 'form-control', value: campus_id * 1, onChange: onChange },
                   campuses.map(function (campus) {
                     return _react2.default.createElement(
                       'option',
@@ -26855,12 +26858,12 @@ var StudentInfo = function (_React$Component) {
                       campus.name
                     );
                   })
-                ),
-                _react2.default.createElement(
-                  'button',
-                  { disabled: match, className: match ? 'btn btn-outline-success' : 'btn btn-success' },
-                  'Save Campus'
                 )
+              ),
+              _react2.default.createElement(
+                'button',
+                { disabled: match, className: match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2' },
+                'Save Campus'
               )
             ),
             _react2.default.createElement('img', { src: campus.image_url })
