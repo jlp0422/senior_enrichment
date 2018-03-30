@@ -17,6 +17,7 @@ const Student = conn.define('student', {
   },
   image_url: {
     type: Sequelize.STRING,
+    defaultValue: '../vendor/images/default-profile.png'
   }
 }, {
   getterMethods: {

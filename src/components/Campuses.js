@@ -8,7 +8,9 @@ const Campuses = ({ students, campuses }) => {
   return (
     <div>
     <h1>All Campuses</h1>
-    <button>Add Campus</button>
+    <Link to='/campuses/create'>
+      <button>Add Campus</button>
+    </Link>
     {
       campuses.length ? (
         <div>

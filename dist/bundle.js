@@ -1391,7 +1391,6 @@ var deleteStudentFromServer = exports.deleteStudentFromServer = function deleteS
 var saveStudentOnServer = exports.saveStudentOnServer = function saveStudentOnServer(student) {
   var id = student.id;
 
-  console.log(student);
   var method = id ? 'put' : 'post';
   var url = id ? '/api/students/' + id : '/api/students';
   var action = id ? updateStudent : addStudent;
@@ -1399,7 +1398,6 @@ var saveStudentOnServer = exports.saveStudentOnServer = function saveStudentOnSe
     return _axios2.default[method](url, student).then(function (res) {
       return res.data;
     }).then(function (_student) {
-      console.log(_student);
       dispatch(action(_student));
       return _student;
     }).then(function (_student) {
@@ -21788,8 +21786,13 @@ var App = function (_React$Component) {
                   return _react2.default.createElement(_StudentInfo2.default, { id: match.params.id * 1 });
                 } }),
               _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/campuses', component: _Campuses2.default }),
-              _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/campuses/:id', render: function render(_ref3) {
+              _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/campuses/create', component: _CampusForm2.default }),
+              _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/campuses/:id/edit', render: function render(_ref3) {
                   var match = _ref3.match;
+                  return _react2.default.createElement(_CampusForm2.default, { id: match.params.id * 1 });
+                } }),
+              _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/campuses/:id', render: function render(_ref4) {
+                  var match = _ref4.match;
                   return _react2.default.createElement(_CampusInfo2.default, { id: match.params.id * 1 });
                 } })
             )
@@ -28070,9 +28073,13 @@ var Campuses = function Campuses(_ref) {
       'All Campuses'
     ),
     _react2.default.createElement(
-      'button',
-      null,
-      'Add Campus'
+      _reactRouterDom.Link,
+      { to: '/campuses/create' },
+      _react2.default.createElement(
+        'button',
+        null,
+        'Add Campus'
+      )
     ),
     campuses.length ? _react2.default.createElement(
       'div',
@@ -28274,6 +28281,71 @@ exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(CampusInfo);
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(6);
+
+var _reactRouterDom = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable */
+
+
+var CampusForm = function (_React$Component) {
+  _inherits(CampusForm, _React$Component);
+
+  function CampusForm(props) {
+    _classCallCheck(this, CampusForm);
+
+    var _this = _possibleConstructorReturn(this, (CampusForm.__proto__ || Object.getPrototypeOf(CampusForm)).call(this, props));
+
+    var campus = _this.props.campus;
+
+    _this.state = {
+      name: campus ? campus.name : '',
+      description: campus ? campus.description : '',
+      street: campus ? campus.street : '',
+      city: campus ? campus.city : '',
+      state: campus ? campus.state : '',
+      zip: campus ? campus.zip : '',
+      image_url: campus ? campus.image_url : ''
+    };
+    return _this;
+  }
+
+  _createClass(CampusForm, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement('hr', null);
+    }
+  }]);
+
+  return CampusForm;
+}(_react2.default.Component);
+
+var mapState = function mapState() {
+  return {};
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return {};
+};
+
+exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(CampusForm);
 
 /***/ }),
 /* 149 */

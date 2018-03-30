@@ -41,10 +41,10 @@ class App extends React.Component {
               )} />
               {/* Campus Routes */}
               <Route exact path='/campuses' component={ Campuses } />
-            {/*  <Route exact path='/campuses/create' component={ CampusForm } />
+              <Route exact path='/campuses/create' component={ CampusForm } />
               <Route exact path='/campuses/:id/edit' render={({ match }) => (
                 <CampusForm id={match.params.id * 1} />
-              )} /> */}
+              )} />
               <Route exact path='/campuses/:id' render={({ match }) => (
                 <CampusInfo id={ match.params.id * 1} />
               )} />
