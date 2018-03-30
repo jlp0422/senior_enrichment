@@ -118,14 +118,13 @@ class StudentForm extends React.Component {
               <button className="btn btn-success">Save Student</button>
             )
           }
-
         </form>
       </div>
     )
   }
 }
 
-const mapState = ({ students, campuses }, { id }) => {
+const mapState = ({ students }, { id }) => {
   const student = students.find(s => s.id === id)
   return {
     student,

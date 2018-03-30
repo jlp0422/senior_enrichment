@@ -1,9 +1,11 @@
 /* eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import StudentCard from './StudentCard';
+import { deleteCampusOnServer } from '../store/campuses';
 
-const CampusCard = ({ campus, studentCount }) => {
+const CampusCard = ({ campus, studentCount, deleteCampus }) => {
   return (
     <div>
       <Link to={`/campuses/${campus.id}`}>
@@ -14,9 +16,15 @@ const CampusCard = ({ campus, studentCount }) => {
       <Link to={`/campuses/${campus.id}/edit`}>
         <button className="btn btn-outline-success">Edit</button>
       </Link>&nbsp;&nbsp;
-      <button className="btn btn-outline-danger">Delete</button>
+      <button onClick={() => deleteCampus(`${campus.id}`)} className="btn btn-outline-danger">Delete</button>
     </div>
   )
 }
 
-export default CampusCard;
+const mapDispatch = (dispatch) => {
+  return {
+    deleteCampus: (id) => dispatch(deleteCampusOnServer(id))
+  }
+}
+
+export default connect(null, mapDispatch)(CampusCard);

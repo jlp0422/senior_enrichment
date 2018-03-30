@@ -7,12 +7,21 @@ import CampusCard from './CampusCard';
 const Campuses = ({ students, campuses }) => {
   return (
     <div>
-      {
-        campuses &&
-        campuses.map( campus => (
-          <CampusCard key={ campus.id } campus={ campus } studentCount={ students.filter(student => student.campus_id === campus.id).length}/>
-        ))
-      }
+    <h1>All Campuses</h1>
+    {
+      campuses.length ? (
+        <div>
+          {
+            campuses &&
+              campuses.map(campus => (
+                <CampusCard key={campus.id} campus={campus} studentCount={students.filter(student => student.campus_id === campus.id).length} />
+              ))
+          }
+        </div>
+      ) : (
+        <h3>We don't have any campuses</h3>
+      )
+    }
     </div>
   )
 }

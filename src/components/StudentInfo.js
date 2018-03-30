@@ -26,9 +26,9 @@ const StudentInfo = ({student, campus, deleteStudent }) => {
       </div>
       <div>
       {
-        student && student.campus_id ? (
+        student && campus ? (
           <div>
-            <h2>Campus: { campus.name }</h2>
+            <h2>{student.first_name} is registered to { campus.name } Campus</h2>
             <img src={campus.image_url} />
           </div>
         ) : (
