@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addStudentOnServer } from '../store/students'
+import { saveStudentOnServer } from '../store/students'
 
 class StudentForm extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class StudentForm extends React.Component {
     ev.preventDefault()
     const { id } = this.props
     const { first_name, last_name, email, gpa, image_url } = this.state
-    this.props.addStudent({ first_name, last_name, email, gpa, image_url })
+    this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url })
   }
 
   render() {
@@ -128,13 +128,14 @@ class StudentForm extends React.Component {
 const mapState = ({ students, campuses }, { id }) => {
   const student = students.find(s => s.id === id)
   return {
-    student
+    student,
+    id
   }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    addStudent: (student) => dispatch(addStudentOnServer(student))
+    saveStudent: (student) => dispatch(saveStudentOnServer(student))
   }
 }
 

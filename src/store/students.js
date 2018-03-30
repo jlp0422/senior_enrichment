@@ -6,12 +6,14 @@ import axios from 'axios';
 const GET_STUDENTS = 'GET_STUDENTS';
 const DELETE_STUDENT = 'DELETE_STUDENT';
 const ADD_STUDENT = 'ADD_STUDENT';
+const UPDATE_STUDENT = 'UPDATE_STUDENT';
 
 /************ ACTION CREATORS **************/
 
 const getStudents = (students) => ({ type: GET_STUDENTS, students })
 const deleteStudent = (id) => ({ type: DELETE_STUDENT, id })
 const addStudent = (student) => ({ type: ADD_STUDENT, student })
+const updateStudent = (student) => ({ type: UPDATE_STUDENT, student })
 
 /************ THUNKS **************/
 
@@ -31,13 +33,16 @@ export const deleteStudentFromServer = (id) => {
   }
 }
 
-export const addStudentOnServer = (student) => {
+export const saveStudentOnServer = (student) => {
+  const { id } = student
+  const method = id ? 'put' : 'post';
+  const url = id ? `/api/students/${id}` : '/api/students'
+  const action = id ? updateStudent : addStudent
   return (dispatch) => {
-    return axios.post('/api/students', student)
+    return axios[method](url, student)
       .then( res => res.data)
       .then( _student => {
-        console.log(_student)
-        dispatch(addStudent(_student))
+        dispatch(action(_student))
         return _student
       })
       .then( _student => location.hash = `/students/${_student.id}`)
@@ -59,6 +64,11 @@ const studentsReducer = (state = [], action) => {
 
     case ADD_STUDENT:
       state = [ ...state, action.student ]
+      break;
+
+    case UPDATE_STUDENT:
+      const otherStudents = state.filter(s => s.id !== action.student.id * 1)
+      state = [...otherStudents, action.student]
       break;
 
   }

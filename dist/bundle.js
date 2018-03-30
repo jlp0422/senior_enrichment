@@ -1332,7 +1332,7 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addStudentOnServer = exports.deleteStudentFromServer = exports.getStudentsFromServer = undefined;
+exports.saveStudentOnServer = exports.deleteStudentFromServer = exports.getStudentsFromServer = undefined;
 
 var _axios = __webpack_require__(52);
 
@@ -1348,6 +1348,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var GET_STUDENTS = 'GET_STUDENTS';
 var DELETE_STUDENT = 'DELETE_STUDENT';
 var ADD_STUDENT = 'ADD_STUDENT';
+var UPDATE_STUDENT = 'UPDATE_STUDENT';
 
 /************ ACTION CREATORS **************/
 
@@ -1359,6 +1360,9 @@ var deleteStudent = function deleteStudent(id) {
 };
 var addStudent = function addStudent(student) {
   return { type: ADD_STUDENT, student: student };
+};
+var updateStudent = function updateStudent(student) {
+  return { type: UPDATE_STUDENT, student: student };
 };
 
 /************ THUNKS **************/
@@ -1383,13 +1387,17 @@ var deleteStudentFromServer = exports.deleteStudentFromServer = function deleteS
   };
 };
 
-var addStudentOnServer = exports.addStudentOnServer = function addStudentOnServer(student) {
+var saveStudentOnServer = exports.saveStudentOnServer = function saveStudentOnServer(student) {
+  var id = student.id;
+
+  var method = id ? 'put' : 'post';
+  var url = id ? '/api/students/' + id : '/api/students';
+  var action = id ? updateStudent : addStudent;
   return function (dispatch) {
-    return _axios2.default.post('/api/students', student).then(function (res) {
+    return _axios2.default[method](url, student).then(function (res) {
       return res.data;
     }).then(function (_student) {
-      console.log(_student);
-      dispatch(addStudent(_student));
+      dispatch(action(_student));
       return _student;
     }).then(function (_student) {
       return location.hash = '/students/' + _student.id;
@@ -1417,6 +1425,13 @@ var studentsReducer = function studentsReducer() {
 
     case ADD_STUDENT:
       state = [].concat(_toConsumableArray(state), [action.student]);
+      break;
+
+    case UPDATE_STUDENT:
+      var otherStudents = state.filter(function (s) {
+        return s.id !== action.student.id * 1;
+      });
+      state = [].concat(_toConsumableArray(otherStudents), [action.student]);
       break;
 
   }
@@ -27743,7 +27758,7 @@ var StudentForm = function (_React$Component) {
           gpa = _state.gpa,
           image_url = _state.image_url;
 
-      this.props.addStudent({ first_name: first_name, last_name: last_name, email: email, gpa: gpa, image_url: image_url });
+      this.props.saveStudent({ id: id, first_name: first_name, last_name: last_name, email: email, gpa: gpa, image_url: image_url });
     }
   }, {
     key: 'render',
@@ -27904,14 +27919,15 @@ var mapState = function mapState(_ref, _ref2) {
     return s.id === id;
   });
   return {
-    student: student
+    student: student,
+    id: id
   };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
-    addStudent: function addStudent(student) {
-      return dispatch((0, _students.addStudentOnServer)(student));
+    saveStudent: function saveStudent(student) {
+      return dispatch((0, _students.saveStudentOnServer)(student));
     }
   };
 };
