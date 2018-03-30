@@ -26750,6 +26750,7 @@ var StudentInfo = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      console.log(this.props);
       var _props = this.props,
           student = _props.student,
           campus = _props.campus,
@@ -26760,7 +26761,6 @@ var StudentInfo = function (_React$Component) {
           onSave = this.onSave;
 
       if (!student) return null;
-      if (!campus) return null;
       return _react2.default.createElement(
         'div',
         null,

@@ -36,11 +36,11 @@ class StudentInfo extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     const { student, campus, campuses, deleteStudent } = this.props
     const { campus_id } = this.state
     const { onChange, onSave } = this
     if (!student) return null
-    if (!campus) return null
     return (
       <div>
        <h1>Information for {student.full_name}</h1>
