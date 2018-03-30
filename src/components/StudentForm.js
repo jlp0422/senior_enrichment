@@ -36,7 +36,9 @@ class StudentForm extends React.Component {
 
   onSave(ev) {
     ev.preventDefault()
-    this.props.addStudent(this.state)
+    const { id } = this.props
+    const { first_name, last_name, email, gpa, image_url } = this.state
+    this.props.addStudent({ first_name, last_name, email, gpa, image_url })
   }
 
   render() {
@@ -104,16 +106,19 @@ class StudentForm extends React.Component {
           </div>
           {
             student ? (
-              <button disabled={match} className="btn btn-success">Update Student</button>
+              <div>
+                <button disabled={match} className="btn btn-success">Update Student</button>
+                <br /> <br />
+                <Link to={`/students/${student.id}`}>
+                  <button className="btn btn-secondary">Cancel Edit</button>
+                </Link>
+                { match }
+              </div>
             ) : (
               <button className="btn btn-success">Save Student</button>
             )
           }
-          <br/><br/>
-          <Link to={`/students/${student.id}`}>
-            <button className="btn btn-secondary">Cancel Edit</button>
-          </Link>
-          { match }
+
         </form>
       </div>
     )

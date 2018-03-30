@@ -1,6 +1,7 @@
-const app = require('express').Router()
-const db = require('../db')
-const { Student } = db.models
+const app = require('express').Router();
+const db = require('../db');
+const { Student } = db.models;
+const avatar = require('cartoon-avatar');
 
 module.exports = app;
 
@@ -12,7 +13,9 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/', (req, res, next) => {
-  console.log(req.body)
+  if (req.body.image_url === '') {
+    req.body.image_url = avatar.generate_avatar()
+  }
   Student.create(req.body)
     .then( student => res.send(student))
     .catch(next)

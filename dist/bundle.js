@@ -1390,8 +1390,9 @@ var addStudentOnServer = exports.addStudentOnServer = function addStudentOnServe
     }).then(function (_student) {
       console.log(_student);
       dispatch(addStudent(_student));
-    }).then(function () {
-      return location.hash = '/students/' + student.id;
+      return _student;
+    }).then(function (_student) {
+      return location.hash = '/students/' + _student.id;
     });
   };
 };
@@ -1415,7 +1416,7 @@ var studentsReducer = function studentsReducer() {
       break;
 
     case ADD_STUDENT:
-      state = [action.student].concat(_toConsumableArray(state.students));
+      state = [].concat(_toConsumableArray(state), [action.student]);
       break;
 
   }
@@ -27734,17 +27735,25 @@ var StudentForm = function (_React$Component) {
     key: 'onSave',
     value: function onSave(ev) {
       ev.preventDefault();
-      this.props.addStudent(this.state);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
+      var id = this.props.id;
       var _state = this.state,
           first_name = _state.first_name,
           last_name = _state.last_name,
           email = _state.email,
           gpa = _state.gpa,
           image_url = _state.image_url;
+
+      this.props.addStudent({ first_name: first_name, last_name: last_name, email: email, gpa: gpa, image_url: image_url });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _state2 = this.state,
+          first_name = _state2.first_name,
+          last_name = _state2.last_name,
+          email = _state2.email,
+          gpa = _state2.gpa,
+          image_url = _state2.image_url;
       var _props = this.props,
           student = _props.student,
           id = _props.id;
@@ -27853,26 +27862,31 @@ var StudentForm = function (_React$Component) {
             )
           ),
           student ? _react2.default.createElement(
-            'button',
-            { disabled: match, className: 'btn btn-success' },
-            'Update Student'
+            'div',
+            null,
+            _react2.default.createElement(
+              'button',
+              { disabled: match, className: 'btn btn-success' },
+              'Update Student'
+            ),
+            _react2.default.createElement('br', null),
+            ' ',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/students/' + student.id },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-secondary' },
+                'Cancel Edit'
+              )
+            ),
+            match
           ) : _react2.default.createElement(
             'button',
             { className: 'btn btn-success' },
             'Save Student'
-          ),
-          _react2.default.createElement('br', null),
-          _react2.default.createElement('br', null),
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/students/' + student.id },
-            _react2.default.createElement(
-              'button',
-              { className: 'btn btn-secondary' },
-              'Cancel Edit'
-            )
-          ),
-          match
+          )
         )
       );
     }

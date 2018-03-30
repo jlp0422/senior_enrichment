@@ -38,8 +38,9 @@ export const addStudentOnServer = (student) => {
       .then( _student => {
         console.log(_student)
         dispatch(addStudent(_student))
+        return _student
       })
-      .then(() => location.hash = `/students/${student.id}`)
+      .then( _student => location.hash = `/students/${_student.id}`)
   }
 }
 
@@ -57,7 +58,7 @@ const studentsReducer = (state = [], action) => {
       break;
 
     case ADD_STUDENT:
-      state = [action.student, ...state.students ]
+      state = [ ...state, action.student ]
       break;
 
   }
