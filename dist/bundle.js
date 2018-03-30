@@ -1391,6 +1391,7 @@ var deleteStudentFromServer = exports.deleteStudentFromServer = function deleteS
 var saveStudentOnServer = exports.saveStudentOnServer = function saveStudentOnServer(student) {
   var id = student.id;
 
+  console.log(student);
   var method = id ? 'put' : 'post';
   var url = id ? '/api/students/' + id : '/api/students';
   var action = id ? updateStudent : addStudent;
@@ -1398,6 +1399,7 @@ var saveStudentOnServer = exports.saveStudentOnServer = function saveStudentOnSe
     return _axios2.default[method](url, student).then(function (res) {
       return res.data;
     }).then(function (_student) {
+      console.log(_student);
       dispatch(action(_student));
       return _student;
     }).then(function (_student) {
@@ -26678,6 +26680,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -26690,113 +26694,202 @@ var _students = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable */
-var StudentInfo = function StudentInfo(_ref) {
-  var student = _ref.student,
-      campus = _ref.campus,
-      deleteStudent = _ref.deleteStudent;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  if (!student) return null;
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h1',
-      null,
-      'Information for ',
-      student.full_name
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'student-info' },
-      _react2.default.createElement(
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable */
+
+
+var StudentInfo = function (_React$Component) {
+  _inherits(StudentInfo, _React$Component);
+
+  function StudentInfo(props) {
+    _classCallCheck(this, StudentInfo);
+
+    var _this = _possibleConstructorReturn(this, (StudentInfo.__proto__ || Object.getPrototypeOf(StudentInfo)).call(this, props));
+
+    var campus = _this.props.campus;
+
+    _this.state = {
+      campus_id: campus ? campus.id : ''
+    };
+    _this.onChange = _this.onChange.bind(_this);
+    _this.onSave = _this.onSave.bind(_this);
+    return _this;
+  }
+
+  _createClass(StudentInfo, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.campus ? this.setState({ campus_id: this.props.campus.id }) : null;
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      nextProps.campus ? this.setState({ campus_id: nextProps.campus.id }) : null;
+    }
+  }, {
+    key: 'onChange',
+    value: function onChange(ev) {
+      var campus_id = ev.target.value;
+      this.setState({ campus_id: campus_id });
+    }
+  }, {
+    key: 'onSave',
+    value: function onSave(ev) {
+      ev.preventDefault();
+      var id = this.props.id;
+      var campus_id = this.state.campus_id;
+
+      this.props.saveStudent({ id: id, campus_id: campus_id * 1 });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          student = _props.student,
+          campus = _props.campus,
+          campuses = _props.campuses,
+          deleteStudent = _props.deleteStudent;
+      var campus_id = this.state.campus_id;
+      var onChange = this.onChange,
+          onSave = this.onSave;
+
+      if (!student) return null;
+      if (!campus) return null;
+      return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { src: student.image_url })
-      ),
-      _react2.default.createElement(
-        'div',
-        null,
         _react2.default.createElement(
-          'h2',
+          'h1',
           null,
-          'Student: ',
-          student.full_name,
-          ' '
+          'Information for ',
+          student.full_name
         ),
         _react2.default.createElement(
-          'h3',
-          null,
-          'Email: ',
-          student.email
-        ),
-        _react2.default.createElement(
-          'h3',
-          null,
-          'GPA: ',
-          student.gpa
-        ),
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/students/' + student.id + '/edit' },
+          'div',
+          { className: 'student-info' },
           _react2.default.createElement(
-            'button',
-            { className: 'btn btn-outline-success' },
-            'Edit'
+            'div',
+            null,
+            _react2.default.createElement('img', { src: student.image_url })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Student: ',
+              student.full_name,
+              ' '
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Email: ',
+              student.email
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'GPA: ',
+              student.gpa
+            ),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/students/' + student.id + '/edit' },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-outline-success' },
+                'Edit'
+              )
+            ),
+            '\xA0\xA0',
+            _react2.default.createElement(
+              'button',
+              { onClick: function onClick() {
+                  return deleteStudent('' + student.id);
+                }, className: 'btn btn-outline-danger' },
+              'Delete'
+            )
           )
         ),
-        '\xA0\xA0',
         _react2.default.createElement(
-          'button',
-          { onClick: function onClick() {
-              return deleteStudent('' + student.id);
-            }, className: 'btn btn-outline-danger' },
-          'Delete'
-        )
-      )
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
-      student && campus ? _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'h2',
+          'div',
           null,
-          student.first_name,
-          ' is registered to ',
-          campus.name,
-          ' Campus'
-        ),
-        _react2.default.createElement('img', { src: campus.image_url })
-      ) : _react2.default.createElement(
-        'h2',
-        null,
-        'No campus'
-      )
-    )
-  );
-};
+          student && campus ? _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              student.first_name,
+              ' is registered to ',
+              campus.name,
+              ' Campus'
+            ),
+            _react2.default.createElement(
+              'form',
+              { onSubmit: onSave },
+              _react2.default.createElement(
+                'label',
+                null,
+                'Change Campus'
+              ),
+              _react2.default.createElement(
+                'select',
+                { value: campus_id * 1, onChange: onChange },
+                campuses.map(function (campus) {
+                  return _react2.default.createElement(
+                    'option',
+                    { value: campus.id * 1, key: campus.id },
+                    campus.name
+                  );
+                })
+              ),
+              _react2.default.createElement(
+                'button',
+                null,
+                'Save Campus'
+              )
+            ),
+            _react2.default.createElement('img', { src: campus.image_url })
+          ) : _react2.default.createElement(
+            'h2',
+            null,
+            'No campus'
+          )
+        )
+      );
+    }
+  }]);
 
-var mapState = function mapState(_ref2, _ref3) {
-  var students = _ref2.students,
-      campuses = _ref2.campuses;
-  var id = _ref3.id;
+  return StudentInfo;
+}(_react2.default.Component);
 
-  var student = students.find(function (s) {
+var mapState = function mapState(_ref, _ref2) {
+  var students = _ref.students,
+      campuses = _ref.campuses;
+  var id = _ref2.id;
+
+  var student = students && students.find(function (s) {
     return s.id === id;
   });
-  var campus = student && campuses.find(function (c) {
+  var campus = campuses && student && campuses.find(function (c) {
     return c.id === student.campus_id;
   });
-  return { student: student, campus: campus };
+  return { student: student, campus: campus, campuses: campuses, id: id };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     deleteStudent: function deleteStudent(id) {
       return dispatch((0, _students.deleteStudentFromServer)(id));
+    },
+    saveStudent: function saveStudent(student) {
+      return dispatch((0, _students.saveStudentOnServer)(student));
     }
   };
 };
@@ -27702,9 +27795,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(7);
-
 var _reactRedux = __webpack_require__(6);
+
+var _reactRouterDom = __webpack_require__(7);
 
 var _students = __webpack_require__(16);
 
@@ -27726,7 +27819,6 @@ var StudentForm = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (StudentForm.__proto__ || Object.getPrototypeOf(StudentForm)).call(this, props));
 
     var student = _this.props.student;
-    // console.log(this.props)
 
     _this.state = {
       first_name: student ? student.first_name : '',
@@ -27787,8 +27879,6 @@ var StudentForm = function (_React$Component) {
           onSave = this.onSave;
 
       var match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false;
-      // console.log(this.props.student)
-      // console.log(this.state)
       return _react2.default.createElement(
         'div',
         null,
@@ -27928,10 +28018,7 @@ var mapState = function mapState(_ref, _ref2) {
   var student = students.find(function (s) {
     return s.id === id;
   });
-  return {
-    student: student,
-    id: id
-  };
+  return { student: student, id: id };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {
@@ -27981,6 +28068,11 @@ var Campuses = function Campuses(_ref) {
       'h1',
       null,
       'All Campuses'
+    ),
+    _react2.default.createElement(
+      'button',
+      null,
+      'Add Campus'
     ),
     campuses.length ? _react2.default.createElement(
       'div',

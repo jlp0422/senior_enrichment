@@ -1,14 +1,13 @@
 /* eslint-disable */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { saveStudentOnServer } from '../store/students'
 
 class StudentForm extends React.Component {
   constructor(props) {
     super(props)
     const { student } = this.props
-    // console.log(this.props)
     this.state = {
       first_name: student ? student.first_name : '',
       last_name: student ? student.last_name : '',
@@ -46,8 +45,6 @@ class StudentForm extends React.Component {
     const { student, id } = this.props
     const { onChange, onSave } = this
     const match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false
-    // console.log(this.props.student)
-    // console.log(this.state)
     return (
       <div>
         { student ? (
@@ -126,10 +123,7 @@ class StudentForm extends React.Component {
 
 const mapState = ({ students }, { id }) => {
   const student = students.find(s => s.id === id)
-  return {
-    student,
-    id
-  }
+  return { student, id }
 }
 
 const mapDispatch = (dispatch) => {

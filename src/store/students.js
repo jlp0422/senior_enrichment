@@ -36,6 +36,7 @@ export const deleteStudentFromServer = (id) => {
 
 export const saveStudentOnServer = (student) => {
   const { id } = student
+  console.log(student)
   const method = id ? 'put' : 'post';
   const url = id ? `/api/students/${id}` : '/api/students'
   const action = id ? updateStudent : addStudent
@@ -43,6 +44,7 @@ export const saveStudentOnServer = (student) => {
     return axios[method](url, student)
       .then( res => res.data)
       .then( _student => {
+        console.log(_student)
         dispatch(action(_student))
         return _student
       })
