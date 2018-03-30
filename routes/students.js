@@ -12,6 +12,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/', (req, res, next) => {
+  console.log(req.body)
   Student.create(req.body)
     .then( student => res.send(student))
     .catch(next)

@@ -1,17 +1,19 @@
 /* eslint-disable */
 import axios from 'axios';
 
-/* ACTION CONSTANTS */
+/* ********** ACTION CONSTANTS **************/
 
 const GET_STUDENTS = 'GET_STUDENTS';
-const DELETE_STUDENT = 'DELETE_STUDENT'
+const DELETE_STUDENT = 'DELETE_STUDENT';
+const ADD_STUDENT = 'ADD_STUDENT';
 
-/* ACTION CREATORS */
+/************ ACTION CREATORS **************/
 
 const getStudents = (students) => ({ type: GET_STUDENTS, students })
 const deleteStudent = (id) => ({ type: DELETE_STUDENT, id })
+const addStudent = (student) => ({ type: ADD_STUDENT, student })
 
-/* THUNKS */
+/************ THUNKS **************/
 
 export const getStudentsFromServer = () => {
   return (dispatch) => {
@@ -29,8 +31,19 @@ export const deleteStudentFromServer = (id) => {
   }
 }
 
-/* REDUCER */
+export const addStudentOnServer = (student) => {
+  return (dispatch) => {
+    return axios.post('/api/students', student)
+      .then( res => res.data)
+      .then( _student => {
+        console.log(_student)
+        dispatch(addStudent(_student))
+      })
+      .then(() => location.hash = `/students/${student.id}`)
+  }
+}
 
+/************ REDUCER ************/
 const studentsReducer = (state = [], action) => {
   switch (action.type) {
 
@@ -43,6 +56,9 @@ const studentsReducer = (state = [], action) => {
       state = students;
       break;
 
+    case ADD_STUDENT:
+      state = [action.student, ...state.students ]
+      break;
 
   }
   return state

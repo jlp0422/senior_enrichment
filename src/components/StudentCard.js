@@ -12,7 +12,7 @@ const StudentCard = ({ student, campus }) => {
       <div className="card-body">
         <h4 className="card-title">{ student.full_name }</h4>
         <h6 className="card-text">GPA: { student.gpa } </h6>
-        <h6>Campus: { campus.name }</h6>
+        <h6>Campus: { campus ? campus.name : ('No campus') }</h6>
         <Link to={`/students/${student.id}`}>
           <button className="btn btn-primary">More Info</button>
         </Link>

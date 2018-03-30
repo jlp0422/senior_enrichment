@@ -23,7 +23,8 @@ class StudentInfo extends React.Component {
 
   render() {
     const { student, campus, deleteStudent } = this.props
-    if (!student || !campus) return null
+    if (!student) return null
+    // console.log(student, campus)
     return (
       <div>
         <h1>Information for { student.full_name }</h1>
@@ -43,8 +44,16 @@ class StudentInfo extends React.Component {
 
         </div>
         <div>
-          <h2>Campus: { campus.name }</h2>
-          <img src={campus.image_url} />
+        {
+          student.campus_id ? (
+            <div>
+              <h2>Campus: { campus.name }</h2>
+              <img src={campus.image_url} />
+            </div>
+          ) : (
+            <h2>No campus</h2>
+          )
+        }
         </div>
       </div>
     )

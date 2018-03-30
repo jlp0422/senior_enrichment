@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addStudentOnServer } from '../store/students'
 
 class StudentForm extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class StudentForm extends React.Component {
 
   onSave(ev) {
     ev.preventDefault()
-    console.log(this.state)
+    this.props.addStudent(this.state)
   }
 
   render() {
@@ -60,6 +61,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="first_name"
                 value={ first_name }
+                required
                 className="form-control" />
             </div>
             <div className="form-group col-md-3">
@@ -68,6 +70,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="last_name"
                 value={ last_name }
+                required
                 className="form-control" />
             </div>
             <div className="form-group col-md-6">
@@ -76,6 +79,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="email"
                 value={ email }
+                required
                 className="form-control" />
             </div>
           </div>
@@ -86,6 +90,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="gpa"
                 value={ gpa }
+                required
                 className="form-control" />
             </div>
             <div className="form-group col-md-10">
@@ -105,7 +110,7 @@ class StudentForm extends React.Component {
             )
           }
           <br/><br/>
-          <Link to={/*`/students/${student.id}`*/'/students'}>
+          <Link to={`/students/${student.id}`}>
             <button className="btn btn-secondary">Cancel Edit</button>
           </Link>
           { match }
@@ -122,9 +127,9 @@ const mapState = ({ students, campuses }, { id }) => {
   }
 }
 
-const mapDispatch = () => {
+const mapDispatch = (dispatch) => {
   return {
-
+    addStudent: (student) => dispatch(addStudentOnServer(student))
   }
 }
 
