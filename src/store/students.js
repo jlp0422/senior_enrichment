@@ -7,6 +7,7 @@ const GET_STUDENTS = 'GET_STUDENTS';
 const DELETE_STUDENT = 'DELETE_STUDENT';
 const ADD_STUDENT = 'ADD_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
+const DELETE_CAMPUS = 'DELETE_CAMPUS';
 
 /************ ACTION CREATORS **************/
 
@@ -69,6 +70,11 @@ const studentsReducer = (state = [], action) => {
     case UPDATE_STUDENT:
       const otherStudents = state.filter(s => s.id !== action.student.id * 1)
       state = [...otherStudents, action.student]
+      break;
+
+    case DELETE_CAMPUS:
+      const _students = state.filter(student => student.campus_id !== action.id * 1)
+      state = _students
       break;
 
   }

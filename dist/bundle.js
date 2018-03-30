@@ -1349,6 +1349,7 @@ var GET_STUDENTS = 'GET_STUDENTS';
 var DELETE_STUDENT = 'DELETE_STUDENT';
 var ADD_STUDENT = 'ADD_STUDENT';
 var UPDATE_STUDENT = 'UPDATE_STUDENT';
+var DELETE_CAMPUS = 'DELETE_CAMPUS';
 
 /************ ACTION CREATORS **************/
 
@@ -1432,6 +1433,13 @@ var studentsReducer = function studentsReducer() {
         return s.id !== action.student.id * 1;
       });
       state = [].concat(_toConsumableArray(otherStudents), [action.student]);
+      break;
+
+    case DELETE_CAMPUS:
+      var _students = state.filter(function (student) {
+        return student.campus_id !== action.id * 1;
+      });
+      state = _students;
       break;
 
   }
