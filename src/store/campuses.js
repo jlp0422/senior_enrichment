@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 
 /* ACTION CONSTANTS */
@@ -24,11 +25,11 @@ const campusesReducer = (state = [], action) => {
   switch (action.type) {
 
     case GET_CAMPUSES:
-      return action.campuses
+      state = action.campuses
+      break;
 
-    default:
-      return state
   }
+  return state
 }
 
 export default campusesReducer;

@@ -23,7 +23,6 @@ const generateCampus = () => {
   return {
     name: faker.address.city(),
     description: faker.lorem.paragraph(),
-    image_url: faker.image.city()
   }
 }
 

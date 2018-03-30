@@ -1,11 +1,17 @@
+/* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import StudentCard from './StudentCard';
 
 const Students = ({ students, campuses }) => {
   return (
     <div>
     <h1>All Students</h1>
+
+    <Link to='/students/create'>
+      <button>Add Student</button>
+    </Link>
     <div className="card-group">
     {
       students && campuses &&

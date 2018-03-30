@@ -1,0 +1,10 @@
+.student-info {
+  display: flex;
+  /* flex-flow: row wrap; */
+  /* justify-content: center; */
+  background-color: #f0f3f8
+}
+
+label {
+  font-weight: bold;
+}

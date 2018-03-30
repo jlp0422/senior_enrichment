@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from './Nav';
 import Students from './Students';
 import StudentInfo from'./StudentInfo';
+import StudentForm from './StudentForm';
 import { getCampusesFromServer } from '../store/campuses';
 import { getStudentsFromServer } from '../store/students';
 
@@ -27,8 +28,12 @@ class App extends React.Component {
           <div className="container">
             <Switch>
               <Route exact path='/students' component={ Students } />
+              <Route exact path='/students/create' component={ StudentForm } />
               <Route exact path='/students/:id' render={({ match }) => (
                 <StudentInfo id={ match.params.id * 1} />
+              )} />
+              <Route exact path='/students/:id/edit' render={({ match }) => (
+                <StudentForm id={ match.params.id * 1} />
               )} />
             </Switch>
           </div>
