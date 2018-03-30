@@ -21,4 +21,4 @@ const StudentCard = ({ student, campus }) => {
   )
 }
 
-export default StudentCard
+export default StudentCard;

@@ -23,6 +23,10 @@ const generateCampus = () => {
   return {
     name: faker.address.city(),
     description: faker.lorem.paragraph(),
+    street: faker.address.streetAddress(),
+    city: faker.address.city(),
+    state: faker.address.stateAbbr(),
+    zip: faker.random.number()
   }
 }
 
@@ -41,7 +45,7 @@ const seed = () => {
   .then(([s1, s2, s3, s4, s5, s6, c1, c2, c3]) => {
     s1.setCampus(c1)
     s2.setCampus(c2)
-    s3.setCampus(c3)
+    s3.setCampus(c2)
     s4.setCampus(c1)
     s5.setCampus(c2)
     s6.setCampus(c3)
