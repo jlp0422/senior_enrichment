@@ -5,6 +5,8 @@ const conn = require('./conn');
 const faker = require('faker');
 const avatar = require('cartoon-avatar');
 
+const campus_images = [ '../vendor/images/bu-campus.jpg', '../vendor/images/syracuse-campus.jpg', '../vendor/images/penn-campus.jpg' ]
+
 const sync = () => {
   return conn.sync({ force: true })
 }
@@ -26,7 +28,8 @@ const generateCampus = () => {
     street: faker.address.streetAddress(),
     city: faker.address.city(),
     state: faker.address.stateAbbr(),
-    zip: faker.random.number()
+    zip: faker.random.number(),
+    image_url: campus_images[(Math.floor(Math.random() * 3))]
   }
 }
 

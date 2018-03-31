@@ -23,7 +23,7 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
 
       <h2>Students on campus</h2>
       <Link to={`/campuses/${campus.id}/students`}>
-        <button>Add Students</button>
+        <button className="btn btn-outline-primary">Add Students</button>
       </Link>
       <div className="card-group">
         {
