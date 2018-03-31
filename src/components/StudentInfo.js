@@ -36,6 +36,7 @@ class StudentInfo extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     const { student, campus, campuses, deleteStudent } = this.props
     const { campus_id } = this.state
     const { onChange, onSave } = this
@@ -94,7 +95,7 @@ class StudentInfo extends React.Component {
                     </div>
                     <div className="form-group mx-sm-3 mb-2">
                       <select className="form-control" value={campus_id * 1} onChange={onChange}>
-                      {/*<option>Select Campus</option>*/}
+                      {<option value="">Select Campus</option>}
                         {
                           campuses.map(campus => (
                             <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
@@ -102,7 +103,7 @@ class StudentInfo extends React.Component {
                         }
                       </select>
                     </div>
-                    <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
+                    <button disabled={match} disabled={campus_id === ""} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
                   </form>
                 </div>
               )

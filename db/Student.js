@@ -4,16 +4,33 @@ const conn = require('./conn');
 
 const Student = conn.define('student', {
   first_name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   last_name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   email: {
     type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   gpa: {
     type: Sequelize.FLOAT,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      max: 4.00
+    }
   },
   image_url: {
     type: Sequelize.STRING,

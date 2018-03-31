@@ -7,13 +7,12 @@ import StudentCard from './StudentCard';
 const Students = ({ students, campuses }) => {
   return (
     <div>
-    <h1>All Students</h1>
-    {
-      students.length ? (
-        <div>
-          <Link to='/students/create'>
-            <button className="btn btn-outline-primary">Add Student</button>
-          </Link>
+      <h1>All Students</h1>
+      <Link to='/students/create'>
+        <button className="btn btn-outline-primary">Add Student</button>
+      </Link>
+      {
+        students.length ? (
           <div className="card-group">
             {
               students && campuses &&
@@ -22,12 +21,10 @@ const Students = ({ students, campuses }) => {
               ))
             }
           </div>
-        </div>
-      ) : (
-        <h3>We don't have any students</h3>
-      )
-    }
-
+        ) : (
+          <h3>We don't have any students</h3>
+        )
+      }
   </div>
   )
 }

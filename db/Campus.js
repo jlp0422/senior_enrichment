@@ -4,22 +4,46 @@ const conn = require('./conn');
 
 const Campus = conn.define('campus', {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   description: {
-    type: Sequelize.TEXT
+    type: Sequelize.TEXT,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   street: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   city: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   state: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   zip: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   image_url: {
     type: Sequelize.STRING,

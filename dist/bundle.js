@@ -26632,27 +26632,23 @@ var Students = function Students(_ref) {
       null,
       'All Students'
     ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/students/create' },
+      _react2.default.createElement(
+        'button',
+        { className: 'btn btn-outline-primary' },
+        'Add Student'
+      )
+    ),
     students.length ? _react2.default.createElement(
       'div',
-      null,
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/students/create' },
-        _react2.default.createElement(
-          'button',
-          { className: 'btn btn-outline-primary' },
-          'Add Student'
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'card-group' },
-        students && campuses && students.map(function (student) {
-          return _react2.default.createElement(_StudentCard2.default, { key: student.id, student: student, campus: campuses.find(function (campus) {
-              return campus.id === student.campus_id;
-            }) });
-        })
-      )
+      { className: 'card-group' },
+      students && campuses && students.map(function (student) {
+        return _react2.default.createElement(_StudentCard2.default, { key: student.id, student: student, campus: campuses.find(function (campus) {
+            return campus.id === student.campus_id;
+          }) });
+      })
     ) : _react2.default.createElement(
       'h3',
       null,
@@ -26694,6 +26690,8 @@ var _reactRouterDom = __webpack_require__(7);
 var _students = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26748,6 +26746,9 @@ var StudentInfo = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _React$createElement;
+
+      console.log(this.state);
       var _props = this.props,
           student = _props.student,
           campus = _props.campus,
@@ -26896,6 +26897,11 @@ var StudentInfo = function (_React$Component) {
                 _react2.default.createElement(
                   'select',
                   { className: 'form-control', value: campus_id * 1, onChange: onChange },
+                  _react2.default.createElement(
+                    'option',
+                    { value: '' },
+                    'Select Campus'
+                  ),
                   campuses.map(function (campus) {
                     return _react2.default.createElement(
                       'option',
@@ -26907,7 +26913,7 @@ var StudentInfo = function (_React$Component) {
               ),
               _react2.default.createElement(
                 'button',
-                { disabled: match, className: match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2' },
+                (_React$createElement = { disabled: match }, _defineProperty(_React$createElement, 'disabled', campus_id === ""), _defineProperty(_React$createElement, 'className', match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2'), _React$createElement),
                 'Save Campus'
               )
             )
@@ -28047,8 +28053,7 @@ var StudentForm = function (_React$Component) {
                 { className: 'btn btn-secondary' },
                 'Cancel Edit'
               )
-            ),
-            match
+            )
           ) : _react2.default.createElement(
             'button',
             { className: 'btn btn-success' },
@@ -28125,7 +28130,7 @@ var Campuses = function Campuses(_ref) {
       { to: '/campuses/create' },
       _react2.default.createElement(
         'button',
-        null,
+        { className: 'btn btn-outline-primary' },
         'Add Campus'
       )
     ),
@@ -28372,21 +28377,221 @@ var CampusForm = function (_React$Component) {
       zip: campus ? campus.zip : '',
       image_url: campus ? campus.image_url : ''
     };
+    _this.onChange = _this.onChange.bind(_this);
     return _this;
   }
 
   _createClass(CampusForm, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.setState(this.props.campus);
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      this.setState(nextProps.campus);
+    }
+  }, {
+    key: 'onChange',
+    value: function onChange(ev) {
+      var campus = {};
+      campus[ev.target.name] = ev.target.value;
+      this.setState(campus);
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('hr', null);
+      var campus = this.props.campus;
+      var _state = this.state,
+          name = _state.name,
+          description = _state.description,
+          street = _state.street,
+          city = _state.city,
+          state = _state.state,
+          zip = _state.zip;
+      var onChange = this.onChange;
+
+      var match = campus && campus.name === name && campus.description === description && campus.street === street && campus.city === city && campus.state === state && campus.zip === zip ? true : false;
+      var states = [{ id: 1, abbrev: 'AL' }, { id: 2, abbrev: 'AK' }, { id: 3, abbrev: 'AZ' }, { id: 4, abbrev: 'AR' }, { id: 5, abbrev: 'CA' }, { id: 6, abbrev: 'CO' }, { id: 7, abbrev: 'CT' }, { id: 8, abbrev: 'DE' }, { id: 9, abbrev: 'FL' }, { id: 10, abbrev: 'GA' }, { id: 11, abbrev: 'HI' }, { id: 12, abbrev: 'ID' }, { id: 13, abbrev: 'IL' }, { id: 14, abbrev: 'IN' }, { id: 15, abbrev: 'IA' }, { id: 16, abbrev: 'KS' }, { id: 17, abbrev: 'KY' }, { id: 18, abbrev: 'LA' }, { id: 19, abbrev: 'ME' }, { id: 20, abbrev: 'MD' }, { id: 21, abbrev: 'MA' }, { id: 22, abbrev: 'MI' }, { id: 23, abbrev: 'MN' }, { id: 24, abbrev: 'MS' }, { id: 25, abbrev: 'MO' }, { id: 26, abbrev: 'MT' }, { id: 27, abbrev: 'NE' }, { id: 28, abbrev: 'NV' }, { id: 29, abbrev: 'NH' }, { id: 30, abbrev: 'NJ' }, { id: 31, abbrev: 'NM' }, { id: 32, abbrev: 'NY' }, { id: 33, abbrev: 'NC' }, { id: 34, abbrev: 'ND' }, { id: 35, abbrev: 'OH' }, { id: 36, abbrev: 'OK' }, { id: 37, abbrev: 'OR' }, { id: 38, abbrev: 'PA' }, { id: 39, abbrev: 'RI' }, { id: 40, abbrev: 'SC' }, { id: 41, abbrev: 'SD' }, { id: 42, abbrev: 'TN' }, { id: 43, abbrev: 'TX' }, { id: 44, abbrev: 'UT' }, { id: 45, abbrev: 'VT' }, { id: 46, abbrev: 'VA' }, { id: 47, abbrev: 'WA' }, { id: 48, abbrev: 'WV' }, { id: 49, abbrev: 'WI' }, { id: 50, abbrev: 'WY' }];
+      if (!campus) return null;
+      return _react2.default.createElement(
+        'div',
+        null,
+        campus ? _react2.default.createElement(
+          'h2',
+          null,
+          'Editing: ',
+          campus.name
+        ) : _react2.default.createElement(
+          'h2',
+          null,
+          'Create new Campus'
+        ),
+        _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'form-row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group col-md-12' },
+              _react2.default.createElement(
+                'label',
+                null,
+                'Name'
+              ),
+              _react2.default.createElement('input', {
+                className: 'form-control',
+                value: name,
+                onChange: onChange,
+                name: 'name'
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group col-md-12' },
+              _react2.default.createElement(
+                'label',
+                null,
+                'Description'
+              ),
+              _react2.default.createElement('textarea', {
+                className: 'form-control',
+                value: description,
+                onChange: onChange,
+                name: 'description',
+                rows: '4'
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              null,
+              'Street'
+            ),
+            _react2.default.createElement('input', {
+              className: 'form-control',
+              value: street,
+              onChange: onChange,
+              name: 'street'
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-row' },
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group col-md-6' },
+              _react2.default.createElement(
+                'label',
+                null,
+                'City'
+              ),
+              _react2.default.createElement('input', {
+                className: 'form-control',
+                value: city,
+                onChange: onChange,
+                name: 'city'
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group col-md-3' },
+              _react2.default.createElement(
+                'label',
+                null,
+                'State'
+              ),
+              _react2.default.createElement(
+                'select',
+                {
+                  className: 'form-control',
+                  value: state,
+                  onChange: onChange,
+                  name: 'state'
+                },
+                _react2.default.createElement(
+                  'option',
+                  null,
+                  'Choose...'
+                ),
+                states.map(function (state) {
+                  return _react2.default.createElement(
+                    'option',
+                    { key: state.id },
+                    state.abbrev
+                  );
+                })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group col-md-3' },
+              _react2.default.createElement(
+                'label',
+                null,
+                'Zip'
+              ),
+              _react2.default.createElement('input', {
+                className: 'form-control',
+                value: zip,
+                onChange: onChange,
+                name: 'zip'
+              })
+            )
+          ),
+          campus ? _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'button',
+              { disabled: match, className: 'btn btn-success' },
+              'Update Campus'
+            ),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/campuses/' + campus.id },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-secondary' },
+                'Cancel Edit'
+              )
+            )
+          ) : _react2.default.createElement(
+            'button',
+            { className: 'btn btn-success' },
+            'Save Campus'
+          )
+        )
+      );
     }
   }]);
 
   return CampusForm;
 }(_react2.default.Component);
 
-var mapState = function mapState() {
-  return {};
+var mapState = function mapState(_ref, _ref2) {
+  var campuses = _ref.campuses,
+      students = _ref.students;
+  var id = _ref2.id;
+
+  var campus = campuses.find(function (campus) {
+    return campus.id === id;
+  });
+  var campus_students = students.find(function (s) {
+    return s.campus_id === id;
+  });
+  return { campus: campus, campus_students: campus_students };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {

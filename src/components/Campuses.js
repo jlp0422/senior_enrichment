@@ -9,7 +9,7 @@ const Campuses = ({ students, campuses }) => {
     <div>
     <h1>All Campuses</h1>
     <Link to='/campuses/create'>
-      <button>Add Campus</button>
+      <button className="btn btn-outline-primary">Add Campus</button>
     </Link>
     {
       campuses.length ? (

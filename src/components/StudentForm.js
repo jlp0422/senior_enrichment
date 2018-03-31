@@ -109,7 +109,6 @@ class StudentForm extends React.Component {
                 <Link to={`/students/${student.id}`}>
                   <button className="btn btn-secondary">Cancel Edit</button>
                 </Link>
-                { match }
               </div>
             ) : (
               <button className="btn btn-success">Save Student</button>
