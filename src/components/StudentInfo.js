@@ -81,7 +81,7 @@ class StudentInfo extends React.Component {
                   <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
                 </form>
 
-                <img src={campus.image_url} />
+                <Link to={`/campuses/${campus.id}`}><img src={campus.image_url} /></Link>
 
               </div>
             ) : (

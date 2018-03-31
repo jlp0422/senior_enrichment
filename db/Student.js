@@ -21,7 +21,9 @@ const Student = conn.define('student', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
+      notEmpty: true,
+      isEmail: true
+
     }
   },
   gpa: {
@@ -29,7 +31,8 @@ const Student = conn.define('student', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      max: 4.00
+      max: 4,
+      min: 0
     }
   },
   image_url: {

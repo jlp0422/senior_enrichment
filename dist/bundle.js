@@ -26971,7 +26971,11 @@ var StudentInfo = function (_React$Component) {
                 'Save Campus'
               )
             ),
-            _react2.default.createElement('img', { src: campus.image_url })
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/campuses/' + campus.id },
+              _react2.default.createElement('img', { src: campus.image_url })
+            )
           ) : _react2.default.createElement(
             'div',
             null,
