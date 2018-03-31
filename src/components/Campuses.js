@@ -28,7 +28,12 @@ const Campuses = ({ students, campuses }) => {
           }
         </div>
       ) : (
-        <h3>We don't have any campuses</h3>
+        <div style={{marginTop: '20px', textAlign: 'center' }}>
+        <h2 style={{ paddingBottom: '20px'}}>We don't have any campuses.</h2>
+          <Link to='/campuses/create'>
+            <button className="btn btn-primary">Add Campus</button>
+          </Link>
+        </div>
       )
     }
     </div>

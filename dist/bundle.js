@@ -28273,9 +28273,22 @@ var Campuses = function Campuses(_ref) {
           }).length });
       })
     ) : _react2.default.createElement(
-      'h3',
-      null,
-      'We don\'t have any campuses'
+      'div',
+      { style: { marginTop: '20px', textAlign: 'center' } },
+      _react2.default.createElement(
+        'h2',
+        { style: { paddingBottom: '20px' } },
+        'We don\'t have any campuses.'
+      ),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/campuses/create' },
+        _react2.default.createElement(
+          'button',
+          { className: 'btn btn-primary' },
+          'Add Campus'
+        )
+      )
     )
   );
 };
@@ -28412,46 +28425,62 @@ var CampusInfo = function CampusInfo(_ref) {
     'div',
     { style: { marginBottom: '40px' } },
     _react2.default.createElement(
-      'h2',
-      null,
-      campus.name
-    ),
-    _react2.default.createElement('img', { src: campus.image_url }),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Address'
-    ),
-    _react2.default.createElement(
-      'h5',
-      null,
-      campus.street,
-      _react2.default.createElement('br', null),
-      campus.city_state_zip
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      campus.description
-    ),
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/campuses/' + campus.id + '/edit' },
+      'div',
+      { style: { backgroundColor: '#f0f3f8', padding: '15px 10px 30px', borderRadius: '5px' } },
+      _react2.default.createElement(
+        'div',
+        { style: { display: 'flex', paddingBottom: '15px' } },
+        _react2.default.createElement(
+          'div',
+          { style: { flex: '1 250px', margin: '0px 5px 0px 0px' } },
+          _react2.default.createElement('img', { style: { borderRadius: '5px', width: '100%' }, src: campus.image_url })
+        ),
+        _react2.default.createElement(
+          'div',
+          { style: { margin: '0px 10px', flex: '2 250px' } },
+          _react2.default.createElement(
+            'h2',
+            null,
+            campus.name
+          ),
+          _react2.default.createElement(
+            'h4',
+            null,
+            'Address'
+          ),
+          _react2.default.createElement(
+            'h5',
+            null,
+            campus.street,
+            _react2.default.createElement('br', null),
+            campus.city_state_zip
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        campus.description
+      ),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/campuses/' + campus.id + '/edit' },
+        _react2.default.createElement(
+          'button',
+          { className: 'btn btn-outline-success' },
+          'Edit ',
+          campus.name
+        )
+      ),
+      '\xA0\xA0',
       _react2.default.createElement(
         'button',
-        { className: 'btn btn-outline-success' },
-        'Edit ',
+        { className: 'btn btn-outline-danger', onClick: function onClick() {
+            return deleteCampus('' + campus.id);
+          } },
+        'Delete ',
         campus.name
       )
-    ),
-    '\xA0\xA0',
-    _react2.default.createElement(
-      'button',
-      { className: 'btn btn-outline-danger', onClick: function onClick() {
-          return deleteCampus('' + campus.id);
-        } },
-      'Delete ',
-      campus.name
     ),
     _react2.default.createElement(
       'h2',
