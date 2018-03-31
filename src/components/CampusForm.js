@@ -52,7 +52,7 @@ class CampusForm extends React.Component {
 
     // if (!campus) return null
     return (
-      <div>
+      <div style={{ marginBottom: '40px' }}>
         {
           campus ? (
           <h2>Editing: {campus.name}</h2>

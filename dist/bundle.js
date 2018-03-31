@@ -26598,6 +26598,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* eslint-disable */
 var Nav = function Nav() {
+  var url = location.hash.slice(1);
   return _react2.default.createElement(
     'div',
     null,
@@ -26613,19 +26614,26 @@ var Nav = function Nav() {
       _react2.default.createElement(
         'ul',
         { className: 'nav' },
-        _react2.default.createElement(
+        url === '/campuses' ? _react2.default.createElement(
+          'span',
+          { className: 'nav-item font-weight-bold', style: { borderBottom: '2px solid black', margin: '0px 5px' } },
+          'Campuses'
+        ) : _react2.default.createElement(
           'li',
-          { className: 'nav-item' },
+          { className: 'nav-item', style: { borderBottom: '2px solid transparent', margin: '0px 5px' } },
           _react2.default.createElement(
             _reactRouterDom.Link,
             { to: '/campuses' },
             'Campuses'
           )
         ),
-        '\xA0\xA0',
-        _react2.default.createElement(
+        url === '/students' ? _react2.default.createElement(
+          'span',
+          { className: 'nav-item font-weight-bold', style: { borderBottom: '2px solid black', margin: '0px 5px' } },
+          'Students'
+        ) : _react2.default.createElement(
           'li',
-          { className: 'nav-item' },
+          { className: 'nav-item', style: { borderBottom: '2px solid transparent', margin: '0px 5px' } },
           _react2.default.createElement(
             _reactRouterDom.Link,
             { to: '/students' },
@@ -26725,7 +26733,7 @@ var Students = function Students(_ref) {
 
   return _react2.default.createElement(
     'div',
-    null,
+    { style: { marginBottom: '40px' } },
     _react2.default.createElement(
       'h1',
       null,
@@ -26860,7 +26868,7 @@ var StudentInfo = function (_React$Component) {
       if (!student) return null;
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { marginBottom: '40px' } },
         _react2.default.createElement(
           'h1',
           null,
@@ -28036,7 +28044,7 @@ var StudentForm = function (_React$Component) {
       var match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false;
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { marginBottom: '40px' } },
         student ? _react2.default.createElement(
           'h2',
           null,
@@ -28217,7 +28225,7 @@ var Campuses = function Campuses(_ref) {
 
   return _react2.default.createElement(
     'div',
-    null,
+    { style: { marginBottom: '40px' } },
     _react2.default.createElement(
       'h1',
       null,
@@ -28370,13 +28378,13 @@ var CampusInfo = function CampusInfo(_ref) {
   if (!campus) return null;
   return _react2.default.createElement(
     'div',
-    null,
-    _react2.default.createElement('img', { src: campus.image_url }),
+    { style: { marginBottom: '40px' } },
     _react2.default.createElement(
       'h2',
       null,
       campus.name
     ),
+    _react2.default.createElement('img', { src: campus.image_url }),
     _react2.default.createElement(
       'h4',
       null,
@@ -28421,7 +28429,7 @@ var CampusInfo = function CampusInfo(_ref) {
     _react2.default.createElement(
       'div',
       { className: 'card-group' },
-      campus.students ? campus_students.map(function (student) {
+      campus_students ? campus_students.map(function (student) {
         return _react2.default.createElement(_StudentCard2.default, { key: student.id, student: student, campus: campus });
       }) : _react2.default.createElement(
         'h4',
@@ -28568,7 +28576,7 @@ var CampusForm = function (_React$Component) {
       // if (!campus) return null
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { marginBottom: '40px' } },
         campus ? _react2.default.createElement(
           'h2',
           null,

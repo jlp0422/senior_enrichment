@@ -42,7 +42,7 @@ class StudentInfo extends React.Component {
     const match = student && student.campus_id === campus_id * 1 ? true : false
     if (!student) return null
     return (
-      <div>
+      <div style={{ marginBottom: '40px' }}>
        <h1>Information for {student.full_name}</h1>
         <div className="student-info">
           <div>

@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
+  const url = location.hash.slice(1)
   return (
     <div>
       <nav style={{ marginBottom: '15px'}} className="navbar navbar-light bg-light">
@@ -12,13 +13,24 @@ const Nav = () => {
         </a>
 
       <ul className="nav">
-        <li className="nav-item">
-          <Link to='/campuses'>Campuses</Link>
-        </li>
-          &nbsp;&nbsp;
-        <li className="nav-item">
-          <Link to='/students'>Students</Link>
-        </li>
+        {
+          url === '/campuses' ? (
+            <span className="nav-item font-weight-bold" style={{ borderBottom: '2px solid black', margin: '0px 5px' }}>Campuses</span>
+          ) : (
+              <li className="nav-item" style={{ borderBottom: '2px solid transparent', margin: '0px 5px' }}>
+              <Link to='/campuses'>Campuses</Link>
+            </li>
+          )
+        }
+        {
+          url === '/students' ? (
+            <span className="nav-item font-weight-bold" style={{ borderBottom: '2px solid black', margin: '0px 5px' }}>Students</span>
+          ) : (
+              <li className="nav-item" style={{ borderBottom: '2px solid transparent', margin: '0px 5px' }}>
+              <Link to='/students'>Students</Link>
+            </li>
+          )
+        }
       </ul>
       </nav>
     </div>

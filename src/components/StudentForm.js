@@ -46,7 +46,7 @@ class StudentForm extends React.Component {
     const { onChange, onSave } = this
     const match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false
     return (
-      <div>
+      <div style={{ marginBottom: '40px' }}>
         { student ? (
           <h2>Editing: {student.full_name}</h2>
         ) : (

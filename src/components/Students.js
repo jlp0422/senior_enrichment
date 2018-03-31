@@ -6,7 +6,7 @@ import StudentCard from './StudentCard';
 
 const Students = ({ students, campuses }) => {
   return (
-    <div>
+    <div style={{ marginBottom: '40px' }}>
       <h1>All Students</h1>
       <Link to='/students/create'>
         <button className="btn btn-outline-primary">Add Student</button>

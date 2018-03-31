@@ -8,9 +8,9 @@ import { deleteCampusOnServer } from '../store/campuses';
 const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
   if (!campus) return null
   return (
-    <div>
-      <img src={campus.image_url} />
+    <div style={{marginBottom: '40px'}}>
       <h2>{campus.name}</h2>
+      <img src={campus.image_url} />
 
       <h4>Address</h4>
       <h5>{campus.street}<br/>{campus.city_state_zip}</h5>
@@ -24,7 +24,7 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
       <h2>Students on campus</h2>
       <div className="card-group">
         {
-          campus.students ?
+          campus_students ?
           campus_students.map(student => (
             <StudentCard key={student.id} student={student} campus={ campus }/>
           )) :

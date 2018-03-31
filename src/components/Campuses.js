@@ -6,7 +6,7 @@ import CampusCard from './CampusCard';
 
 const Campuses = ({ students, campuses }) => {
   return (
-    <div>
+    <div style={{ marginBottom: '40px' }}>
     <h1>All Campuses</h1>
     <Link to='/campuses/create'>
       <button className="btn btn-outline-primary">Add Campus</button>
