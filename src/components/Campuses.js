@@ -6,11 +6,17 @@ import CampusCard from './CampusCard';
 
 const Campuses = ({ students, campuses }) => {
   return (
-    <div style={{ marginBottom: '40px' }}>
-    <h1>All Campuses</h1>
-    <Link to='/campuses/create'>
-      <button className="btn btn-outline-primary">Add Campus</button>
-    </Link>
+    <div style={{ marginBottom: '60px' }}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ flexGrow: 1 }} >
+          <h1>All Campuses</h1>
+        </div>
+        <div>
+          <Link to='/campuses/create'>
+            <button className="btn btn-primary">Add Campus</button>
+          </Link>
+        </div>
+      </div>
     {
       campuses.length ? (
         <div>

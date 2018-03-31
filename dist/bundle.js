@@ -28237,19 +28237,31 @@ var Campuses = function Campuses(_ref) {
 
   return _react2.default.createElement(
     'div',
-    { style: { marginBottom: '40px' } },
+    { style: { marginBottom: '60px' } },
     _react2.default.createElement(
-      'h1',
-      null,
-      'All Campuses'
-    ),
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/campuses/create' },
+      'div',
+      { style: { display: 'flex', alignItems: 'center' } },
       _react2.default.createElement(
-        'button',
-        { className: 'btn btn-outline-primary' },
-        'Add Campus'
+        'div',
+        { style: { flexGrow: 1 } },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'All Campuses'
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/campuses/create' },
+          _react2.default.createElement(
+            'button',
+            { className: 'btn btn-primary' },
+            'Add Campus'
+          )
+        )
       )
     ),
     campuses.length ? _react2.default.createElement(
@@ -28308,39 +28320,47 @@ var CampusCard = function CampusCard(_ref) {
 
   return _react2.default.createElement(
     'div',
-    null,
+    { style: { display: 'flex', margin: '10px 0px' } },
     _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/campuses/' + campus.id },
-      _react2.default.createElement('img', { src: campus.image_url })
-    ),
-    _react2.default.createElement(
-      'h2',
-      null,
-      campus.name
-    ),
-    _react2.default.createElement(
-      'h5',
-      null,
-      'Students: ',
-      studentCount
-    ),
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/campuses/' + campus.id + '/edit' },
+      'div',
+      { style: { maxWidth: '40%', margin: '0px 5px 0px 0px' } },
       _react2.default.createElement(
-        'button',
-        { className: 'btn btn-outline-success' },
-        'Edit'
+        _reactRouterDom.Link,
+        { to: '/campuses/' + campus.id },
+        _react2.default.createElement('img', { style: { borderRadius: '10px' }, src: campus.image_url })
       )
     ),
-    '\xA0\xA0',
     _react2.default.createElement(
-      'button',
-      { onClick: function onClick() {
-          return deleteCampus('' + campus.id);
-        }, className: 'btn btn-outline-danger' },
-      'Delete'
+      'div',
+      { style: { margin: '0px 10px' } },
+      _react2.default.createElement(
+        'h2',
+        null,
+        campus.name
+      ),
+      _react2.default.createElement(
+        'h5',
+        null,
+        'Students: ',
+        studentCount
+      ),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/campuses/' + campus.id + '/edit' },
+        _react2.default.createElement(
+          'button',
+          { className: 'btn btn-outline-success' },
+          'Edit'
+        )
+      ),
+      '\xA0\xA0',
+      _react2.default.createElement(
+        'button',
+        { onClick: function onClick() {
+            return deleteCampus('' + campus.id);
+          }, className: 'btn btn-outline-danger' },
+        'Delete'
+      )
     )
   );
 };
