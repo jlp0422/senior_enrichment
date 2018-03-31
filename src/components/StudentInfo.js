@@ -94,6 +94,7 @@ class StudentInfo extends React.Component {
                     </div>
                     <div className="form-group mx-sm-3 mb-2">
                       <select className="form-control" value={campus_id * 1} onChange={onChange}>
+                      {/*<option>Select Campus</option>*/}
                         {
                           campuses.map(campus => (
                             <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
