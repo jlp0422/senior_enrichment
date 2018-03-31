@@ -34,7 +34,7 @@ export const deleteStudentFromServer = (id) => {
   }
 }
 
-export const saveStudentOnServer = (student) => {
+export const saveStudentOnServer = (student, page) => {
   const { id } = student
   const method = id ? 'put' : 'post';
   const url = id ? `/api/students/${id}` : '/api/students'
@@ -44,9 +44,15 @@ export const saveStudentOnServer = (student) => {
       .then( res => res.data)
       .then( _student => {
         dispatch(action(_student))
-        return _student
+        return {_student, page}
       })
-      .then( _student => location.hash = `/students/${_student.id}`)
+      .then( info => {
+        page === 'campusStudents' ? (
+          location.hash = `/campuses/${info._student.campus_id}`
+        ) : (
+          location.hash = `/students/${info._student.id}`
+        )
+      })
   }
 }
 

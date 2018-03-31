@@ -33,7 +33,7 @@ class CampusStudents extends React.Component {
   onSave(ev) {
     ev.preventDefault()
     const { id, campus_id } = this.state
-    this.props.saveStudent({id, campus_id})
+    this.props.saveStudent({id, campus_id}, 'campusStudents')
   }
 
   render() {
@@ -47,20 +47,24 @@ class CampusStudents extends React.Component {
       <div>
         <h1>Add Students to {campus.name} Campus</h1>
 
-        <form onSubmit={ onSave }>
-          <select
-            name="id"
-            onChange={ onChange }>
-            <option value="-1">Select student...</option>
-            {
-              other_students.map( student => (
-                <option value={student.id} key={student.id}>{student.full_name} (
-                  {campuses.find(campus => campus.id === student.campus_id).name}
-                )</option>
-              ))
-            }
-          </select>
-          <button disabled={disabled}>Add to {campus.name}</button>
+        <form className="form-inline" onSubmit={ onSave }>
+
+          <div className="form-group mx-sm-3 mb-2">
+              <select
+                name="id"
+                onChange={ onChange }
+                className="form-control">
+                <option value="-1">Select student...</option>
+                {
+                  other_students.map( student => (
+                    <option value={student.id} key={student.id}>{student.full_name} (
+                      {campuses.find(campus => campus.id === student.campus_id).name}
+                    )</option>
+                  ))
+                }
+                </select>
+            </div>
+            <button className="btn btn-success mb-2" disabled={disabled}>Add to {campus.name}</button>
         </form>
 
         <h3>Current students at {campus.name}</h3>
@@ -85,7 +89,7 @@ const mapState = ({students, campuses}, { id }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    saveStudent: (student) => dispatch(saveStudentOnServer(student))
+    saveStudent: (student, page) => dispatch(saveStudentOnServer(student, page))
   }
 }
 
