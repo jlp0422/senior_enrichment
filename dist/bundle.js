@@ -1435,12 +1435,10 @@ var studentsReducer = function studentsReducer() {
       state = [].concat(_toConsumableArray(otherStudents), [action.student]);
       break;
 
-    case DELETE_CAMPUS:
-      var _students = state.filter(function (student) {
-        return student.campus_id !== action.id * 1;
-      });
-      state = _students;
-      break;
+    // case DELETE_CAMPUS:
+    //   const _students = state.filter(student => student.campus_id !== action.id * 1)
+    //   state = _students
+    //   break;
 
   }
   return state;
@@ -26868,9 +26866,51 @@ var StudentInfo = function (_React$Component) {
             ),
             _react2.default.createElement('img', { src: campus.image_url })
           ) : _react2.default.createElement(
-            'h2',
+            'div',
             null,
-            'No campus'
+            _react2.default.createElement(
+              'h2',
+              null,
+              'No campus'
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Add Campus'
+            ),
+            _react2.default.createElement(
+              'form',
+              { className: 'form-inline', onSubmit: onSave },
+              _react2.default.createElement(
+                'div',
+                { className: 'form-group mb-2' },
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Change Campus'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-group mx-sm-3 mb-2' },
+                _react2.default.createElement(
+                  'select',
+                  { className: 'form-control', value: campus_id * 1, onChange: onChange },
+                  campuses.map(function (campus) {
+                    return _react2.default.createElement(
+                      'option',
+                      { value: campus.id * 1, key: campus.id },
+                      campus.name
+                    );
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                'button',
+                { disabled: match, className: match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2' },
+                'Save Campus'
+              )
+            )
           )
         )
       );

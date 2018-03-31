@@ -13,7 +13,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/', (req, res, next) => {
-  // if (req.body.image_url === '') req.body.image_url = avatar.generate_avatar()
+  if (req.body.image_url === '') req.body.image_url = '../vendor/images/default-profile.png'
   Student.create(req.body)
     .then( student => res.send(student))
     .catch(next)

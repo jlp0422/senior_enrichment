@@ -53,7 +53,10 @@ const seed = () => {
 }
 
 Student.belongsTo(Campus);
-Campus.hasMany(Student, { onDelete: 'cascade', hooks: true })
+Campus.hasMany(Student, {
+  // onDelete: 'cascade',
+  // hooks: true
+ })
 
 module.exports = {
   sync,

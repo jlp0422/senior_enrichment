@@ -85,7 +85,25 @@ class StudentInfo extends React.Component {
 
               </div>
             ) : (
-                <h2>No campus</h2>
+                <div>
+                  <h2>No campus</h2>
+                  <h3>Add Campus</h3>
+                  <form className="form-inline" onSubmit={onSave}>
+                    <div className="form-group mb-2">
+                      <label>Change Campus</label>
+                    </div>
+                    <div className="form-group mx-sm-3 mb-2">
+                      <select className="form-control" value={campus_id * 1} onChange={onChange}>
+                        {
+                          campuses.map(campus => (
+                            <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
+                          ))
+                        }
+                      </select>
+                    </div>
+                    <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
+                  </form>
+                </div>
               )
           }
         </div>

@@ -72,10 +72,10 @@ const studentsReducer = (state = [], action) => {
       state = [...otherStudents, action.student]
       break;
 
-    case DELETE_CAMPUS:
-      const _students = state.filter(student => student.campus_id !== action.id * 1)
-      state = _students
-      break;
+    // case DELETE_CAMPUS:
+    //   const _students = state.filter(student => student.campus_id !== action.id * 1)
+    //   state = _students
+    //   break;
 
   }
   return state
