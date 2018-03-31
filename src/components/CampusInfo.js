@@ -3,21 +3,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import StudentCard from './StudentCard';
+import { deleteCampusOnServer } from '../store/campuses';
 
-const CampusInfo = ({ campus, campus_students }) => {
+const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
   if (!campus) return null
   return (
     <div>
       <img src={campus.image_url} />
       <h2>{campus.name}</h2>
+
+      <h4>Address</h4>
       <h5>{campus.street}<br/>{campus.city_state_zip}</h5>
+
       <p>{campus.description}</p>
+      <Link to={`/campuses/${campus.id}/edit`}>
+        <button className="btn btn-outline-success">Edit {campus.name}</button>
+      </Link>&nbsp;&nbsp;
+      <button className="btn btn-outline-danger" onClick={() => deleteCampus(`${campus.id}`)}>Delete {campus.name}</button>
+
       <h2>Students on campus</h2>
       <div className="card-group">
         {
+          campus.students ?
           campus_students.map(student => (
-            <StudentCard key={student.id} student={student} />
-          ))
+            <StudentCard key={student.id} student={student} campus={ campus }/>
+          )) :
+          <h4>No students on this campus</h4>
         }
       </div>
     </div>
@@ -32,7 +43,7 @@ const mapState = ({students, campuses}, { id }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-
+    deleteCampus: (id) => dispatch(deleteCampusOnServer(id))
   }
 }
 

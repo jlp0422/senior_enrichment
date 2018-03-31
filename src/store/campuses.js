@@ -4,10 +4,14 @@ import axios from 'axios';
 /*********** ACTION CONSTANTS ***********/
 const GET_CAMPUSES = 'GET_CAMPUSES';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
+const ADD_CAMPUS = 'ADD_CAMPUS';
+const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 
 /*********** ACTION CREATORS ***********/
 const getCampuses = (campuses) => ({ type: GET_CAMPUSES, campuses })
 const deleteCampus = (id) => ({ type: DELETE_CAMPUS, id })
+const addCampus = (campus) => ({ type: ADD_CAMPUS, campus})
+const updateCampus = (campus) => ({ type: UPDATE_CAMPUS, campus })
 
 /*********** THUNKS ***********/
 export const getCampusesFromServer = () => {
@@ -23,6 +27,23 @@ export const deleteCampusOnServer = (id) => {
     return axios.delete(`/api/campuses/${id}`)
       .then( res => res.data)
       .then( campuses => dispatch(deleteCampus(id)))
+      .then(() => location.hash = '/campuses')
+  }
+}
+
+export const saveCampusOnServer = (campus) => {
+  const { id } = campus
+  const method = id ? 'put' : 'post'
+  const url = id ? `/api/campuses/${id}` : '/api/campuses'
+  const action = id ? updateCampus : addCampus
+  return (dispatch) => {
+    return axios[method](url, campus)
+      .then( res => res.data)
+      .then( _campus => {
+        dispatch(action(_campus))
+        return _campus
+      })
+      .then( _campus => location.hash = `/campuses/${_campus.id}`)
   }
 }
 
@@ -36,8 +57,16 @@ const campusesReducer = (state = [], action) => {
 
     case DELETE_CAMPUS:
       const campuses = state.filter(campus => campus.id !== action.id * 1)
-      return campuses
+      state = campuses
       break;
+
+    case UPDATE_CAMPUS:
+      const otherCampuses = state.filter(campus => campus.id !== action.campus.id * 1)
+      state = [...otherCampuses, action.campus ]
+      break;
+
+    case ADD_CAMPUS:
+      state = [ ...state, action.campus ]
 
   }
   return state

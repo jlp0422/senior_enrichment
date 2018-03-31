@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from './Nav';
+import Home from './Home';
 import Students from './Students';
 import StudentInfo from'./StudentInfo';
 import StudentForm from './StudentForm';
@@ -30,6 +31,7 @@ class App extends React.Component {
         <Route path='/' component={ Nav } />
           <div className="container">
             <Switch>
+              <Route exact path='/' component={ Home } />
               {/* Student Routes */}
               <Route exact path='/students' component={ Students } />
               <Route exact path='/students/create' component={ StudentForm } />
