@@ -10,6 +10,7 @@ import StudentForm from './StudentForm';
 import Campuses from './Campuses';
 import CampusInfo from './CampusInfo';
 import CampusForm from './CampusForm';
+import CampusStudents from './CampusStudents';
 import { getCampusesFromServer } from '../store/campuses';
 import { getStudentsFromServer } from '../store/students';
 
@@ -46,6 +47,9 @@ class App extends React.Component {
               <Route exact path='/campuses/create' component={ CampusForm } />
               <Route exact path='/campuses/:id/edit' render={({ match }) => (
                 <CampusForm id={match.params.id * 1} />
+              )} />
+              <Route exact path='/campuses/:id/students' render={({ match }) => (
+                <CampusStudents id={match.params.id * 1} />
               )} />
               <Route exact path='/campuses/:id' render={({ match }) => (
                 <CampusInfo id={ match.params.id * 1} />

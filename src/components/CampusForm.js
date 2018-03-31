@@ -107,7 +107,7 @@ class CampusForm extends React.Component {
               <label>State</label>
               <select
                 className="form-control"
-                value={ state}
+                value={ state }
                 onChange={ onChange }
                 name="state"
               >

@@ -22,6 +22,9 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
       <button className="btn btn-outline-danger" onClick={() => deleteCampus(`${campus.id}`)}>Delete {campus.name}</button>
 
       <h2>Students on campus</h2>
+      <Link to={`/campuses/${campus.id}/students`}>
+        <button>Add Students</button>
+      </Link>
       <div className="card-group">
         {
           campus_students ?
