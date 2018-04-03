@@ -2,11 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteCampusOnServer } from '../store/campuses';
+import { deleteCampusOnServer } from '../../store/campuses';
 
 const CampusCard = ({ campus, studentCount, deleteCampus }) => {
   return (
-    <div style={{display: 'flex', margin: '10px 0px'}}>
+    <div className="flex" style={{margin: '10px 0px'}}>
       <div style={{ maxWidth: '40%', margin: '0px 5px 0px 0px' }}>
         <Link to={`/campuses/${campus.id}`}>
           <img style={{ borderRadius: '10px'}} src={campus.image_url} />

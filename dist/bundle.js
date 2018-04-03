@@ -2541,74 +2541,7 @@ var createTransitionManager = function createTransitionManager() {
 /* harmony default export */ __webpack_exports__["a"] = (createTransitionManager);
 
 /***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(4);
-
-var _reactRouterDom = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var StudentCard = function StudentCard(_ref) {
-  var student = _ref.student,
-      campus = _ref.campus;
-
-  return _react2.default.createElement(
-    'div',
-    { className: 'card', style: { minWidth: '30%', margin: '10px' } },
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/students/' + student.id },
-      _react2.default.createElement('img', { className: 'card-img-top', src: student.image_url })
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'card-body' },
-      _react2.default.createElement(
-        'h4',
-        { className: 'card-title' },
-        student.full_name
-      ),
-      _react2.default.createElement(
-        'h6',
-        { className: 'card-text' },
-        'GPA: ',
-        student.gpa,
-        ' '
-      ),
-      _react2.default.createElement(
-        'h6',
-        null,
-        'Campus: ',
-        campus ? campus.name : 'No campus'
-      ),
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/students/' + student.id },
-        _react2.default.createElement(
-          'button',
-          { className: 'btn btn-primary' },
-          'More Info'
-        )
-      )
-    )
-  );
-}; /* eslint-disable */
-exports.default = StudentCard;
-
-/***/ }),
+/* 30 */,
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4780,7 +4713,7 @@ var _App2 = _interopRequireDefault(_App);
 
 var _reactRedux = __webpack_require__(4);
 
-var _store = __webpack_require__(160);
+var _store = __webpack_require__(161);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -22112,31 +22045,31 @@ var _Home = __webpack_require__(126);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _Students = __webpack_require__(134);
+var _Students = __webpack_require__(163);
 
 var _Students2 = _interopRequireDefault(_Students);
 
-var _StudentInfo = __webpack_require__(135);
+var _StudentInfo = __webpack_require__(165);
 
 var _StudentInfo2 = _interopRequireDefault(_StudentInfo);
 
-var _StudentForm = __webpack_require__(154);
+var _StudentForm = __webpack_require__(166);
 
 var _StudentForm2 = _interopRequireDefault(_StudentForm);
 
-var _Campuses = __webpack_require__(155);
+var _Campuses = __webpack_require__(167);
 
 var _Campuses2 = _interopRequireDefault(_Campuses);
 
-var _CampusInfo = __webpack_require__(157);
+var _CampusInfo = __webpack_require__(169);
 
 var _CampusInfo2 = _interopRequireDefault(_CampusInfo);
 
-var _CampusForm = __webpack_require__(158);
+var _CampusForm = __webpack_require__(170);
 
 var _CampusForm2 = _interopRequireDefault(_CampusForm);
 
-var _CampusStudents = __webpack_require__(159);
+var _CampusStudents = __webpack_require__(171);
 
 var _CampusStudents2 = _interopRequireDefault(_CampusStudents);
 
@@ -22184,7 +22117,7 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Nav2.default }),
           _react2.default.createElement(
             'div',
-            { className: 'container' },
+            { className: 'wrapper' },
             _react2.default.createElement(
               _reactRouterDom.Switch,
               null,
@@ -27994,390 +27927,8 @@ exports.warn = warn;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
 
 /***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(4);
-
-var _reactRouterDom = __webpack_require__(7);
-
-var _StudentCard = __webpack_require__(30);
-
-var _StudentCard2 = _interopRequireDefault(_StudentCard);
-
-var _reactHelmet = __webpack_require__(9);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Students = function Students(_ref) {
-  var students = _ref.students,
-      campuses = _ref.campuses;
-
-  return _react2.default.createElement(
-    'div',
-    { style: { marginBottom: '40px' } },
-    _react2.default.createElement(
-      _reactHelmet.Helmet,
-      null,
-      _react2.default.createElement(
-        'title',
-        null,
-        'All Students'
-      )
-    ),
-    _react2.default.createElement(
-      'h1',
-      null,
-      'All Students'
-    ),
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/students/create' },
-      _react2.default.createElement(
-        'button',
-        { className: 'btn btn-outline-primary' },
-        'Add Student'
-      )
-    ),
-    students.length ? _react2.default.createElement(
-      'div',
-      { className: 'card-group' },
-      students && campuses && students.map(function (student) {
-        return _react2.default.createElement(_StudentCard2.default, { key: student.id, student: student, campus: campuses.find(function (campus) {
-            return campus.id === student.campus_id;
-          }) });
-      })
-    ) : _react2.default.createElement(
-      'h3',
-      null,
-      'We don\'t have any students'
-    )
-  );
-}; /* eslint-disable */
-
-
-var mapState = function mapState(_ref2) {
-  var students = _ref2.students,
-      campuses = _ref2.campuses;
-
-  return { students: students, campuses: campuses };
-};
-
-exports.default = (0, _reactRedux.connect)(mapState)(Students);
-
-/***/ }),
-/* 135 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(4);
-
-var _reactRouterDom = __webpack_require__(7);
-
-var _students = __webpack_require__(14);
-
-var _reactHelmet = __webpack_require__(9);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable */
-
-
-var StudentInfo = function (_React$Component) {
-  _inherits(StudentInfo, _React$Component);
-
-  function StudentInfo(props) {
-    _classCallCheck(this, StudentInfo);
-
-    var _this = _possibleConstructorReturn(this, (StudentInfo.__proto__ || Object.getPrototypeOf(StudentInfo)).call(this, props));
-
-    var campus = _this.props.campus;
-
-    _this.state = {
-      campus_id: campus ? campus.id : ''
-    };
-    _this.onChange = _this.onChange.bind(_this);
-    _this.onSave = _this.onSave.bind(_this);
-    return _this;
-  }
-
-  _createClass(StudentInfo, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.props.campus ? this.setState({ campus_id: this.props.campus.id }) : null;
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      nextProps.campus ? this.setState({ campus_id: nextProps.campus.id }) : null;
-    }
-  }, {
-    key: 'onChange',
-    value: function onChange(ev) {
-      var campus_id = ev.target.value;
-      this.setState({ campus_id: campus_id });
-    }
-  }, {
-    key: 'onSave',
-    value: function onSave(ev) {
-      ev.preventDefault();
-      var id = this.props.id;
-      var campus_id = this.state.campus_id;
-
-      this.props.saveStudent({ id: id, campus_id: campus_id * 1 });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _React$createElement;
-
-      var _props = this.props,
-          student = _props.student,
-          campus = _props.campus,
-          campuses = _props.campuses,
-          deleteStudent = _props.deleteStudent;
-      var campus_id = this.state.campus_id;
-      var onChange = this.onChange,
-          onSave = this.onSave;
-
-      var match = student && student.campus_id === campus_id * 1 ? true : false;
-      if (!student) return null;
-      return _react2.default.createElement(
-        'div',
-        { style: { marginBottom: '40px' } },
-        _react2.default.createElement(
-          _reactHelmet.Helmet,
-          null,
-          _react2.default.createElement(
-            'title',
-            null,
-            'Student Info'
-          )
-        ),
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Information for ',
-          student.full_name
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'student-info' },
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement('img', { src: student.image_url })
-          ),
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-              'h2',
-              null,
-              'Student: ',
-              student.full_name,
-              ' '
-            ),
-            _react2.default.createElement(
-              'h3',
-              null,
-              'Email: ',
-              student.email
-            ),
-            _react2.default.createElement(
-              'h3',
-              null,
-              'GPA: ',
-              student.gpa
-            ),
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/students/' + student.id + '/edit' },
-              _react2.default.createElement(
-                'button',
-                { className: 'btn btn-outline-success' },
-                'Edit'
-              )
-            ),
-            '\xA0\xA0',
-            _react2.default.createElement(
-              'button',
-              { onClick: function onClick() {
-                  return deleteStudent('' + student.id);
-                }, className: 'btn btn-outline-danger' },
-              'Delete'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          student && campus ? _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-              'h2',
-              null,
-              student.first_name,
-              ' is registered to ',
-              campus.name,
-              ' Campus'
-            ),
-            _react2.default.createElement(
-              'form',
-              { className: 'form-inline', onSubmit: onSave },
-              _react2.default.createElement(
-                'div',
-                { className: 'form-group mb-2' },
-                _react2.default.createElement(
-                  'label',
-                  null,
-                  'Change Campus'
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-group mx-sm-3 mb-2' },
-                _react2.default.createElement(
-                  'select',
-                  { className: 'form-control', value: campus_id * 1, onChange: onChange },
-                  campuses.map(function (campus) {
-                    return _react2.default.createElement(
-                      'option',
-                      { value: campus.id * 1, key: campus.id },
-                      campus.name
-                    );
-                  })
-                )
-              ),
-              _react2.default.createElement(
-                'button',
-                { disabled: match, className: match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2' },
-                'Save Campus'
-              )
-            ),
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/campuses/' + campus.id },
-              _react2.default.createElement('img', { src: campus.image_url })
-            )
-          ) : _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-              'h2',
-              null,
-              'No campus'
-            ),
-            _react2.default.createElement(
-              'h3',
-              null,
-              'Add Campus'
-            ),
-            _react2.default.createElement(
-              'form',
-              { className: 'form-inline', onSubmit: onSave },
-              _react2.default.createElement(
-                'div',
-                { className: 'form-group mb-2' },
-                _react2.default.createElement(
-                  'label',
-                  null,
-                  'Change Campus'
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-group mx-sm-3 mb-2' },
-                _react2.default.createElement(
-                  'select',
-                  { className: 'form-control', value: campus_id * 1, onChange: onChange },
-                  _react2.default.createElement(
-                    'option',
-                    { value: '' },
-                    'Select Campus...'
-                  ),
-                  campuses.map(function (campus) {
-                    return _react2.default.createElement(
-                      'option',
-                      { value: campus.id * 1, key: campus.id },
-                      campus.name
-                    );
-                  })
-                )
-              ),
-              _react2.default.createElement(
-                'button',
-                (_React$createElement = { disabled: match }, _defineProperty(_React$createElement, 'disabled', campus_id === ""), _defineProperty(_React$createElement, 'className', match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2'), _React$createElement),
-                'Save Campus'
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return StudentInfo;
-}(_react2.default.Component);
-
-var mapState = function mapState(_ref, _ref2) {
-  var students = _ref.students,
-      campuses = _ref.campuses;
-  var id = _ref2.id;
-
-  var student = students && students.find(function (s) {
-    return s.id === id;
-  });
-  var campus = campuses && student && campuses.find(function (c) {
-    return c.id === student.campus_id;
-  });
-  return { student: student, campus: campus, campuses: campuses, id: id };
-};
-
-var mapDispatch = function mapDispatch(dispatch) {
-  return {
-    deleteStudent: function deleteStudent(id) {
-      return dispatch((0, _students.deleteStudentFromServer)(id));
-    },
-    saveStudent: function saveStudent(student) {
-      return dispatch((0, _students.saveStudentOnServer)(student));
-    }
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(StudentInfo);
-
-/***/ }),
+/* 134 */,
+/* 135 */,
 /* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -29260,7 +28811,543 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 154 */
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* eslint-disable */
+var states = exports.states = [{ id: 1, abbrev: 'AL' }, { id: 2, abbrev: 'AK' }, { id: 3, abbrev: 'AZ' }, { id: 4, abbrev: 'AR' }, { id: 5, abbrev: 'CA' }, { id: 6, abbrev: 'CO' }, { id: 7, abbrev: 'CT' }, { id: 8, abbrev: 'DE' }, { id: 9, abbrev: 'FL' }, { id: 10, abbrev: 'GA' }, { id: 11, abbrev: 'HI' }, { id: 12, abbrev: 'ID' }, { id: 13, abbrev: 'IL' }, { id: 14, abbrev: 'IN' }, { id: 15, abbrev: 'IA' }, { id: 16, abbrev: 'KS' }, { id: 17, abbrev: 'KY' }, { id: 18, abbrev: 'LA' }, { id: 19, abbrev: 'ME' }, { id: 20, abbrev: 'MD' }, { id: 21, abbrev: 'MA' }, { id: 22, abbrev: 'MI' }, { id: 23, abbrev: 'MN' }, { id: 24, abbrev: 'MS' }, { id: 25, abbrev: 'MO' }, { id: 26, abbrev: 'MT' }, { id: 27, abbrev: 'NE' }, { id: 28, abbrev: 'NV' }, { id: 29, abbrev: 'NH' }, { id: 30, abbrev: 'NJ' }, { id: 31, abbrev: 'NM' }, { id: 32, abbrev: 'NY' }, { id: 33, abbrev: 'NC' }, { id: 34, abbrev: 'ND' }, { id: 35, abbrev: 'OH' }, { id: 36, abbrev: 'OK' }, { id: 37, abbrev: 'OR' }, { id: 38, abbrev: 'PA' }, { id: 39, abbrev: 'RI' }, { id: 40, abbrev: 'SC' }, { id: 41, abbrev: 'SD' }, { id: 42, abbrev: 'TN' }, { id: 43, abbrev: 'TX' }, { id: 44, abbrev: 'UT' }, { id: 45, abbrev: 'VT' }, { id: 46, abbrev: 'VA' }, { id: 47, abbrev: 'WA' }, { id: 48, abbrev: 'WV' }, { id: 49, abbrev: 'WI' }, { id: 50, abbrev: 'WY' }];
+
+/***/ }),
+/* 160 */,
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(41);
+
+var _reduxThunk = __webpack_require__(162);
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _students = __webpack_require__(14);
+
+var _students2 = _interopRequireDefault(_students);
+
+var _campuses = __webpack_require__(15);
+
+var _campuses2 = _interopRequireDefault(_campuses);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var reducer = (0, _redux.combineReducers)({
+  students: _students2.default,
+  campuses: _campuses2.default
+});
+
+var store = (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+
+exports.default = store;
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+exports['default'] = thunk;
+
+/***/ }),
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(4);
+
+var _reactRouterDom = __webpack_require__(7);
+
+var _StudentCard = __webpack_require__(164);
+
+var _StudentCard2 = _interopRequireDefault(_StudentCard);
+
+var _reactHelmet = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Students = function Students(_ref) {
+  var students = _ref.students,
+      campuses = _ref.campuses;
+
+  return _react2.default.createElement(
+    'div',
+    { style: { marginBottom: '40px' } },
+    _react2.default.createElement(
+      _reactHelmet.Helmet,
+      null,
+      _react2.default.createElement(
+        'title',
+        null,
+        'All Students'
+      )
+    ),
+    _react2.default.createElement(
+      'h1',
+      { style: { margin: '0px 10px' } },
+      'All Students'
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { style: { margin: '0 10px' }, to: '/students/create' },
+      _react2.default.createElement(
+        'button',
+        { style: { margin: '10px 0px' }, className: 'btn btn-outline-primary' },
+        'Add Student'
+      )
+    ),
+    students.length ? _react2.default.createElement(
+      'div',
+      { className: 'card-group' },
+      students && campuses && students.map(function (student) {
+        return _react2.default.createElement(_StudentCard2.default, { key: student.id, student: student, campus: campuses.find(function (campus) {
+            return campus.id === student.campus_id;
+          }) });
+      })
+    ) : _react2.default.createElement(
+      'h3',
+      null,
+      'We don\'t have any students'
+    )
+  );
+}; /* eslint-disable */
+
+
+var mapState = function mapState(_ref2) {
+  var students = _ref2.students,
+      campuses = _ref2.campuses;
+
+  return { students: students, campuses: campuses };
+};
+
+exports.default = (0, _reactRedux.connect)(mapState)(Students);
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(4);
+
+var _reactRouterDom = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var StudentCard = function StudentCard(_ref) {
+  var student = _ref.student,
+      campus = _ref.campus;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'card', style: { minWidth: '30%', margin: '10px' } },
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/students/' + student.id },
+      _react2.default.createElement('img', { className: 'card-img-top', src: student.image_url })
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'card-body' },
+      _react2.default.createElement(
+        'h4',
+        { className: 'card-title' },
+        student.full_name
+      ),
+      _react2.default.createElement(
+        'h6',
+        { className: 'card-text' },
+        'GPA: ',
+        student.gpa,
+        ' '
+      ),
+      _react2.default.createElement(
+        'h6',
+        null,
+        'Campus: ',
+        campus ? campus.name : 'No campus'
+      ),
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/students/' + student.id },
+        _react2.default.createElement(
+          'button',
+          { className: 'btn btn-primary' },
+          'More Info'
+        )
+      )
+    )
+  );
+}; /* eslint-disable */
+exports.default = StudentCard;
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(4);
+
+var _reactRouterDom = __webpack_require__(7);
+
+var _students = __webpack_require__(14);
+
+var _reactHelmet = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable */
+
+
+var StudentInfo = function (_React$Component) {
+  _inherits(StudentInfo, _React$Component);
+
+  function StudentInfo(props) {
+    _classCallCheck(this, StudentInfo);
+
+    var _this = _possibleConstructorReturn(this, (StudentInfo.__proto__ || Object.getPrototypeOf(StudentInfo)).call(this, props));
+
+    var campus = _this.props.campus;
+
+    _this.state = {
+      campus_id: campus ? campus.id : ''
+    };
+    _this.onChange = _this.onChange.bind(_this);
+    _this.onSave = _this.onSave.bind(_this);
+    return _this;
+  }
+
+  _createClass(StudentInfo, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.campus ? this.setState({ campus_id: this.props.campus.id }) : null;
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      nextProps.campus ? this.setState({ campus_id: nextProps.campus.id }) : null;
+    }
+  }, {
+    key: 'onChange',
+    value: function onChange(ev) {
+      var campus_id = ev.target.value;
+      this.setState({ campus_id: campus_id });
+    }
+  }, {
+    key: 'onSave',
+    value: function onSave(ev) {
+      ev.preventDefault();
+      var id = this.props.id;
+      var campus_id = this.state.campus_id;
+
+      this.props.saveStudent({ id: id, campus_id: campus_id * 1 });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _React$createElement;
+
+      var _props = this.props,
+          student = _props.student,
+          campus = _props.campus,
+          campuses = _props.campuses,
+          deleteStudent = _props.deleteStudent;
+      var campus_id = this.state.campus_id;
+      var onChange = this.onChange,
+          onSave = this.onSave;
+
+      var match = student && student.campus_id === campus_id * 1 ? true : false;
+      if (!student) return null;
+      return _react2.default.createElement(
+        'div',
+        { style: { marginBottom: '40px' } },
+        _react2.default.createElement(
+          _reactHelmet.Helmet,
+          null,
+          _react2.default.createElement(
+            'title',
+            null,
+            'Student Info'
+          )
+        ),
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Information for ',
+          student.full_name
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'student-info' },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement('img', { src: student.image_url })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Student: ',
+              student.full_name,
+              ' '
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Email: ',
+              student.email
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'GPA: ',
+              student.gpa
+            ),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/students/' + student.id + '/edit' },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-outline-success' },
+                'Edit'
+              )
+            ),
+            '\xA0\xA0',
+            _react2.default.createElement(
+              'button',
+              { onClick: function onClick() {
+                  return deleteStudent('' + student.id);
+                }, className: 'btn btn-outline-danger' },
+              'Delete'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          student && campus ? _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              student.first_name,
+              ' is registered to ',
+              campus.name,
+              ' Campus'
+            ),
+            _react2.default.createElement(
+              'form',
+              { className: 'form-inline', onSubmit: onSave },
+              _react2.default.createElement(
+                'div',
+                { className: 'form-group mb-2' },
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Change Campus'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-group mx-sm-3 mb-2' },
+                _react2.default.createElement(
+                  'select',
+                  { className: 'form-control', value: campus_id * 1, onChange: onChange },
+                  campuses.map(function (campus) {
+                    return _react2.default.createElement(
+                      'option',
+                      { value: campus.id * 1, key: campus.id },
+                      campus.name
+                    );
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                'button',
+                { disabled: match, className: match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2' },
+                'Save Campus'
+              )
+            ),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/campuses/' + campus.id },
+              _react2.default.createElement('img', { src: campus.image_url })
+            )
+          ) : _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'No campus'
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Add Campus'
+            ),
+            _react2.default.createElement(
+              'form',
+              { className: 'form-inline', onSubmit: onSave },
+              _react2.default.createElement(
+                'div',
+                { className: 'form-group mb-2' },
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Change Campus'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-group mx-sm-3 mb-2' },
+                _react2.default.createElement(
+                  'select',
+                  { className: 'form-control', value: campus_id * 1, onChange: onChange },
+                  _react2.default.createElement(
+                    'option',
+                    { value: '' },
+                    'Select Campus...'
+                  ),
+                  campuses.map(function (campus) {
+                    return _react2.default.createElement(
+                      'option',
+                      { value: campus.id * 1, key: campus.id },
+                      campus.name
+                    );
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                'button',
+                (_React$createElement = { disabled: match }, _defineProperty(_React$createElement, 'disabled', campus_id === ""), _defineProperty(_React$createElement, 'className', match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2'), _React$createElement),
+                'Save Campus'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return StudentInfo;
+}(_react2.default.Component);
+
+var mapState = function mapState(_ref, _ref2) {
+  var students = _ref.students,
+      campuses = _ref.campuses;
+  var id = _ref2.id;
+
+  var student = students && students.find(function (s) {
+    return s.id === id;
+  });
+  var campus = campuses && student && campuses.find(function (c) {
+    return c.id === student.campus_id;
+  });
+  return { student: student, campus: campus, campuses: campuses, id: id };
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    deleteStudent: function deleteStudent(id) {
+      return dispatch((0, _students.deleteStudentFromServer)(id));
+    },
+    saveStudent: function saveStudent(student) {
+      return dispatch((0, _students.saveStudentOnServer)(student));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(StudentInfo);
+
+/***/ }),
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29371,7 +29458,7 @@ var StudentForm = function (_React$Component) {
           _react2.default.createElement(
             'title',
             null,
-            student ? 'Edit Student' : 'Create Student'
+            student ? 'Edit Student' : 'Add Student'
           )
         ),
         student ? _react2.default.createElement(
@@ -29382,7 +29469,7 @@ var StudentForm = function (_React$Component) {
         ) : _react2.default.createElement(
           'h2',
           null,
-          'Create new student'
+          'Add new student'
         ),
         _react2.default.createElement(
           'form',
@@ -29523,7 +29610,7 @@ var mapDispatch = function mapDispatch(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(StudentForm);
 
 /***/ }),
-/* 155 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29541,7 +29628,7 @@ var _reactRouterDom = __webpack_require__(7);
 
 var _reactRedux = __webpack_require__(4);
 
-var _CampusCard = __webpack_require__(156);
+var _CampusCard = __webpack_require__(168);
 
 var _CampusCard2 = _interopRequireDefault(_CampusCard);
 
@@ -29555,7 +29642,7 @@ var Campuses = function Campuses(_ref) {
 
   return _react2.default.createElement(
     'div',
-    { style: { marginBottom: '60px' } },
+    { style: { margin: '0px 10px 60px' } },
     _react2.default.createElement(
       _reactHelmet.Helmet,
       null,
@@ -29567,7 +29654,7 @@ var Campuses = function Campuses(_ref) {
     ),
     _react2.default.createElement(
       'div',
-      { style: { display: 'flex', alignItems: 'center' } },
+      { className: 'flex', style: { alignItems: 'center' } },
       _react2.default.createElement(
         'div',
         { style: { flexGrow: 1 } },
@@ -29631,7 +29718,7 @@ var mapState = function mapState(_ref2) {
 exports.default = (0, _reactRedux.connect)(mapState)(Campuses);
 
 /***/ }),
-/* 156 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29661,7 +29748,7 @@ var CampusCard = function CampusCard(_ref) {
 
   return _react2.default.createElement(
     'div',
-    { style: { display: 'flex', margin: '10px 0px' } },
+    { className: 'flex', style: { margin: '10px 0px' } },
     _react2.default.createElement(
       'div',
       { style: { maxWidth: '40%', margin: '0px 5px 0px 0px' } },
@@ -29717,7 +29804,7 @@ var mapDispatch = function mapDispatch(dispatch) {
 exports.default = (0, _reactRedux.connect)(null, mapDispatch)(CampusCard);
 
 /***/ }),
-/* 157 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29735,7 +29822,7 @@ var _reactRedux = __webpack_require__(4);
 
 var _reactRouterDom = __webpack_require__(7);
 
-var _StudentCard = __webpack_require__(30);
+var _StudentCard = __webpack_require__(164);
 
 var _StudentCard2 = _interopRequireDefault(_StudentCard);
 
@@ -29766,10 +29853,10 @@ var CampusInfo = function CampusInfo(_ref) {
     ),
     _react2.default.createElement(
       'div',
-      { style: { backgroundColor: '#f0f3f8', padding: '15px 10px 30px', borderRadius: '5px' } },
+      { style: { backgroundColor: '#f0f3f8', margin: '0px 10px', padding: '10px 10px 30px', borderRadius: '5px' } },
       _react2.default.createElement(
         'div',
-        { style: { display: 'flex', paddingBottom: '15px' } },
+        { className: 'flex', style: { paddingBottom: '15px' } },
         _react2.default.createElement(
           'div',
           { style: { flex: '1 250px', margin: '0px 5px 0px 0px' } },
@@ -29794,46 +29881,69 @@ var CampusInfo = function CampusInfo(_ref) {
             campus.street,
             _react2.default.createElement('br', null),
             campus.city_state_zip
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            campus.description
           )
         )
       ),
       _react2.default.createElement(
-        'p',
-        null,
-        campus.description
-      ),
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/campuses/' + campus.id + '/edit' },
+        'div',
+        { className: 'flex', style: { justifyContent: 'flex-start' } },
         _react2.default.createElement(
-          'button',
-          { className: 'btn btn-outline-success' },
-          'Edit ',
-          campus.name
+          'div',
+          null,
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { style: { marginRight: '20px' }, to: '/campuses/' + campus.id + '/edit' },
+            _react2.default.createElement(
+              'button',
+              { className: 'btn btn-outline-success' },
+              'Edit ',
+              campus.name
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'button',
+            { className: 'btn btn-outline-danger', onClick: function onClick() {
+                return deleteCampus('' + campus.id);
+              } },
+            'Delete ',
+            campus.name
+          )
         )
-      ),
-      '\xA0\xA0',
-      _react2.default.createElement(
-        'button',
-        { className: 'btn btn-outline-danger', onClick: function onClick() {
-            return deleteCampus('' + campus.id);
-          } },
-        'Delete ',
-        campus.name
       )
     ),
     _react2.default.createElement(
-      'h2',
-      null,
-      'Students on campus'
-    ),
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/campuses/' + campus.id + '/students' },
+      'div',
+      { className: 'flex', style: { margin: '20px 10px 0px', justifyContent: 'space-between' } },
       _react2.default.createElement(
-        'button',
-        { className: 'btn btn-outline-primary' },
-        'Add Students'
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Students on campus'
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/campuses/' + campus.id + '/students' },
+          _react2.default.createElement(
+            'button',
+            { className: 'btn btn-outline-primary' },
+            'Add Students'
+          )
+        )
       )
     ),
     _react2.default.createElement(
@@ -29875,7 +29985,7 @@ var mapDispatch = function mapDispatch(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(CampusInfo);
 
 /***/ }),
-/* 158 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29899,7 +30009,7 @@ var _campuses = __webpack_require__(15);
 
 var _reactHelmet = __webpack_require__(9);
 
-var _states = __webpack_require__(162);
+var _states = __webpack_require__(159);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29993,7 +30103,7 @@ var CampusForm = function (_React$Component) {
           _react2.default.createElement(
             'title',
             null,
-            campus ? 'Edit Campus' : 'Create Campus'
+            campus ? 'Edit Campus' : 'Add Campus'
           )
         ),
         campus ? _react2.default.createElement(
@@ -30004,7 +30114,7 @@ var CampusForm = function (_React$Component) {
         ) : _react2.default.createElement(
           'h2',
           null,
-          'Create new Campus'
+          'Add new Campus'
         ),
         _react2.default.createElement(
           'form',
@@ -30203,7 +30313,7 @@ var mapDispatch = function mapDispatch(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(CampusForm);
 
 /***/ }),
-/* 159 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30221,7 +30331,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(4);
 
-var _StudentCard = __webpack_require__(30);
+var _StudentCard = __webpack_require__(164);
 
 var _StudentCard2 = _interopRequireDefault(_StudentCard);
 
@@ -30402,84 +30512,6 @@ var mapDispatch = function mapDispatch(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapState, mapDispatch)(CampusStudents);
-
-/***/ }),
-/* 160 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _redux = __webpack_require__(41);
-
-var _reduxThunk = __webpack_require__(161);
-
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-var _students = __webpack_require__(14);
-
-var _students2 = _interopRequireDefault(_students);
-
-var _campuses = __webpack_require__(15);
-
-var _campuses2 = _interopRequireDefault(_campuses);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var reducer = (0, _redux.combineReducers)({
-  students: _students2.default,
-  campuses: _campuses2.default
-});
-
-var store = (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));
-
-exports.default = store;
-
-/***/ }),
-/* 161 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-function createThunkMiddleware(extraArgument) {
-  return function (_ref) {
-    var dispatch = _ref.dispatch,
-        getState = _ref.getState;
-    return function (next) {
-      return function (action) {
-        if (typeof action === 'function') {
-          return action(dispatch, getState, extraArgument);
-        }
-
-        return next(action);
-      };
-    };
-  };
-}
-
-var thunk = createThunkMiddleware();
-thunk.withExtraArgument = createThunkMiddleware;
-
-exports['default'] = thunk;
-
-/***/ }),
-/* 162 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/* eslint-disable */
-var states = exports.states = [{ id: 1, abbrev: 'AL' }, { id: 2, abbrev: 'AK' }, { id: 3, abbrev: 'AZ' }, { id: 4, abbrev: 'AR' }, { id: 5, abbrev: 'CA' }, { id: 6, abbrev: 'CO' }, { id: 7, abbrev: 'CT' }, { id: 8, abbrev: 'DE' }, { id: 9, abbrev: 'FL' }, { id: 10, abbrev: 'GA' }, { id: 11, abbrev: 'HI' }, { id: 12, abbrev: 'ID' }, { id: 13, abbrev: 'IL' }, { id: 14, abbrev: 'IN' }, { id: 15, abbrev: 'IA' }, { id: 16, abbrev: 'KS' }, { id: 17, abbrev: 'KY' }, { id: 18, abbrev: 'LA' }, { id: 19, abbrev: 'ME' }, { id: 20, abbrev: 'MD' }, { id: 21, abbrev: 'MA' }, { id: 22, abbrev: 'MI' }, { id: 23, abbrev: 'MN' }, { id: 24, abbrev: 'MS' }, { id: 25, abbrev: 'MO' }, { id: 26, abbrev: 'MT' }, { id: 27, abbrev: 'NE' }, { id: 28, abbrev: 'NV' }, { id: 29, abbrev: 'NH' }, { id: 30, abbrev: 'NJ' }, { id: 31, abbrev: 'NM' }, { id: 32, abbrev: 'NY' }, { id: 33, abbrev: 'NC' }, { id: 34, abbrev: 'ND' }, { id: 35, abbrev: 'OH' }, { id: 36, abbrev: 'OK' }, { id: 37, abbrev: 'OR' }, { id: 38, abbrev: 'PA' }, { id: 39, abbrev: 'RI' }, { id: 40, abbrev: 'SC' }, { id: 41, abbrev: 'SD' }, { id: 42, abbrev: 'TN' }, { id: 43, abbrev: 'TX' }, { id: 44, abbrev: 'UT' }, { id: 45, abbrev: 'VT' }, { id: 46, abbrev: 'VA' }, { id: 47, abbrev: 'WA' }, { id: 48, abbrev: 'WV' }, { id: 49, abbrev: 'WI' }, { id: 50, abbrev: 'WY' }];
 
 /***/ })
 /******/ ]);

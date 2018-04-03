@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
-import StudentCard from './StudentCard';
-import { saveStudentOnServer } from '../store/students';
+import StudentCard from '../Student/StudentCard';
+import { saveStudentOnServer } from '../../store/students';
 import { Helmet } from 'react-helmet';
 
 class CampusStudents extends React.Component {

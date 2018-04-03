@@ -7,9 +7,9 @@ import { Helmet } from 'react-helmet';
 
 const Campuses = ({ students, campuses }) => {
   return (
-    <div style={{ marginBottom: '60px' }}>
+    <div style={{ margin: '0px 10px 60px' }}>
       <Helmet><title>All Campuses</title></Helmet>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="flex" style={{ alignItems: 'center' }}>
         <div style={{ flexGrow: 1 }} >
           <h1>All Campuses</h1>
         </div>

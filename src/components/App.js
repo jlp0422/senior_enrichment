@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from './Nav';
 import Home from './Home';
-import Students from './Students';
-import StudentInfo from'./StudentInfo';
-import StudentForm from './StudentForm';
-import Campuses from './Campuses';
-import CampusInfo from './CampusInfo';
-import CampusForm from './CampusForm';
-import CampusStudents from './CampusStudents';
+import Students from './Student/Students';
+import StudentInfo from'./Student/StudentInfo';
+import StudentForm from './Student/StudentForm';
+import Campuses from './Campus/Campuses';
+import CampusInfo from './Campus/CampusInfo';
+import CampusForm from './Campus/CampusForm';
+import CampusStudents from './Campus/CampusStudents';
 import { getCampusesFromServer } from '../store/campuses';
 import { getStudentsFromServer } from '../store/students';
 
@@ -30,7 +30,7 @@ class App extends React.Component {
       <Router>
         <div>
         <Route path='/' component={ Nav } />
-          <div className="container">
+          <div className="wrapper">
             <Switch>
               <Route exact path='/' component={ Home } />
               {/* Student Routes */}

@@ -2,9 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { saveCampusOnServer } from '../store/campuses';
+import { saveCampusOnServer } from '../../store/campuses';
 import { Helmet } from 'react-helmet';
-import { states } from '../states'
+import { states } from '../../states'
 
 class CampusForm extends React.Component {
   constructor(props) {
@@ -52,13 +52,13 @@ class CampusForm extends React.Component {
 
     return (
       <div style={{ marginBottom: '40px' }}>
-        <Helmet><title>{ campus ? ('Edit Campus') : ('Create Campus')}</title></Helmet>
+        <Helmet><title>{ campus ? ('Edit Campus') : ('Add Campus')}</title></Helmet>
 
         {
           campus ? (
           <h2>Editing: {campus.name}</h2>
           ) : (
-          <h2>Create new Campus</h2>
+          <h2>Add new Campus</h2>
           )
         }
         <form onSubmit={ onSave }>

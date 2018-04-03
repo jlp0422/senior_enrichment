@@ -1,3 +1,7 @@
+.flex {
+  display: flex;
+}
+
 .student-info {
   display: flex;
   /* flex-flow: row wrap; */
@@ -13,8 +17,20 @@ img {
   max-width: 100%;
 }
 
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-group {
+  max-width: 300px;
+}
 
 
 
 
-
+@media (max-width: 1200px) {
+  .wrapper {
+    max-width: 90%;
+  }
+}

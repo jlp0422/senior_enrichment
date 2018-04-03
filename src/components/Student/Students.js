@@ -9,9 +9,9 @@ const Students = ({ students, campuses }) => {
   return (
     <div style={{ marginBottom: '40px' }}>
       <Helmet><title>All Students</title></Helmet>
-      <h1>All Students</h1>
-      <Link to='/students/create'>
-        <button className="btn btn-outline-primary">Add Student</button>
+      <h1 style={{margin: '0px 10px'}}>All Students</h1>
+      <Link style={{ margin: '0 10px' }} to='/students/create'>
+        <button style={{ margin: '10px 0px'}}className="btn btn-outline-primary">Add Student</button>
       </Link>
       {
         students.length ? (
