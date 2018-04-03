@@ -45,13 +45,14 @@ class CampusStudents extends React.Component {
     if (!campus) return null
     if (!other_students) return null
     return (
-      <div>
+      <div style={{margin: '0px 10px 40px'}}>
         <Helmet><title>Add Students</title></Helmet>
-        <h1 style={{margin: '10px'}}>Add Students to {campus.name} Campus</h1>
+        <h1 style={{margin: '0px 0px 10px'}}>Add Students to {campus.name} Campus</h1>
 
-        <form className="form-inline" onSubmit={ onSave }>
+        <form className={''/*"form-inline"*/} onSubmit={ onSave }>
 
-          <div className="form-group mx-sm-3 mb-2">
+          <div className={"form-row"/* mx-sm-3 mb-2*/}>
+            <div className="col-md-9">
               <select
                 name="id"
                 onChange={ onChange }
@@ -65,8 +66,11 @@ class CampusStudents extends React.Component {
                   ))
                 }
                 </select>
+              </div>
+            <div className="col-md-3">
+              <button className="btn btn-success mb-2" disabled={disabled}>Add to {campus.name}</button>
             </div>
-            <button className="btn btn-success mb-2" disabled={disabled}>Add to {campus.name}</button>
+          </div>
         </form>
 
         <h3>Current students at {campus.name}</h3>

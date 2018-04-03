@@ -30337,7 +30337,7 @@ var CampusStudents = function (_React$Component) {
       if (!other_students) return null;
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { margin: '0px 10px 40px' } },
         _react2.default.createElement(
           _reactHelmet.Helmet,
           null,
@@ -30349,47 +30349,55 @@ var CampusStudents = function (_React$Component) {
         ),
         _react2.default.createElement(
           'h1',
-          { style: { margin: '10px' } },
+          { style: { margin: '0px 0px 10px' } },
           'Add Students to ',
           campus.name,
           ' Campus'
         ),
         _react2.default.createElement(
           'form',
-          { className: 'form-inline', onSubmit: onSave },
+          { className: '' /*"form-inline"*/, onSubmit: onSave },
           _react2.default.createElement(
             'div',
-            { className: 'form-group mx-sm-3 mb-2' },
+            { className: "form-row" /* mx-sm-3 mb-2*/ },
             _react2.default.createElement(
-              'select',
-              {
-                name: 'id',
-                onChange: onChange,
-                className: 'form-control' },
+              'div',
+              { className: 'col-md-9' },
               _react2.default.createElement(
-                'option',
-                { value: '-1' },
-                'Select student...'
-              ),
-              other_students.map(function (student) {
-                return _react2.default.createElement(
+                'select',
+                {
+                  name: 'id',
+                  onChange: onChange,
+                  className: 'form-control' },
+                _react2.default.createElement(
                   'option',
-                  { value: student.id, key: student.id },
-                  student.full_name,
-                  ' (',
-                  campuses.find(function (campus) {
-                    return campus.id === student.campus_id;
-                  }).name,
-                  ')'
-                );
-              })
+                  { value: '-1' },
+                  'Select student...'
+                ),
+                other_students.map(function (student) {
+                  return _react2.default.createElement(
+                    'option',
+                    { value: student.id, key: student.id },
+                    student.full_name,
+                    ' (',
+                    campuses.find(function (campus) {
+                      return campus.id === student.campus_id;
+                    }).name,
+                    ')'
+                  );
+                })
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-md-3' },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-success mb-2', disabled: disabled },
+                'Add to ',
+                campus.name
+              )
             )
-          ),
-          _react2.default.createElement(
-            'button',
-            { className: 'btn btn-success mb-2', disabled: disabled },
-            'Add to ',
-            campus.name
           )
         ),
         _react2.default.createElement(
