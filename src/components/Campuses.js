@@ -3,10 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CampusCard from './CampusCard';
+import { Helmet } from 'react-helmet';
 
 const Campuses = ({ students, campuses }) => {
   return (
     <div style={{ marginBottom: '60px' }}>
+      <Helmet><title>All Campuses</title></Helmet>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ flexGrow: 1 }} >
           <h1>All Campuses</h1>

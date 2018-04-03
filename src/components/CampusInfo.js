@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import StudentCard from './StudentCard';
 import { deleteCampusOnServer } from '../store/campuses';
+import { Helmet } from 'react-helmet';
 
 const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
   if (!campus) return null
   return (
     <div style={{marginBottom: '40px'}}>
+      <Helmet><title>Campus Info</title></Helmet>
       <div style={{backgroundColor: '#f0f3f8', padding: '15px 10px 30px', borderRadius: '5px'}}>
 
         <div style={{ display: 'flex', paddingBottom: '15px'}}>

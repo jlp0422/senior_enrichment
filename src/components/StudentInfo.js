@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteStudentFromServer, saveStudentOnServer } from '../store/students';
+import { Helmet } from 'react-helmet';
 
 class StudentInfo extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class StudentInfo extends React.Component {
     if (!student) return null
     return (
       <div style={{ marginBottom: '40px' }}>
+        <Helmet><title>Student Info</title></Helmet>
        <h1>Information for {student.full_name}</h1>
         <div className="student-info">
           <div>

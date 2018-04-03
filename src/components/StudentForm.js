@@ -2,7 +2,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { saveStudentOnServer } from '../store/students'
+import { saveStudentOnServer } from '../store/students';
+import { Helmet } from 'react-helmet';
 
 class StudentForm extends React.Component {
   constructor(props) {
@@ -47,6 +48,7 @@ class StudentForm extends React.Component {
     const match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false
     return (
       <div style={{ marginBottom: '40px' }}>
+        <Helmet><title>{ student ? ('Edit Student') : ('Create Student')}</title></Helmet>
         { student ? (
           <h2>Editing: {student.full_name}</h2>
         ) : (

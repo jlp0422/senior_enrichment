@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { saveCampusOnServer } from '../store/campuses';
+import { Helmet } from 'react-helmet';
 
 class CampusForm extends React.Component {
   constructor(props) {
@@ -53,6 +54,8 @@ class CampusForm extends React.Component {
     // if (!campus) return null
     return (
       <div style={{ marginBottom: '40px' }}>
+        <Helmet><title>{ campus ? ('Edit Campus') : ('Create Campus')}</title></Helmet>
+
         {
           campus ? (
           <h2>Editing: {campus.name}</h2>

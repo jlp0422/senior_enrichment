@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import StudentCard from './StudentCard';
 import { saveStudentOnServer } from '../store/students';
+import { Helmet } from 'react-helmet';
 
 class CampusStudents extends React.Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class CampusStudents extends React.Component {
     if (!other_students) return null
     return (
       <div>
+        <Helmet><title>Add Students</title></Helmet>
         <h1>Add Students to {campus.name} Campus</h1>
 
         <form className="form-inline" onSubmit={ onSave }>

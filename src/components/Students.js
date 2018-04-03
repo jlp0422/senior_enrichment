@@ -3,10 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import StudentCard from './StudentCard';
+import { Helmet } from 'react-helmet';
 
 const Students = ({ students, campuses }) => {
   return (
     <div style={{ marginBottom: '40px' }}>
+      <Helmet><title>All Students</title></Helmet>
       <h1>All Students</h1>
       <Link to='/students/create'>
         <button className="btn btn-outline-primary">Add Student</button>
