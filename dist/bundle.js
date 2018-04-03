@@ -29493,11 +29493,11 @@ var StudentForm = function (_React$Component) {
         ) : _react2.default.createElement(
           'h1',
           null,
-          'Add new student'
+          'Add new Student'
         ),
         _react2.default.createElement(
           'form',
-          { onSubmit: onSave },
+          { style: { marginTop: '15px' }, onSubmit: onSave },
           _react2.default.createElement(
             'div',
             { className: 'form-row' },
@@ -30090,7 +30090,7 @@ var CampusForm = function (_React$Component) {
         ),
         _react2.default.createElement(
           'form',
-          { onSubmit: onSave },
+          { style: { marginTop: '15px' }, onSubmit: onSave },
           _react2.default.createElement(
             'div',
             { className: 'form-row' },

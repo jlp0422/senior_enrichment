@@ -46,6 +46,7 @@ class StudentInfo extends React.Component {
     return (
       <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>Student Info</title></Helmet>
+
         <h1>Information for {student.full_name}</h1>
 
         <div className="flex" style={{ backgroundColor: '#f0f3f8', padding: '10px 10px 10px', borderRadius: '5px'}}>

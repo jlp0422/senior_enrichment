@@ -54,9 +54,9 @@ class StudentForm extends React.Component {
           { student ? (
             <h1>Editing: {student.full_name}</h1>
           ) : (
-            <h1>Add new student</h1>
+            <h1>Add new Student</h1>
           ) }
-        <form onSubmit={ onSave }>
+        <form style={{ marginTop: '15px' }} onSubmit={ onSave }>
           <div className="form-row">
             <div className="form-group col-md-3">
               <label>First name</label>

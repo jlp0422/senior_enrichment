@@ -61,7 +61,7 @@ class CampusForm extends React.Component {
           <h1>Add new Campus</h1>
           )
         }
-        <form onSubmit={ onSave }>
+        <form style={{marginTop: '15px' }} onSubmit={ onSave }>
           <div className="form-row">
             <div className="form-group col-md-12">
               <label>Name</label>
