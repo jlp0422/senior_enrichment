@@ -20,7 +20,7 @@ app.use('/api', require('./routes'));
 
 // Single 'get' to send index file
 app.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, 'index.html'))
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 });
 
 // Error handling
