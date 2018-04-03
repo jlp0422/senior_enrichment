@@ -1646,7 +1646,7 @@ var saveStudentOnServer = exports.saveStudentOnServer = function saveStudentOnSe
       dispatch(action(_student));
       return { _student: _student, page: page };
     }).then(function (info) {
-      page === 'campusStudents' ? location.hash = '/campuses/' + info._student.campus_id : location.hash = '/students/' + info._student.id;
+      if (page === 'campusStudents') location.hash = '/campuses/' + info._student.campus_id;else location.hash = '/students/' + info._student.id;
     });
   };
 };
@@ -29450,9 +29450,9 @@ var StudentForm = function (_React$Component) {
           last_name = _state.last_name,
           email = _state.email,
           gpa = _state.gpa,
-          image_url = _state.image_url,
-          campus_id = _state.campus_id;
+          image_url = _state.image_url;
 
+      var campus_id = this.state.campus_id * 1;
       this.props.saveStudent({ id: id, first_name: first_name, last_name: last_name, email: email, gpa: gpa, image_url: image_url, campus_id: campus_id });
     }
   }, {
@@ -29472,7 +29472,7 @@ var StudentForm = function (_React$Component) {
       var onChange = this.onChange,
           onSave = this.onSave;
 
-      var match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa * 1 === gpa * 1 && student.image_url === image_url && student.campus_id * 1 === campus_id * 1 ? true : false;
+      var match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa * 1 === gpa * 1 && student.image_url === image_url && student.campus_id * 1 === campus_id * 1 || campus_id === '-1' ? true : false;
       return _react2.default.createElement(
         'div',
         { style: { margin: '0px 10px 40px' } },
@@ -29580,6 +29580,11 @@ var StudentForm = function (_React$Component) {
                   name: 'campus_id',
                   value: campus_id,
                   className: 'form-control' },
+                _react2.default.createElement(
+                  'option',
+                  { value: '-1' },
+                  'Select campus...'
+                ),
                 campuses.map(function (campus) {
                   return _react2.default.createElement(
                     'option',

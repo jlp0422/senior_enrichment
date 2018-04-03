@@ -47,11 +47,8 @@ export const saveStudentOnServer = (student, page) => {
         return {_student, page}
       })
       .then( info => {
-        page === 'campusStudents' ? (
-          location.hash = `/campuses/${info._student.campus_id}`
-        ) : (
-          location.hash = `/students/${info._student.id}`
-        )
+        if (page === 'campusStudents') location.hash = `/campuses/${info._student.campus_id}`
+        else location.hash = `/students/${info._student.id}`
       })
   }
 }

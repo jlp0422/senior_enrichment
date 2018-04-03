@@ -38,7 +38,8 @@ class StudentForm extends React.Component {
   onSave(ev) {
     ev.preventDefault()
     const { id } = this.props
-    const { first_name, last_name, email, gpa, image_url, campus_id } = this.state
+    const { first_name, last_name, email, gpa, image_url } = this.state
+    const campus_id = this.state.campus_id * 1
     this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url, campus_id })
   }
 
@@ -46,7 +47,7 @@ class StudentForm extends React.Component {
     const { first_name, last_name, email, gpa, image_url, campus_id } = this.state
     const { student, id, campuses } = this.props
     const { onChange, onSave } = this
-    const match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1 ? true : false
+    const match = (student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1) || campus_id === '-1' ? true : false
     return (
       <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>{ student ? ('Edit Student') : ('Add Student')}</title></Helmet>
@@ -96,7 +97,6 @@ class StudentForm extends React.Component {
                 required
                 className="form-control" />
             </div>
-
             <div className="form-group col-md-10">
               <label>Campus</label>
               <select
@@ -104,6 +104,7 @@ class StudentForm extends React.Component {
                 name="campus_id"
                 value={campus_id}
                 className="form-control">
+                <option value="-1">Select campus...</option>
                 {
                   campuses.map(campus => (
                     <option key={campus.id} value={campus.id}>{campus.name}</option>
@@ -111,7 +112,6 @@ class StudentForm extends React.Component {
                 }
               </select>
             </div>
-
           </div>
 
           <div className="form-row">
