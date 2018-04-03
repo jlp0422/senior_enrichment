@@ -29912,7 +29912,7 @@ var CampusInfo = function CampusInfo(_ref) {
           { to: '/campuses/' + campus.id + '/students' },
           _react2.default.createElement(
             'button',
-            { className: 'btn btn-outline-primary' },
+            { style: { marginTop: '8px' }, className: 'btn btn-outline-primary' },
             'Add Students'
           )
         )
