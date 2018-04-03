@@ -2599,7 +2599,7 @@ var StudentCard = function StudentCard(_ref) {
         { to: '/students/' + student.id },
         _react2.default.createElement(
           'button',
-          { style: { margin: '5px 0px' }, className: 'btn btn-primary' },
+          { style: { margin: '5px 0px' }, className: 'btn btn-outline-primary' },
           'More Info'
         )
       )
@@ -28056,7 +28056,7 @@ var Students = function Students(_ref) {
           { style: { margin: '0 10px' }, to: '/students/create' },
           _react2.default.createElement(
             'button',
-            { style: { margin: '10px 0px' }, className: 'btn btn-outline-primary' },
+            { style: { margin: '10px 0px' }, className: 'btn btn-primary' },
             'Add Student'
           )
         )
@@ -28108,6 +28108,10 @@ var _react2 = _interopRequireDefault(_react);
 var _reactRedux = __webpack_require__(4);
 
 var _reactRouterDom = __webpack_require__(7);
+
+var _CampusCard = __webpack_require__(156);
+
+var _CampusCard2 = _interopRequireDefault(_CampusCard);
 
 var _students = __webpack_require__(14);
 
@@ -28173,6 +28177,7 @@ var StudentInfo = function (_React$Component) {
       var _React$createElement;
 
       var _props = this.props,
+          students = _props.students,
           student = _props.student,
           campus = _props.campus,
           campuses = _props.campuses,
@@ -28185,7 +28190,7 @@ var StudentInfo = function (_React$Component) {
       if (!student) return null;
       return _react2.default.createElement(
         'div',
-        { style: { marginBottom: '40px' } },
+        { style: { margin: '0px 10px 40px' } },
         _react2.default.createElement(
           _reactHelmet.Helmet,
           null,
@@ -28203,11 +28208,11 @@ var StudentInfo = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'student-info' },
+          { className: 'flex', style: { backgroundColor: '#f0f3f8', padding: '10px 10px 10px', borderRadius: '5px' } },
           _react2.default.createElement(
             'div',
-            null,
-            _react2.default.createElement('img', { src: student.image_url })
+            { style: { marginRight: '20px' } },
+            _react2.default.createElement('img', { style: { borderRadius: '5px' }, src: student.image_url })
           ),
           _react2.default.createElement(
             'div',
@@ -28232,21 +28237,24 @@ var StudentInfo = function (_React$Component) {
               student.gpa
             ),
             _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/students/' + student.id + '/edit' },
+              'div',
+              { className: 'flex', style: { justifyContent: 'space-between', marginTop: '15px' } },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: '/students/' + student.id + '/edit' },
+                _react2.default.createElement(
+                  'button',
+                  { className: 'btn btn-outline-success' },
+                  'Edit'
+                )
+              ),
               _react2.default.createElement(
                 'button',
-                { className: 'btn btn-outline-success' },
-                'Edit'
+                { onClick: function onClick() {
+                    return deleteStudent('' + student.id);
+                  }, className: 'btn btn-outline-danger' },
+                'Delete'
               )
-            ),
-            '\xA0\xA0',
-            _react2.default.createElement(
-              'button',
-              { onClick: function onClick() {
-                  return deleteStudent('' + student.id);
-                }, className: 'btn btn-outline-danger' },
-              'Delete'
             )
           )
         ),
@@ -28258,7 +28266,7 @@ var StudentInfo = function (_React$Component) {
             null,
             _react2.default.createElement(
               'h2',
-              null,
+              { style: { margin: '20px 0px 15px' } },
               student.first_name,
               ' is registered to ',
               campus.name,
@@ -28266,48 +28274,50 @@ var StudentInfo = function (_React$Component) {
             ),
             _react2.default.createElement(
               'form',
-              { className: 'form-inline', onSubmit: onSave },
+              { style: { margin: '0px 0px 10px' }, onSubmit: onSave },
               _react2.default.createElement(
                 'div',
-                { className: 'form-group mb-2' },
+                { className: 'form-row' },
                 _react2.default.createElement(
-                  'label',
-                  null,
-                  'Change Campus'
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-group mx-sm-3 mb-2' },
+                  'div',
+                  { className: 'col-md-2' },
+                  _react2.default.createElement('input', { className: 'form-control-plaintext font-weight-bold', value: 'Change Campus', readOnly: true })
+                ),
                 _react2.default.createElement(
-                  'select',
-                  { className: 'form-control', value: campus_id * 1, onChange: onChange },
-                  campuses.map(function (campus) {
-                    return _react2.default.createElement(
-                      'option',
-                      { value: campus.id * 1, key: campus.id },
-                      campus.name
-                    );
-                  })
+                  'div',
+                  { className: 'col-md-6' },
+                  _react2.default.createElement(
+                    'select',
+                    { className: 'form-control', value: campus_id * 1, onChange: onChange },
+                    campuses.map(function (campus) {
+                      return _react2.default.createElement(
+                        'option',
+                        { value: campus.id * 1, key: campus.id },
+                        campus.name
+                      );
+                    })
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-2' },
+                  _react2.default.createElement(
+                    'button',
+                    { disabled: match, className: match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2' },
+                    'Save Campus'
+                  )
                 )
-              ),
-              _react2.default.createElement(
-                'button',
-                { disabled: match, className: match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2' },
-                'Save Campus'
               )
             ),
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/campuses/' + campus.id },
-              _react2.default.createElement('img', { src: campus.image_url })
-            )
+            _react2.default.createElement(_CampusCard2.default, { key: campus.id, campus: campus, studentCount: students.filter(function (student) {
+                return student.campus_id === campus.id;
+              }).length })
           ) : _react2.default.createElement(
             'div',
             null,
             _react2.default.createElement(
               'h2',
-              null,
+              { style: { margin: '20px 0px 15px' } },
               'No campus'
             ),
             _react2.default.createElement(
@@ -28317,40 +28327,44 @@ var StudentInfo = function (_React$Component) {
             ),
             _react2.default.createElement(
               'form',
-              { className: 'form-inline', onSubmit: onSave },
+              { onSubmit: onSave },
               _react2.default.createElement(
                 'div',
-                { className: 'form-group mb-2' },
+                { className: 'form-row' },
                 _react2.default.createElement(
-                  'label',
-                  null,
-                  'Change Campus'
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-group mx-sm-3 mb-2' },
+                  'div',
+                  { className: 'col-md-2' },
+                  _react2.default.createElement('input', { className: 'form-control-plaintext font-weight-bold', value: 'Change Campus', readOnly: true })
+                ),
                 _react2.default.createElement(
-                  'select',
-                  { className: 'form-control', value: campus_id * 1, onChange: onChange },
+                  'div',
+                  { className: 'col-md-6' },
                   _react2.default.createElement(
-                    'option',
-                    { value: '' },
-                    'Select Campus...'
-                  ),
-                  campuses.map(function (campus) {
-                    return _react2.default.createElement(
+                    'select',
+                    { className: 'form-control', value: campus_id * 1, onChange: onChange },
+                    _react2.default.createElement(
                       'option',
-                      { value: campus.id * 1, key: campus.id },
-                      campus.name
-                    );
-                  })
+                      { value: '' },
+                      'Select Campus...'
+                    ),
+                    campuses.map(function (campus) {
+                      return _react2.default.createElement(
+                        'option',
+                        { value: campus.id * 1, key: campus.id },
+                        campus.name
+                      );
+                    })
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-2' },
+                  _react2.default.createElement(
+                    'button',
+                    (_React$createElement = { disabled: match }, _defineProperty(_React$createElement, 'disabled', campus_id === ""), _defineProperty(_React$createElement, 'className', match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2'), _React$createElement),
+                    'Save Campus'
+                  )
                 )
-              ),
-              _react2.default.createElement(
-                'button',
-                (_React$createElement = { disabled: match }, _defineProperty(_React$createElement, 'disabled', campus_id === ""), _defineProperty(_React$createElement, 'className', match ? 'btn btn-outline-success mb-2' : 'btn btn-success mb-2'), _React$createElement),
-                'Save Campus'
               )
             )
           )
@@ -28373,7 +28387,7 @@ var mapState = function mapState(_ref, _ref2) {
   var campus = campuses && student && campuses.find(function (c) {
     return c.id === student.campus_id;
   });
-  return { student: student, campus: campus, campuses: campuses, id: id };
+  return { students: students, student: student, campus: campus, campuses: campuses, id: id };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {
@@ -29702,11 +29716,11 @@ var CampusCard = function CampusCard(_ref) {
         { to: '/campuses/' + campus.id + '/edit' },
         _react2.default.createElement(
           'button',
-          { className: 'btn btn-outline-success' },
+          { style: { marginBottom: '10px' }, className: 'btn btn-outline-success' },
           'Edit'
         )
       ),
-      '\xA0\xA0',
+      _react2.default.createElement('br', null),
       _react2.default.createElement(
         'button',
         { onClick: function onClick() {
@@ -29766,7 +29780,7 @@ var CampusInfo = function CampusInfo(_ref) {
   if (!campus) return null;
   return _react2.default.createElement(
     'div',
-    { style: { marginBottom: '40px' } },
+    { style: { margin: '0px 10px 40px' } },
     _react2.default.createElement(
       _reactHelmet.Helmet,
       null,
@@ -29784,7 +29798,7 @@ var CampusInfo = function CampusInfo(_ref) {
         { className: 'flex', style: { paddingBottom: '15px' } },
         _react2.default.createElement(
           'div',
-          { style: { flex: '1 250px', margin: '0px 5px 0px 0px' } },
+          { style: { flex: '1 250px', margin: '0px 10px 0px 0px' } },
           _react2.default.createElement('img', { style: { borderRadius: '5px', width: '100%' }, src: campus.image_url })
         ),
         _react2.default.createElement(

@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import CampusCard from '../Campus/CampusCard';
 import { deleteStudentFromServer, saveStudentOnServer } from '../../store/students';
 import { Helmet } from 'react-helmet';
 
@@ -37,66 +38,49 @@ class StudentInfo extends React.Component {
   }
 
   render() {
-    const { student, campus, campuses, deleteStudent } = this.props
+    const { students, student, campus, campuses, deleteStudent } = this.props
     const { campus_id } = this.state
     const { onChange, onSave } = this
     const match = student && student.campus_id === campus_id * 1 ? true : false
     if (!student) return null
     return (
-      <div style={{ marginBottom: '40px' }}>
+      <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>Student Info</title></Helmet>
-       <h1>Information for {student.full_name}</h1>
-        <div className="student-info">
-          <div>
-            <img src={student.image_url} />
+        <h1>Information for {student.full_name}</h1>
+
+        <div className="flex" style={{ backgroundColor: '#f0f3f8', padding: '10px 10px 10px', borderRadius: '5px'}}>
+
+          <div style={{ marginRight: '20px'}}>
+            <img style={{borderRadius: '5px' }} src={student.image_url} />
           </div>
+
           <div>
             <h2>Student: {student.full_name} </h2>
             <h3>Email: {student.email}</h3>
             <h3>GPA: {student.gpa}</h3>
-            <Link to={`/students/${student.id}/edit`}>
-              <button className="btn btn-outline-success">Edit</button>
-            </Link>&nbsp;&nbsp;
-          <button onClick={() => deleteStudent(`${student.id}`)} className="btn btn-outline-danger">Delete</button>
+            <div className="flex" style={{ justifyContent: 'space-between', marginTop: '15px' }}>
+              <Link to={`/students/${student.id}/edit`}>
+                <button className="btn btn-outline-success">Edit</button>
+              </Link>
+              <button onClick={() => deleteStudent(`${student.id}`)} className="btn btn-outline-danger">Delete</button>
+            </div>
           </div>
 
         </div>
+
         <div>
           {
             student && campus ? (
               <div>
-                <h2>{student.first_name} is registered to {campus.name} Campus</h2>
+                <h2 style={{margin: '20px 0px 15px'}}>{student.first_name} is registered to {campus.name} Campus</h2>
 
-                <form className="form-inline" onSubmit={ onSave }>
-                  <div className="form-group mb-2">
-                    <label>Change Campus</label>
-                  </div>
-                  <div className="form-group mx-sm-3 mb-2">
-                    <select className="form-control" value={campus_id * 1} onChange={onChange}>
-                      {
-                        campuses.map(campus => (
-                          <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
-                        ))
-                      }
-                    </select>
-                  </div>
-                  <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
-                </form>
-
-                <Link to={`/campuses/${campus.id}`}><img src={campus.image_url} /></Link>
-
-              </div>
-            ) : (
-                <div>
-                  <h2>No campus</h2>
-                  <h3>Add Campus</h3>
-                  <form className="form-inline" onSubmit={onSave}>
-                    <div className="form-group mb-2">
-                      <label>Change Campus</label>
+                <form style={{ margin: '0px 0px 10px'}} onSubmit={ onSave }>
+                  <div className="form-row">
+                    <div className="col-md-2">
+                      <input className="form-control-plaintext font-weight-bold" value="Change Campus" readOnly />
                     </div>
-                    <div className="form-group mx-sm-3 mb-2">
+                    <div className="col-md-6">
                       <select className="form-control" value={campus_id * 1} onChange={onChange}>
-                      {<option value="">Select Campus...</option>}
                         {
                           campuses.map(campus => (
                             <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
@@ -104,7 +88,38 @@ class StudentInfo extends React.Component {
                         }
                       </select>
                     </div>
-                    <button disabled={match} disabled={campus_id === ""} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
+                    <div className="col-md-2">
+                      <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
+                    </div>
+                  </div>
+                </form>
+
+                <CampusCard key={campus.id} campus={campus} studentCount={students.filter(student => student.campus_id === campus.id).length}/>
+
+              </div>
+            ) : (
+                <div>
+                  <h2 style={{ margin: '20px 0px 15px' }}>No campus</h2>
+                  <h3>Add Campus</h3>
+                  <form onSubmit={onSave}>
+                    <div className="form-row">
+                      <div className="col-md-2">
+                        <input className="form-control-plaintext font-weight-bold" value="Change Campus" readOnly />
+                      </div>
+                      <div className="col-md-6">
+                        <select className="form-control" value={campus_id * 1} onChange={onChange}>
+                        {<option value="">Select Campus...</option>}
+                          {
+                            campuses.map(campus => (
+                              <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
+                            ))
+                          }
+                        </select>
+                      </div>
+                      <div className="col-md-2">
+                        <button disabled={match} disabled={campus_id === ""} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
+                      </div>
+                    </div>
                   </form>
                 </div>
               )
@@ -118,7 +133,7 @@ class StudentInfo extends React.Component {
 const mapState = ({ students, campuses }, { id }) => {
   const student = students && students.find(s => s.id === id)
   const campus = campuses && student && campuses.find(c => c.id === student.campus_id)
-  return { student, campus, campuses, id }
+  return { students, student, campus, campuses, id }
 }
 
 const mapDispatch = (dispatch) => {

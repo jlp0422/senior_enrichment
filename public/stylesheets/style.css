@@ -1,12 +1,10 @@
-.flex {
-  display: flex;
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.student-info {
+.flex {
   display: flex;
-  /* flex-flow: row wrap; */
-  /* justify-content: center; */
-  background-color: #f0f3f8
 }
 
 label {
@@ -17,13 +15,12 @@ img {
   max-width: 100%;
 }
 
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .card {
   max-width: 250px;
+}
+
+li.nav-item {
+  border-bottom: 2px solid #f8f9fa;
 }
 
 li.nav-item:hover {

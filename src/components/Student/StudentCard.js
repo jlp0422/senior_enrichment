@@ -14,7 +14,7 @@ const StudentCard = ({ student, campus }) => {
         <h6 className="card-text">GPA: { student.gpa } </h6>
         <h6>Campus: { campus ? campus.name : ('No campus') }</h6>
         <Link to={`/students/${student.id}`}>
-          <button style={{ margin: '5px 0px' }} className="btn btn-primary">More Info</button>
+          <button style={{ margin: '5px 0px' }} className="btn btn-outline-primary">More Info</button>
         </Link>
       </div>
     </div>

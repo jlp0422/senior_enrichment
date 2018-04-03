@@ -17,8 +17,9 @@ const CampusCard = ({ campus, studentCount, deleteCampus }) => {
       {/* <p>{campus.description}</p> */}
         <h5>Students: {studentCount}</h5>
         <Link to={`/campuses/${campus.id}/edit`}>
-          <button className="btn btn-outline-success">Edit</button>
-        </Link>&nbsp;&nbsp;
+          <button style={{ marginBottom: '10px' }} className="btn btn-outline-success">Edit</button>
+        </Link>
+        <br />
         <button onClick={() => deleteCampus(`${campus.id}`)} className="btn btn-outline-danger">Delete</button>
       </div>
     </div>

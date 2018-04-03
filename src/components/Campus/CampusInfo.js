@@ -9,12 +9,12 @@ import { Helmet } from 'react-helmet';
 const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
   if (!campus) return null
   return (
-    <div style={{marginBottom: '40px'}}>
+    <div style={{margin: '0px 10px 40px'}}>
       <Helmet><title>Campus Info</title></Helmet>
       <div style={{backgroundColor: '#f0f3f8', margin: '0px 10px', padding: '10px 10px 30px', borderRadius: '5px'}}>
 
         <div className="flex" style={{ paddingBottom: '15px'}}>
-          <div style={{ flex: '1 250px', margin: '0px 5px 0px 0px'}}>
+          <div style={{ flex: '1 250px', margin: '0px 10px 0px 0px'}}>
             <img style={{ borderRadius: '5px', width: '100%'}} src={campus.image_url} />
           </div>
           <div style={{ margin: '0px 10px', flex: '2 250px' }}>

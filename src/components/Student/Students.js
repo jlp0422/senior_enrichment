@@ -14,7 +14,7 @@ const Students = ({ students, campuses }) => {
         <div><h1 style={{margin: '0px 10px'}}>All Students</h1></div>
         <div>
           <Link style={{ margin: '0 10px' }} to='/students/create'>
-            <button style={{ margin: '10px 0px'}}className="btn btn-outline-primary">Add Student</button>
+            <button style={{ margin: '10px 0px'}}className="btn btn-primary">Add Student</button>
           </Link>
         </div>
       </div>
