@@ -94,6 +94,7 @@ class CampusForm extends React.Component {
               name="street"
             />
           </div>
+
           <div className="form-row">
             <div className="form-group col-md-7">
               <label>City</label>
@@ -104,6 +105,7 @@ class CampusForm extends React.Component {
                 name="city"
               />
             </div>
+
             <div className="form-group col-md-2">
               <label>State</label>
               <select
@@ -120,6 +122,7 @@ class CampusForm extends React.Component {
                 }
               </select>
             </div>
+
             <div className="form-group col-md-3">
               <label>Zip</label>
               <input
@@ -130,6 +133,7 @@ class CampusForm extends React.Component {
                />
             </div>
           </div>
+
           <div className="form-row">
             <div className="form-group col-md-12">
               <label>Campus Image</label>

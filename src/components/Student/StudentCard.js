@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const StudentCard = ({ student, campus }) => {
   return (
-    <div className="card" style={{ minWidth: '30%', margin: '10px' }}>
+    <div className="card" style={{ minWidth: '31.3%', margin: '10px' }}>
       <Link to={`/students/${student.id}`}>
         <img className="card-img-top" src={student.image_url} />
       </Link>

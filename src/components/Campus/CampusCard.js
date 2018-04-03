@@ -14,7 +14,7 @@ const CampusCard = ({ campus, studentCount, deleteCampus }) => {
       </div>
       <div style={{ margin: '0px 10px' }}>
         <h2>{campus.name}</h2>
-      {/* <p>{campus.description}</p> */}
+        {/* <p>{campus.description}</p> */}
         <h5>Students: {studentCount}</h5>
         <Link to={`/campuses/${campus.id}/edit`}>
           <button style={{ marginBottom: '10px' }} className="btn btn-outline-success">Edit</button>

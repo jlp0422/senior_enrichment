@@ -15,6 +15,7 @@ class StudentForm extends React.Component {
       email: student ? student.email : '',
       gpa: student ? student.gpa : '',
       image_url: student ? student.image_url : '',
+      campus_id: student ? student.campus_id : ''
     }
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
@@ -37,15 +38,15 @@ class StudentForm extends React.Component {
   onSave(ev) {
     ev.preventDefault()
     const { id } = this.props
-    const { first_name, last_name, email, gpa, image_url } = this.state
-    this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url })
+    const { first_name, last_name, email, gpa, image_url, campus_id } = this.state
+    this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url, campus_id })
   }
 
   render() {
-    const { first_name, last_name, email, gpa, image_url } = this.state
-    const { student, id } = this.props
+    const { first_name, last_name, email, gpa, image_url, campus_id } = this.state
+    const { student, id, campuses } = this.props
     const { onChange, onSave } = this
-    const match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false
+    const match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1 ? true : false
     return (
       <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>{ student ? ('Edit Student') : ('Add Student')}</title></Helmet>
@@ -84,6 +85,7 @@ class StudentForm extends React.Component {
                 className="form-control" />
             </div>
           </div>
+
           <div className="form-row">
             <div className="form-group col-md-2">
               <label>GPA</label>
@@ -94,7 +96,26 @@ class StudentForm extends React.Component {
                 required
                 className="form-control" />
             </div>
+
             <div className="form-group col-md-10">
+              <label>Campus</label>
+              <select
+                onChange={onChange}
+                name="campus_id"
+                value={campus_id}
+                className="form-control">
+                {
+                  campuses.map(campus => (
+                    <option key={campus.id} value={campus.id}>{campus.name}</option>
+                  ))
+                }
+              </select>
+            </div>
+
+          </div>
+
+          <div className="form-row">
+            <div className="form-group col-md-12">
               <label>Avatar</label>
               <input
                 onChange={ onChange }
@@ -103,6 +124,7 @@ class StudentForm extends React.Component {
                 className="form-control" />
             </div>
           </div>
+
           {
             student ? (
               <div>
@@ -122,9 +144,9 @@ class StudentForm extends React.Component {
   }
 }
 
-const mapState = ({ students }, { id }) => {
+const mapState = ({ students, campuses }, { id }) => {
   const student = students.find(s => s.id === id)
-  return { student, id }
+  return { student, id, campuses }
 }
 
 const mapDispatch = (dispatch) => {
