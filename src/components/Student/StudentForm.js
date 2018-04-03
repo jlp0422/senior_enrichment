@@ -47,12 +47,12 @@ class StudentForm extends React.Component {
     const { onChange, onSave } = this
     const match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false
     return (
-      <div style={{ marginBottom: '40px' }}>
+      <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>{ student ? ('Edit Student') : ('Add Student')}</title></Helmet>
           { student ? (
-            <h2>Editing: {student.full_name}</h2>
+            <h1>Editing: {student.full_name}</h1>
           ) : (
-            <h2>Add new student</h2>
+            <h1>Add new student</h1>
           ) }
         <form onSubmit={ onSave }>
           <div className="form-row">

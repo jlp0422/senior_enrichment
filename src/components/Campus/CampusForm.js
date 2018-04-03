@@ -51,14 +51,14 @@ class CampusForm extends React.Component {
     const match = campus && campus.name === name && campus.description === description && campus.street === street && campus.city === city && campus.state === state && campus.zip === zip && campus.image_url === image_url ? true : false
 
     return (
-      <div style={{ marginBottom: '40px' }}>
+      <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>{ campus ? ('Edit Campus') : ('Add Campus')}</title></Helmet>
 
         {
           campus ? (
-          <h2>Editing: {campus.name}</h2>
+          <h1>Editing: {campus.name}</h1>
           ) : (
-          <h2>Add new Campus</h2>
+          <h1>Add new Campus</h1>
           )
         }
         <form onSubmit={ onSave }>
@@ -95,7 +95,7 @@ class CampusForm extends React.Component {
             />
           </div>
           <div className="form-row">
-            <div className="form-group col-md-6">
+            <div className="form-group col-md-7">
               <label>City</label>
               <input
                 className="form-control"
@@ -104,7 +104,7 @@ class CampusForm extends React.Component {
                 name="city"
               />
             </div>
-            <div className="form-group col-md-3">
+            <div className="form-group col-md-2">
               <label>State</label>
               <select
                 className="form-control"

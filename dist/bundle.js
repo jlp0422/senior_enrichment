@@ -29364,7 +29364,7 @@ var StudentForm = function (_React$Component) {
       var match = student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa === gpa && student.image_url === image_url ? true : false;
       return _react2.default.createElement(
         'div',
-        { style: { marginBottom: '40px' } },
+        { style: { margin: '0px 10px 40px' } },
         _react2.default.createElement(
           _reactHelmet.Helmet,
           null,
@@ -29375,12 +29375,12 @@ var StudentForm = function (_React$Component) {
           )
         ),
         student ? _react2.default.createElement(
-          'h2',
+          'h1',
           null,
           'Editing: ',
           student.full_name
         ) : _react2.default.createElement(
-          'h2',
+          'h1',
           null,
           'Add new student'
         ),
@@ -30009,7 +30009,7 @@ var CampusForm = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { style: { marginBottom: '40px' } },
+        { style: { margin: '0px 10px 40px' } },
         _react2.default.createElement(
           _reactHelmet.Helmet,
           null,
@@ -30020,12 +30020,12 @@ var CampusForm = function (_React$Component) {
           )
         ),
         campus ? _react2.default.createElement(
-          'h2',
+          'h1',
           null,
           'Editing: ',
           campus.name
         ) : _react2.default.createElement(
-          'h2',
+          'h1',
           null,
           'Add new Campus'
         ),
@@ -30091,7 +30091,7 @@ var CampusForm = function (_React$Component) {
             { className: 'form-row' },
             _react2.default.createElement(
               'div',
-              { className: 'form-group col-md-6' },
+              { className: 'form-group col-md-7' },
               _react2.default.createElement(
                 'label',
                 null,
@@ -30106,7 +30106,7 @@ var CampusForm = function (_React$Component) {
             ),
             _react2.default.createElement(
               'div',
-              { className: 'form-group col-md-3' },
+              { className: 'form-group col-md-2' },
               _react2.default.createElement(
                 'label',
                 null,
