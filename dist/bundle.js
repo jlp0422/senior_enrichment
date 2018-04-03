@@ -26995,7 +26995,7 @@ var Nav = function Nav() {
           'Campuses'
         ) : _react2.default.createElement(
           'li',
-          { className: 'nav-item', style: { borderBottom: '2px solid transparent', margin: '0px 5px' } },
+          { className: 'nav-item', style: { margin: '0px 5px' } },
           _react2.default.createElement(
             _reactRouterDom.Link,
             { to: '/campuses', style: { color: 'black' } },
@@ -27008,7 +27008,7 @@ var Nav = function Nav() {
           'Students'
         ) : _react2.default.createElement(
           'li',
-          { className: 'nav-item', style: { borderBottom: '2px solid transparent', margin: '0px 5px' } },
+          { className: 'nav-item', style: { margin: '0px 5px' } },
           _react2.default.createElement(
             _reactRouterDom.Link,
             { to: '/students', style: { color: 'black' } },
@@ -28037,17 +28037,29 @@ var Students = function Students(_ref) {
       )
     ),
     _react2.default.createElement(
-      'h1',
-      { style: { margin: '0px 10px' } },
-      'All Students'
-    ),
-    _react2.default.createElement(
-      _reactRouterDom.Link,
-      { style: { margin: '0 10px' }, to: '/students/create' },
+      'div',
+      { className: 'flex', style: { justifyContent: 'space-between' } },
       _react2.default.createElement(
-        'button',
-        { style: { margin: '10px 0px' }, className: 'btn btn-outline-primary' },
-        'Add Student'
+        'div',
+        null,
+        _react2.default.createElement(
+          'h1',
+          { style: { margin: '0px 10px' } },
+          'All Students'
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { style: { margin: '0 10px' }, to: '/students/create' },
+          _react2.default.createElement(
+            'button',
+            { style: { margin: '10px 0px' }, className: 'btn btn-outline-primary' },
+            'Add Student'
+          )
+        )
       )
     ),
     students.length ? _react2.default.createElement(
