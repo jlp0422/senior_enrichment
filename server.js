@@ -25,7 +25,7 @@ app.get('/', (req, res, next) => {
 
 // Error handling
 app.use((err, req, res, next) => {
-  console.log(err)
+  res.status(500).send(err)
 })
 
 // Port listening
