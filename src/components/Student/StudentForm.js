@@ -49,11 +49,11 @@ class StudentForm extends React.Component {
     return (
       <div style={{ marginBottom: '40px' }}>
         <Helmet><title>{ student ? ('Edit Student') : ('Add Student')}</title></Helmet>
-        { student ? (
-          <h2>Editing: {student.full_name}</h2>
-        ) : (
-          <h2>Add new student</h2>
-        ) }
+          { student ? (
+            <h2>Editing: {student.full_name}</h2>
+          ) : (
+            <h2>Add new student</h2>
+          ) }
         <form onSubmit={ onSave }>
           <div className="form-row">
             <div className="form-group col-md-3">

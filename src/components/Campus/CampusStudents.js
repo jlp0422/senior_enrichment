@@ -47,7 +47,7 @@ class CampusStudents extends React.Component {
     return (
       <div>
         <Helmet><title>Add Students</title></Helmet>
-        <h1>Add Students to {campus.name} Campus</h1>
+        <h1 style={{margin: '10px'}}>Add Students to {campus.name} Campus</h1>
 
         <form className="form-inline" onSubmit={ onSave }>
 
