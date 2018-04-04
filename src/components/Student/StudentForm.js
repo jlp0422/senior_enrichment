@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { saveStudentOnServer } from '../../store/students';
+import { clearError } from '../../store/error'
 import { Helmet } from 'react-helmet';
 
 class StudentForm extends React.Component {
@@ -19,6 +20,7 @@ class StudentForm extends React.Component {
     }
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
+    this.dismissError = this.dismissError.bind(this)
   }
 
   componentDidMount() {
@@ -27,6 +29,10 @@ class StudentForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps.student)
+  }
+
+  dismissError() {
+    this.props.clearError({})
   }
 
   onChange(ev) {
@@ -46,8 +52,9 @@ class StudentForm extends React.Component {
   render() {
     const { first_name, last_name, email, gpa, image_url, campus_id } = this.state
     const { student, id, campuses, error } = this.props
-    const { onChange, onSave } = this
+    const { onChange, onSave, dismissError } = this
     const match = (student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1) || campus_id === '-1' ? true : false
+    console.log(error)
     return (
       <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>{ student ? ('Edit Student') : ('Add Student')}</title></Helmet>
@@ -57,8 +64,13 @@ class StudentForm extends React.Component {
             <h1>Add new Student</h1>
           ) }
           {
-            error ? (
-              <h3>{error.message}</h3>
+            error.message ? (
+            <div className="alert alert-danger alert-dismissible" role="alert">
+              <strong>Something went wrong:</strong> {error.message}.
+                <button type="button" className="close">
+                <span onClick={ dismissError }>&times;</span>
+              </button>
+            </div>
             ) : (
               null
             )
@@ -158,7 +170,8 @@ const mapState = ({ students, campuses, error }, { id }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    saveStudent: (student) => dispatch(saveStudentOnServer(student))
+    saveStudent: (student) => dispatch(saveStudentOnServer(student)),
+    clearError: (clear) => dispatch(clearError(clear))
   }
 }
 

@@ -6,14 +6,8 @@ const ERROR = 'ERROR'
 const CLEAR_ERROR = 'CLEAR_ERROR'
 
 /*********** ACTION CREATORS ***********/
-export const error = (error) => {
-  return {
-    type: ERROR,
-    error
-  }
-}
-
-export const clearError = () => ({ type: CLEAR_ERROR })
+export const error = (error) => ({ type: ERROR, error })
+export const clearError = (clear) => ({ type: CLEAR_ERROR, clear })
 
 /*********** REDUCER ***********/
 const errorReducer = (state = {}, action) => {
@@ -24,7 +18,7 @@ const errorReducer = (state = {}, action) => {
       break;
 
     case CLEAR_ERROR:
-      state = {}
+      state = action.clear
       break;
   }
   return state;
