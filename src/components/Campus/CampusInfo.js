@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet';
 
 const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
   if (!campus) return null
+  console.log(campus_students)
   return (
     <div style={{margin: '0px 10px 40px'}}>
       <Helmet><title>Campus Info</title></Helmet>
@@ -19,15 +20,16 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
           </div>
           <div style={{ margin: '0px 10px', flex: '2 250px' }}>
             <h2>{campus.name}</h2>
-            <h4>Address</h4>
+
             {
               campus.street ? (
                 <div>
+                  <h4>Address</h4>
                   <h5>{campus.street}<br />{campus.city_state_zip}</h5>
                   <p>{campus.description}</p>
                 </div>
               ) : (
-                null
+                <h4>No address information</h4>
               )
             }
 
@@ -56,11 +58,13 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
       </div>
       <div className="card-group">
         {
-          campus_students ?
+          campus_students.length ?
           campus_students.map(student => (
             <StudentCard key={student.id} student={student} campus={ campus }/>
           )) :
-          <h4>No students on this campus</h4>
+          <div style={{margin: '0px 10px'}}>
+            <h4>No students on this campus</h4>
+          </div>
         }
       </div>
     </div>

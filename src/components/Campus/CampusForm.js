@@ -83,8 +83,14 @@ class CampusForm extends React.Component {
                   </div>
                 </div>
               </form>
-              <button disabled={ !name } className="btn btn-success" onClick={onSave}>Quick Create</button><br/><br/>
-              <button disabled={ !name } className="btn btn-primary" onClick={showDetails}>Add Details</button>
+              <div className="flex" style={{ flexDirection: 'column' }}>
+                <div>
+                  <button disabled={ !name } title="Add the name now and the details later!" className="btn btn-success" onClick={onSave}>Quick Create</button>
+                </div>
+                <div>
+                  <button style={{marginTop: '15px'}} disabled={ !name } title="Add more information to the campus." className="btn btn-primary" onClick={showDetails}>Add Details</button>
+                </div>
+              </div>
             </div>
           ) : (
             <form style={{ marginTop: '15px' }} onSubmit={onSave}>
