@@ -8,6 +8,7 @@ const DELETE_STUDENT = 'DELETE_STUDENT';
 const ADD_STUDENT = 'ADD_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
+import { error, clearError } from './error';
 
 /************ ACTION CREATORS **************/
 
@@ -35,8 +36,8 @@ export const deleteStudentFromServer = (id) => {
 }
 
 export const saveStudentOnServer = (student, page) => {
-  const { id } = student
   let stud;
+  const { id } = student
   const method = id ? 'put' : 'post';
   const url = id ? `/api/students/${id}` : '/api/students'
   const action = id ? updateStudent : addStudent
@@ -52,6 +53,7 @@ export const saveStudentOnServer = (student, page) => {
         if (page === 'campusStudents') location.hash = `/campuses/${stud.campus_id}`
         else location.hash = `/students/${stud.id}`
       })
+      .catch(err => dispatch(error(err.response.data)))
   }
 }
 

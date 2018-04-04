@@ -5,9 +5,9 @@ const conn = require('./conn');
 const Student = conn.define('student', {
   first_name: {
     type: Sequelize.STRING,
-    allowNull: false,
+    // allowNull: false,
     validate: {
-      notEmpty: true
+      // notEmpty: true
     }
   },
   last_name: {

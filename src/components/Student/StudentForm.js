@@ -15,7 +15,7 @@ class StudentForm extends React.Component {
       email: student ? student.email : '',
       gpa: student ? student.gpa : '',
       image_url: student ? student.image_url : '',
-      campus_id: student ? student.campus_id : ''
+      campus_id: student ? student.campus_id : '',
     }
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
@@ -45,7 +45,7 @@ class StudentForm extends React.Component {
 
   render() {
     const { first_name, last_name, email, gpa, image_url, campus_id } = this.state
-    const { student, id, campuses } = this.props
+    const { student, id, campuses, error } = this.props
     const { onChange, onSave } = this
     const match = (student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1) || campus_id === '-1' ? true : false
     return (
@@ -56,6 +56,13 @@ class StudentForm extends React.Component {
           ) : (
             <h1>Add new Student</h1>
           ) }
+          {
+            error ? (
+              <h3>{error.message}</h3>
+            ) : (
+              null
+            )
+          }
         <form style={{ marginTop: '15px' }} onSubmit={ onSave }>
           <div className="form-row">
             <div className="form-group col-md-3">
@@ -64,7 +71,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="first_name"
                 value={ first_name }
-                required
+                // required
                 className="form-control" />
             </div>
             <div className="form-group col-md-3">
@@ -73,7 +80,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="last_name"
                 value={ last_name }
-                required
+                // required
                 className="form-control" />
             </div>
             <div className="form-group col-md-6">
@@ -82,7 +89,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="email"
                 value={ email }
-                required
+                // required
                 className="form-control" />
             </div>
           </div>
@@ -94,7 +101,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="gpa"
                 value={ gpa }
-                required
+                // required
                 className="form-control" />
             </div>
             <div className="form-group col-md-10">
@@ -144,9 +151,9 @@ class StudentForm extends React.Component {
   }
 }
 
-const mapState = ({ students, campuses }, { id }) => {
+const mapState = ({ students, campuses, error }, { id }) => {
   const student = students.find(s => s.id === id)
-  return { student, id, campuses }
+  return { student, id, campuses, error }
 }
 
 const mapDispatch = (dispatch) => {

@@ -32,8 +32,8 @@ export const deleteCampusOnServer = (id) => {
 }
 
 export const saveCampusOnServer = (campus, page) => {
-  const { id } = campus
   let camp;
+  const { id } = campus
   const method = id ? 'put' : 'post'
   const url = id ? `/api/campuses/${id}` : '/api/campuses'
   const action = id ? updateCampus : addCampus

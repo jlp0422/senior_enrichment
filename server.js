@@ -7,6 +7,7 @@ const db = require('./db');
 const { Student, Campus } = db.models;
 
 // Middleware
+app.use(require('body-parser').urlencoded({ extended: true }))
 app.use(require('body-parser').json())
 // app.use(volleyball)
 
@@ -25,7 +26,8 @@ app.get('/', (req, res, next) => {
 
 // Error handling
 app.use((err, req, res, next) => {
-  res.status(500).send(err)
+  // console.log(err.errors[0].message)
+  res.status(500).send(err.errors[0])
 })
 
 // Port listening
