@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => {
   const url = location.hash.slice(1)
+  window.scrollTo(0, 0)
   return (
     <div>
       <nav style={{ marginBottom: '15px'}} className="navbar navbar-light bg-light">
