@@ -20,8 +20,17 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
           <div style={{ margin: '0px 10px', flex: '2 250px' }}>
             <h2>{campus.name}</h2>
             <h4>Address</h4>
-            <h5>{campus.street}<br/>{campus.city_state_zip}</h5>
-            <p>{campus.description}</p>
+            {
+              campus.street ? (
+                <div>
+                  <h5>{campus.street}<br />{campus.city_state_zip}</h5>
+                  <p>{campus.description}</p>
+                </div>
+              ) : (
+                null
+              )
+            }
+
           </div>
         </div>
 

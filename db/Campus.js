@@ -7,42 +7,47 @@ const Campus = conn.define('campus', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
+      // notEmpty: true
     }
   },
   description: {
     type: Sequelize.TEXT,
+    defaultValue: '',
     allowNull: false,
     validate: {
-      notEmpty: true
+      // notEmpty: true
     }
   },
   street: {
     type: Sequelize.STRING,
+    defaultValue: '',
     allowNull: false,
     validate: {
-      notEmpty: true
+      // notEmpty: true
     }
   },
   city: {
     type: Sequelize.STRING,
+    defaultValue: '',
     allowNull: false,
     validate: {
-      notEmpty: true
+      // notEmpty: true
     }
   },
   state: {
     type: Sequelize.STRING,
+    defaultValue: '',
     allowNull: false,
     validate: {
-      notEmpty: true
+      // notEmpty: true
     }
   },
   zip: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
+    defaultValue: '',
     allowNull: false,
     validate: {
-      notEmpty: true
+      // notEmpty: true
     }
   },
   image_url: {
