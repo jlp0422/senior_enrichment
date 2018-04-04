@@ -31,6 +31,9 @@ class CampusSimpleForm extends React.Component {
   }
 
   openForm() {
+    const { name } = this.state
+    const id = undefined
+    this.props.saveCampus({id, name}, 'simple')
     this.setState({ details: true })
   }
 
@@ -42,7 +45,7 @@ class CampusSimpleForm extends React.Component {
 
       {
         details ? (
-          <CampusForm campus={{ name }}/>
+          <CampusForm campus={{ campus: this.props.campus }}/>
         ) : (
         <div>
           <h1>Add new Campus</h1>
@@ -54,9 +57,9 @@ class CampusSimpleForm extends React.Component {
               value={ name }
               name="name"
               className="form-control" />
-              <button style={{ marginTop: '15px' }} className="btn btn-outline-primary">Quick Create</button>
+              <button disabled={ !name } style={{ marginTop: '15px' }} className="btn btn-outline-primary">Quick Create</button>
           </form>
-          <button onClick={openForm} className="btn btn-outline-success">Add more details</button>
+          <button onClick={openForm} disabled={ !name } className="btn btn-outline-success">Add more details</button>
         </div>
 
         )
@@ -66,13 +69,18 @@ class CampusSimpleForm extends React.Component {
   }
 }
 
-const mapState = () => {
-  return {}
+const mapState = ({campuses}, {id}) => {
+  console.log(campuses, id)
+  const campus = campuses.find(campus => campus.id === id * 1)
+  console.log(campus)
+  return {
+    campus
+  }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    saveCampus: (campus) => dispatch(saveCampusOnServer(campus))
+    saveCampus: (campus, page) => dispatch(saveCampusOnServer(campus, page))
   }
 }
 

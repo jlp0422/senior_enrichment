@@ -12,7 +12,6 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/', (req, res, next) => {
-  console.log(req.body)
   if (req.body.image_url === '') req.body.image_url = '../vendor/images/default-campus.png'
   Campus.create(req.body)
     .then( campus => res.send(campus))

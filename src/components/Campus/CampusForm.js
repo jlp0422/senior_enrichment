@@ -45,7 +45,7 @@ class CampusForm extends React.Component {
   }
 
   render() {
-    console.log(this)
+    // console.log(this)
     const { campus } = this.props
     const { name, description, street, city, state, zip, image_url } = this.state
     const { onChange, onSave } = this
@@ -165,8 +165,9 @@ class CampusForm extends React.Component {
   }
 }
 
-const mapState = ({ campuses, students }, { id, campus }) => {
-  const newCampus = campus || campuses.find(campus => campus.id === id)
+const mapState = ({ campuses, students }, { id }) => {
+  console.log(id)
+  const campus = campuses.find(campus => campus.id === id)
   const campus_students = students.find(s => s.campus_id === id)
   return { campus, campus_students }
 }

@@ -31,7 +31,7 @@ export const deleteCampusOnServer = (id) => {
   }
 }
 
-export const saveCampusOnServer = (campus) => {
+export const saveCampusOnServer = (campus, page) => {
   const { id } = campus
   const method = id ? 'put' : 'post'
   const url = id ? `/api/campuses/${id}` : '/api/campuses'
@@ -41,9 +41,12 @@ export const saveCampusOnServer = (campus) => {
       .then( res => res.data)
       .then( _campus => {
         dispatch(action(_campus))
-        return _campus
+        return {_campus, page}
       })
-      .then( _campus => location.hash = `/campuses/${_campus.id}`)
+      .then(info => {
+        if (page === 'simple') location.hash = `/campuses/${info._campus.id}/edit`
+        else location.hash = `/campuses/${info._campus.id}`
+      })
   }
 }
 
