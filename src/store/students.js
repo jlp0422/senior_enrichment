@@ -36,6 +36,7 @@ export const deleteStudentFromServer = (id) => {
 
 export const saveStudentOnServer = (student, page) => {
   const { id } = student
+  let stud;
   const method = id ? 'put' : 'post';
   const url = id ? `/api/students/${id}` : '/api/students'
   const action = id ? updateStudent : addStudent
@@ -43,12 +44,13 @@ export const saveStudentOnServer = (student, page) => {
     return axios[method](url, student)
       .then( res => res.data)
       .then( _student => {
-        dispatch(action(_student))
-        return {_student, page}
+        stud = _student
+        return dispatch(action(_student))
+        // return {_student, page}
       })
-      .then( info => {
-        if (page === 'campusStudents') location.hash = `/campuses/${info._student.campus_id}`
-        else location.hash = `/students/${info._student.id}`
+      .then(() => {
+        if (page === 'campusStudents') location.hash = `/campuses/${stud.campus_id}`
+        else location.hash = `/students/${stud.id}`
       })
   }
 }

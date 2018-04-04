@@ -33,6 +33,7 @@ export const deleteCampusOnServer = (id) => {
 
 export const saveCampusOnServer = (campus, page) => {
   const { id } = campus
+  let camp;
   const method = id ? 'put' : 'post'
   const url = id ? `/api/campuses/${id}` : '/api/campuses'
   const action = id ? updateCampus : addCampus
@@ -40,12 +41,13 @@ export const saveCampusOnServer = (campus, page) => {
     return axios[method](url, campus)
       .then( res => res.data)
       .then( _campus => {
-        dispatch(action(_campus))
-        return {_campus, page}
+        camp = _campus
+        return dispatch(action(_campus))
+        // return {_campus, page}
       })
-      .then(info => {
-        if (page === 'simple') location.hash = `/campuses/${info._campus.id}/edit`
-        else location.hash = `/campuses/${info._campus.id}`
+      .then(() => {
+        if (page === 'simple') location.hash = `/campuses/${camp.id}/edit`
+        else location.hash = `/campuses/${camp.id}`
       })
   }
 }

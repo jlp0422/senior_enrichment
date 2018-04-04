@@ -8,7 +8,7 @@ const { Student, Campus } = db.models;
 
 // Middleware
 app.use(require('body-parser').json())
-app.use(volleyball)
+// app.use(volleyball)
 
 // Static Routes
 app.use('/dist', express.static(path.join(__dirname, 'dist')));

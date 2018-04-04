@@ -38,6 +38,7 @@ class CampusSimpleForm extends React.Component {
   }
 
   render() {
+    const simple = 'simple'
     const { name, details} = this.state
     const { onChange, onSave, openForm } = this
     return (
@@ -45,7 +46,7 @@ class CampusSimpleForm extends React.Component {
 
       {
         details ? (
-          <CampusForm campus={{ campus: this.props.campus }}/>
+          <CampusForm page={ simple } campus={{ campus: this.props.campus }}/>
         ) : (
         <div>
           <h1>Add new Campus</h1>
@@ -69,13 +70,8 @@ class CampusSimpleForm extends React.Component {
   }
 }
 
-const mapState = ({campuses}, {id}) => {
-  console.log(campuses, id)
-  const campus = campuses.find(campus => campus.id === id * 1)
-  console.log(campus)
-  return {
-    campus
-  }
+const mapState = ({campuses}) => {
+  return {}
 }
 
 const mapDispatch = (dispatch) => {
