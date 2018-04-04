@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { saveCampusOnServer } from '../../store/campuses';
 import CampusForm from './CampusForm';
+import { Helmet} from 'react-helmet';
 
 class CampusSimpleForm extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class CampusSimpleForm extends React.Component {
     const { onChange, onSave, openForm } = this
     return (
       <div style={{ margin: '0px 10px 40px'}}>
+      <Helmet><title>Add Campus</title></Helmet>
 
       {
         details ? (

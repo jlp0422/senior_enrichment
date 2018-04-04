@@ -49,7 +49,6 @@ class CampusForm extends React.Component {
     const { name, description, street, city, state, zip, image_url } = this.state
     const { onChange, onSave } = this
     const match = campus && campus.name === name && campus.description === description && campus.street === street && campus.city === city && campus.state === state && campus.zip === zip && campus.image_url === image_url ? true : false
-    console.log(page)
     return (
       <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>{ campus ? ('Edit Campus') : ('Add Campus')}</title></Helmet>
