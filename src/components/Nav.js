@@ -9,7 +9,7 @@ const Nav = () => {
     <div>
       <nav style={{ marginBottom: '15px'}} className="navbar navbar-light bg-light">
         <Link className="navbar-brand" to='/'>
-          <img className="d-inline-block align-top" style={{ width: '30px'}} src="../../vendor/images/logo_black.jpg" />&nbsp;
+          <img className="d-inline-block align-top" style={{ width: '30px'}} src="../../vendor/images/logo-black-no-bkg.png" />&nbsp;
           Home
         </Link>
 
