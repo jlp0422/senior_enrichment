@@ -10,7 +10,6 @@ import StudentForm from './Student/StudentForm';
 import Campuses from './Campus/Campuses';
 import CampusInfo from './Campus/CampusInfo';
 import CampusForm from './Campus/CampusForm';
-import CampusSimpleForm from './Campus/CampusSimpleForm'
 import CampusStudents from './Campus/CampusStudents';
 import { getCampusesFromServer } from '../store/campuses';
 import { getStudentsFromServer } from '../store/students';

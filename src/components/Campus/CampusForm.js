@@ -83,8 +83,8 @@ class CampusForm extends React.Component {
                   </div>
                 </div>
               </form>
-              <button onClick={onSave}>Quick Create</button><br/><br/>
-              <button onClick={showDetails}>Add Details</button>
+              <button disabled={ !name } className="btn btn-success" onClick={onSave}>Quick Create</button><br/><br/>
+              <button disabled={ !name } className="btn btn-primary" onClick={showDetails}>Add Details</button>
             </div>
           ) : (
             <form style={{ marginTop: '15px' }} onSubmit={onSave}>
