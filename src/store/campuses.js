@@ -12,6 +12,7 @@ const getCampuses = (campuses) => ({ type: GET_CAMPUSES, campuses })
 const deleteCampus = (id) => ({ type: DELETE_CAMPUS, id })
 const addCampus = (campus) => ({ type: ADD_CAMPUS, campus})
 const updateCampus = (campus) => ({ type: UPDATE_CAMPUS, campus })
+import { error, clearError } from './error';
 
 /*********** THUNKS ***********/
 export const getCampusesFromServer = () => {
@@ -49,6 +50,7 @@ export const saveCampusOnServer = (campus, page) => {
         if (page === 'simple') location.hash = `/campuses/${camp.id}/edit`
         else location.hash = `/campuses/${camp.id}`
       })
+      .catch(err => dispatch(error(err.response.data)))
   }
 }
 

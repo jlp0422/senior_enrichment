@@ -26,7 +26,6 @@ app.get('/', (req, res, next) => {
 
 // Error handling
 app.use((err, req, res, next) => {
-  // console.log(err.errors[0].message)
   res.status(500).send(err.errors[0])
 })
 
