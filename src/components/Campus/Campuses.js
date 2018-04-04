@@ -24,9 +24,9 @@ class Campuses extends React.Component {
     const { onChange } = this
     const matching = campuses.reduce((memo, campus) => {
       if (campus.name.toLowerCase().match(name.toLowerCase())) {
-        console.log(campus.name, name)
         return memo.concat(campus)
       }
+      return memo
     }, [])
     console.log(matching)
     return (
@@ -59,7 +59,7 @@ class Campuses extends React.Component {
           <div>
             {
               campuses &&
-                campuses.map(campus => (
+                matching.map(campus => (
                   <CampusCard key={campus.id} campus={campus} studentCount={students.filter(student => student.campus_id === campus.id).length} />
                 ))
             }
