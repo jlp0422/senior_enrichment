@@ -73,6 +73,16 @@ class Campuses extends React.Component {
           </div>
         )
       }
+      {
+        matching.length ? (null) : (
+          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <h2 style={{ paddingBottom: '20px' }}>No campuses match that search.</h2>
+            <Link to='/campuses/create'>
+              <button className="btn btn-primary">Add Campus</button>
+            </Link>
+          </div>
+        )
+      }
       </div>
     )
   }
