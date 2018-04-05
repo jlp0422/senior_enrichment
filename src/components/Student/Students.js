@@ -62,13 +62,13 @@ class Students extends React.Component {
         {
           students.length ? (
             <div>
-              <form>
+              <form className="form-row">
                 <h3>View students for: </h3>
-                <select onChange={ onChange } value={ campus_id } name="campus_id">
-                  <option>Select Campus</option>
+                <select className="form-control" onChange={ onChange } value={ campus_id } name="campus_id">
+                  <option value='-1'>All Campuses</option>
                   {
                     campuses.map(campus => (
-                      <option key={campus.id}value={campus.id}>{campus.name}</option>
+                      <option key={campus.id} value={campus.id}>{campus.name}</option>
                     ))
                   }
                 </select>
@@ -77,7 +77,14 @@ class Students extends React.Component {
                 {
                   students && campuses &&
                   matching.map(student => (
-                    <StudentCard key={student.id} student={student} campus={campuses.find(campus => campus.id === student.campus_id)} />
+                    campus_id === '-1' ?
+                      <StudentCard key={student.id} student={student} campus={campuses.find(campus => campus.id === student.campus_id)} />
+                      :
+                      student.campus_id*1 === campus_id*1? (
+                        <StudentCard key={student.id} student={student} campus={campuses.find(campus => campus.id === student.campus_id)} />
+                      ) : (
+                        null
+                      )
                   ))
                 }
               </div>
