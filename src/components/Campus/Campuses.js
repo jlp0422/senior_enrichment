@@ -28,25 +28,21 @@ class Campuses extends React.Component {
       }
       return memo
     }, [])
-    console.log(matching)
     return (
       <div style={{ margin: '0px 10px 60px' }}>
         <Helmet><title>All Campuses</title></Helmet>
-        <div className="flex" style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+
+        <div className="flex" style={{ alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px'  }}>
           <div>
             <h1>All Campuses</h1>
           </div>
-          <div className="flex" style={{flexDirection: 'row'}}>
-            <div>
-              <h3>Search</h3>
-            </div>
-            <div>
-              <input
-                className="form-control"
-                value={ name }
-                onChange={ onChange }
-              />
-            </div>
+          <div>
+            <input
+              placeholder="Search for a campus"
+              className="form-control"
+              value={ name }
+              onChange={ onChange }
+            />
           </div>
           <div>
             <Link to='/campuses/create'>
