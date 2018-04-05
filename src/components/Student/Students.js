@@ -62,16 +62,18 @@ class Students extends React.Component {
         {
           students.length ? (
             <div>
-              <form className="form-row">
-                <h3>View students for: </h3>
-                <select className="form-control" onChange={ onChange } value={ campus_id } name="campus_id">
-                  <option value='-1'>All Campuses</option>
-                  {
-                    campuses.map(campus => (
-                      <option key={campus.id} value={campus.id}>{campus.name}</option>
-                    ))
-                  }
-                </select>
+              <form style={{ marginBottom: '20px' }}>
+                <div className="form-row">
+                  <h3 className="col-md-4">View students for: </h3>
+                  <select className="form-control col-md-8" onChange={ onChange } value={ campus_id } name="campus_id">
+                    <option value='-1'>All Campuses</option>
+                    {
+                      campuses.map(campus => (
+                        <option key={campus.id} value={campus.id}>{campus.name}</option>
+                      ))
+                    }
+                  </select>
+                </div>
               </form>
               <div className="card-group">
                 {
