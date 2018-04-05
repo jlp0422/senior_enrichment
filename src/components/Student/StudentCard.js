@@ -12,7 +12,7 @@ const StudentCard = ({ student, campus }) => {
       <div className="flex card-body" style={{flexDirection: 'column', justifyContent: 'space-between'}}>
         <h4 className="card-title">{ student.full_name }</h4>
         <h6 className="card-text">GPA: { student.gpa } </h6>
-        <h6>Campus: { campus ? campus.name : ('No campus') }</h6>
+        <h6>Campus: { campus ? campus.name : ('Not enrolled') }</h6>
         <Link to={`/students/${student.id}`}>
           <button style={{ margin: '5px 0px' }} className="btn btn-outline-primary">More Info</button>
         </Link>
