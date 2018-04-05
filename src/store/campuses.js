@@ -46,10 +46,7 @@ export const saveCampusOnServer = (campus, page) => {
         return dispatch(action(_campus))
         // return {_campus, page}
       })
-      .then(() => {
-        if (page === 'simple') location.hash = `/campuses/${camp.id}/edit`
-        else location.hash = `/campuses/${camp.id}`
-      })
+      .then(() => location.hash = `/campuses/${camp.id}`)
       .catch(err => dispatch(error(err.response.data)))
   }
 }

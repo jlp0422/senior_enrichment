@@ -38,7 +38,7 @@ class StudentInfo extends React.Component {
   }
 
   render() {
-    const { students, student, campus, campuses, deleteStudent } = this.props
+    const { students, student, campus, campuses, deleteStudent, saveStudent } = this.props
     const { campus_id } = this.state
     const { onChange, onSave } = this
     const match = student && student.campus_id === campus_id * 1 ? true : false
@@ -75,25 +75,32 @@ class StudentInfo extends React.Component {
               <div>
                 <h2 style={{margin: '20px 0px 15px'}}>{student.first_name} is registered to {campus.name} Campus</h2>
 
-                <form style={{ margin: '0px 0px 10px'}} onSubmit={ onSave }>
-                  <div className="form-row">
-                    <div className="col-md-2">
-                      <input className="form-control-plaintext font-weight-bold" value="Change Campus" readOnly />
+                <div>
+                  <form style={{ margin: '0px 0px 10px'}} onSubmit={ onSave }>
+                    <div className="form-row">
+                      <div className="col-md-2">
+                        <input className="form-control-plaintext font-weight-bold" value="Change Campus" readOnly />
+                      </div>
+                      <div className="col-md-6">
+                        <select className="form-control" value={campus_id * 1} onChange={onChange}>
+                          {
+                            campuses.map(campus => (
+                              <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
+                            ))
+                          }
+                        </select>
+                      </div>
+                      <div className="col-md-2">
+                        <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
+                      </div>
                     </div>
-                    <div className="col-md-6">
-                      <select className="form-control" value={campus_id * 1} onChange={onChange}>
-                        {
-                          campuses.map(campus => (
-                            <option value={campus.id * 1} key={campus.id}>{campus.name}</option>
-                          ))
-                        }
-                      </select>
-                    </div>
-                    <div className="col-md-2">
-                      <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
-                    </div>
-                  </div>
-                </form>
+                  </form>
+                  <button
+                    onClick={() => saveStudent({id: student.id, campus_id: null })}
+                    className="btn btn-warning">
+                      Remove Campus
+                  </button>
+                </div>
 
                 <CampusCard key={campus.id} campus={campus} studentCount={students.filter(student => student.campus_id === campus.id).length}/>
 
