@@ -9,7 +9,7 @@ class StudentsEdit extends React.Component {
     super(props)
     this.state = {
       studentsToChange: [],
-      campus_id: '-1'
+      campus_id: -1
     }
     this.onChange = this.onChange.bind(this)
     this.onCheck = this.onCheck.bind(this)
@@ -42,14 +42,21 @@ class StudentsEdit extends React.Component {
     const { students, campuses } = this.props
     const { studentsToChange, campus_id } = this.state
     const { onChange, onCheck, onUpdate } = this
-    // console.log(this.state)
+    if (!campuses) return null
     return (
-      <div>
-      <h1>Edit Students</h1>
-      <button>Cancel Edit</button>
+      <div style={{margin: '0px 10px 60px'}}>
+      <div className="flex" style={{justifyContent: 'space-between', alignItems: 'center'}}>
+        <div><h1>Edit Students</h1></div>
+        <div>
+          <Link to='/students'>
+            <button className="btn btn-secondary">Cancel Edit</button>
+          </Link>
+        </div>
+      </div>
+
       <h3>Choose campus for students</h3>
-      <form>
-        <select onChange={onChange} name="campus_id" value={campus_id}>
+      <form style={{marginBottom: '15px' }}>
+        <select className="form-control" onChange={onChange} name="campus_id" value={campus_id}>
           <option value="-1">Select campus...</option>
           {
             campuses.map(campus => (
@@ -62,13 +69,13 @@ class StudentsEdit extends React.Component {
         students.map(student => (
           <div key={student.id} className="form-check">
             <input onChange={ onCheck } name="student" className="form-check-input" type="checkbox" value={student.id} />
-            <label className="form-check-label">
-              {student.full_name} ({campuses.find(campus => campus.id === student.campus_id).name})
-            </label>
+            <p className="form-check-label">
+              <strong>{student.full_name}</strong> ({campuses.find(campus => campus.id === student.campus_id).name})
+            </p>
           </div>
         ))
       }
-      <button disabled={campus_id === '-1' ? true : false } onClick={ onUpdate }>Update all students</button>
+      <button style={{ marginTop: '15px'}} className="btn btn-success" disabled={campus_id === -1 ? true : false } onClick={ onUpdate }>Update all students</button>
       </div>
     )
   }
