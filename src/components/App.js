@@ -7,6 +7,7 @@ import Home from './Home';
 import Students from './Student/Students';
 import StudentInfo from'./Student/StudentInfo';
 import StudentForm from './Student/StudentForm';
+import StudentsEdit from './Student/StudentsEdit'
 import Campuses from './Campus/Campuses';
 import CampusInfo from './Campus/CampusInfo';
 import CampusForm from './Campus/CampusForm';
@@ -36,6 +37,7 @@ class App extends React.Component {
               {/* Student Routes */}
               <Route exact path='/students' component={ Students } />
               <Route exact path='/students/create' component={ StudentForm } />
+              <Route exact path='/students/edit' component={ StudentsEdit } />
               <Route exact path='/students/:id/edit' render={({ match }) => (
                 <StudentForm id={ match.params.id * 1} />
               )} />

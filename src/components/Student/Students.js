@@ -45,6 +45,11 @@ class Students extends React.Component {
             />
           </div>
           <div>
+            <Link to='/students/edit'>
+              <button className="btn btn-success">Edit Students</button>
+            </Link>
+          </div>
+          <div>
             <Link to='/students/create'>
               <button className="btn btn-primary">Add Student</button>
             </Link>
