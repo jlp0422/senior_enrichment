@@ -50,7 +50,9 @@ export const saveStudentOnServer = (student, page) => {
         // return {_student, page}
       })
       .then(() => {
+        console.log(page)
         if (page === 'campusStudents') location.hash = `/campuses/${stud.campus_id}`
+        if (page === 'massedit') location.hash = '/students'
         else location.hash = `/students/${stud.id}`
       })
       .catch(err => dispatch(error(err.response.data)))

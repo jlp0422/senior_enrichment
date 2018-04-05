@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { saveStudentOnServer } from '../../store/students';
 
 class StudentsEdit extends React.Component {
   constructor(props) {
@@ -12,6 +13,14 @@ class StudentsEdit extends React.Component {
     }
     this.onChange = this.onChange.bind(this)
     this.onCheck = this.onCheck.bind(this)
+    this.onUpdate = this.onUpdate.bind(this)
+  }
+
+  onUpdate() {
+    const { studentsToChange, campus_id } = this.state
+    studentsToChange.map(id => (
+      this.props.saveStudent({id: id*1, campus_id: campus_id*1}, 'massedit')
+    ))
   }
 
   onChange(ev) {
@@ -19,19 +28,21 @@ class StudentsEdit extends React.Component {
   }
 
   onCheck(ev) {
-    const { studentsToChange } = this.state
-    // add ability to:
-    // if student is not in array, add to array
-    // if student is in array, remove from array
-    studentsToChange.push(ev.target.value)
+    let { studentsToChange } = this.state
+    if (studentsToChange.includes(ev.target.value)) {
+      studentsToChange = studentsToChange.filter(id => id*1 !== ev.target.value*1)
+    }
+    else {
+      studentsToChange.push(ev.target.value)
+    }
     this.setState({ studentsToChange })
   }
 
   render() {
     const { students, campuses } = this.props
     const { studentsToChange, campus_id } = this.state
-    const { onChange, onCheck } = this
-    console.log(this.state)
+    const { onChange, onCheck, onUpdate } = this
+    // console.log(this.state)
     return (
       <div>
       <h1>Edit Students</h1>
@@ -52,12 +63,12 @@ class StudentsEdit extends React.Component {
           <div key={student.id} className="form-check">
             <input onChange={ onCheck } name="student" className="form-check-input" type="checkbox" value={student.id} />
             <label className="form-check-label">
-              {student.full_name}
+              {student.full_name} ({campuses.find(campus => campus.id === student.campus_id).name})
             </label>
           </div>
         ))
       }
-      <button>Update all students</button>
+      <button disabled={campus_id === '-1' ? true : false } onClick={ onUpdate }>Update all students</button>
       </div>
     )
   }
@@ -69,7 +80,7 @@ const mapState = ({ students, campuses }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-
+    saveStudent: (student, page) => dispatch(saveStudentOnServer(student, page))
   }
 }
 
