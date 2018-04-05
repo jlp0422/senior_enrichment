@@ -9,18 +9,21 @@ class Students extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: ''
+      name: '',
+      campus_id: '-1'
     }
     this.onChange = this.onChange.bind(this)
   }
 
   onChange(ev) {
-    this.setState({ name: ev.target.value})
+    const obj = {}
+    obj[ev.target.name] = ev.target.value
+    this.setState( obj )
   }
 
   render() {
     const { students, campuses } = this.props
-    const { name } = this.state
+    const { name, campus_id } = this.state
     const { onChange } = this
     const matching = students.reduce((memo, student) => {
       if (student.full_name.toLowerCase().match(name.toLowerCase())) {
@@ -40,6 +43,7 @@ class Students extends React.Component {
             <input
               placeholder="Search for a student"
               className="form-control"
+              name="name"
               value={name}
               onChange={onChange}
             />
@@ -57,13 +61,26 @@ class Students extends React.Component {
         </div>
         {
           students.length ? (
-            <div className="card-group">
-              {
-                students && campuses &&
-                matching.map(student => (
-                  <StudentCard key={student.id} student={student} campus={campuses.find(campus => campus.id === student.campus_id)} />
-                ))
-              }
+            <div>
+              <form>
+                <h3>View students for: </h3>
+                <select onChange={ onChange } value={ campus_id } name="campus_id">
+                  <option>Select Campus</option>
+                  {
+                    campuses.map(campus => (
+                      <option key={campus.id}value={campus.id}>{campus.name}</option>
+                    ))
+                  }
+                </select>
+              </form>
+              <div className="card-group">
+                {
+                  students && campuses &&
+                  matching.map(student => (
+                    <StudentCard key={student.id} student={student} campus={campuses.find(campus => campus.id === student.campus_id)} />
+                  ))
+                }
+              </div>
             </div>
           ) : (
               <div style={{ marginTop: '20px', textAlign: 'center' }}>
