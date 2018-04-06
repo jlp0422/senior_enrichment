@@ -82,8 +82,8 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="first_name"
                 value={ first_name }
-                required
-                className="form-control" />
+                // required
+                className={`form-control ${error.path === 'first_name' ? `is-invalid` : ''}`} />
             </div>
             <div className="form-group col-md-3">
               <label>Last name</label>
@@ -91,8 +91,8 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="last_name"
                 value={ last_name }
-                required
-                className="form-control" />
+                // required
+                className={`form-control ${error.path === 'last_name' ? `is-invalid` : ''}`} />
             </div>
             <div className="form-group col-md-6">
               <label>Email</label>
@@ -100,8 +100,8 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="email"
                 value={ email }
-                required
-                className="form-control" />
+                // required
+                className={`form-control ${error.path === 'email' ? `is-invalid` : ''}`} />
             </div>
           </div>
 
@@ -112,7 +112,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="gpa"
                 value={ gpa }
-                required
+                // required
                 className="form-control" />
             </div>
             <div className="form-group col-md-10">
@@ -146,7 +146,7 @@ class StudentForm extends React.Component {
           {
             student ? (
               <div>
-                <button disabled={match} className="btn btn-success">Update Student</button>
+                <button className="btn btn-success">Update Student</button>
                 <br /> <br />
                 <Link to={`/students/${student.id}`}>
                   <button className="btn btn-secondary">Cancel Edit</button>

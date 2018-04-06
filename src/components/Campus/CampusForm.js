@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { saveCampusOnServer } from '../../store/campuses';
+import { clearError } from '../../store/error'
 import { Helmet } from 'react-helmet';
 import { states } from '../../states'
 
@@ -23,6 +24,7 @@ class CampusForm extends React.Component {
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
     this.showDetails = this.showDetails.bind(this)
+    this.dismissError = this.dismissError.bind(this)
   }
 
   componentDidMount() {
@@ -31,6 +33,10 @@ class CampusForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps.campus)
+  }
+
+  dismissError() {
+    this.props.clearError({})
   }
 
   onChange(ev) {
@@ -51,10 +57,11 @@ class CampusForm extends React.Component {
   }
 
   render() {
-    const { campus, page } = this.props
+    const { campus, page, error } = this.props
     const { name, description, street, city, state, zip, image_url, details } = this.state
-    const { onChange, onSave, showDetails } = this
+    const { onChange, onSave, showDetails, dismissError } = this
     const match = campus && campus.name === name && campus.description === description && campus.street === street && campus.city === city && campus.state === state && campus.zip === zip && campus.image_url === image_url ? true : false
+    console.log(details)
     return (
       <div style={{ margin: '0px 10px 40px' }}>
         <Helmet><title>{ campus ? ('Edit Campus') : ('Add Campus')}</title></Helmet>
@@ -65,6 +72,18 @@ class CampusForm extends React.Component {
           ) : (
           <h1>Add new Campus</h1>
           )
+        }
+        {
+          error.message ? (
+            <div className="alert alert-danger alert-dismissible" role="alert">
+              <strong>Something went wrong:</strong> {error.message}.
+                <button type="button" className="close">
+                <span onClick={dismissError}>&times;</span>
+              </button>
+            </div>
+          ) : (
+              null
+            )
         }
         {
           details ? (
@@ -78,7 +97,7 @@ class CampusForm extends React.Component {
                       value={name}
                       onChange={onChange}
                       name="name"
-                      required
+                      // required
                     />
                   </div>
                 </div>
@@ -199,15 +218,16 @@ class CampusForm extends React.Component {
   }
 }
 
-const mapState = ({ campuses, students }, { id, page }) => {
+const mapState = ({ campuses, students, error }, { id, page }) => {
   const campus = campuses.find(campus => campus.id === id)
   const campus_students = students.find(s => s.campus_id === id)
-  return { campus, campus_students, page }
+  return { campus, campus_students, page, error }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    saveCampus: (campus) => dispatch(saveCampusOnServer(campus))
+    saveCampus: (campus) => dispatch(saveCampusOnServer(campus)),
+    clearError: (err) => dispatch(clearError(err))
   }
 }
 

@@ -7,7 +7,10 @@ const Campus = conn.define('campus', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      // notEmpty: true
+      notEmpty: {
+        args: true,
+        msg: 'Please enter a campus name'
+      }
     }
   },
   description: {
@@ -15,7 +18,10 @@ const Campus = conn.define('campus', {
     defaultValue: '',
     allowNull: false,
     validate: {
-      // notEmpty: true
+      // notEmpty: {
+      //   args: true,
+      //   msg: 'Please enter a campus description'
+      // }
     }
   },
   street: {
@@ -23,7 +29,10 @@ const Campus = conn.define('campus', {
     defaultValue: '',
     allowNull: false,
     validate: {
-      // notEmpty: true
+      // notEmpty: {
+      //   args: false,
+      //   msg: 'Please enter a campus street'
+      // }
     }
   },
   city: {
@@ -31,7 +40,10 @@ const Campus = conn.define('campus', {
     defaultValue: '',
     allowNull: false,
     validate: {
-      // notEmpty: true
+      // notEmpty: {
+      //   args: true,
+      //   msg: 'Please enter a campus city'
+      // }
     }
   },
   state: {
@@ -39,7 +51,10 @@ const Campus = conn.define('campus', {
     defaultValue: '',
     allowNull: false,
     validate: {
-      // notEmpty: true
+      // notEmpty: {
+      //   args: true,
+      //   msg: 'Please choose a campus state'
+      // }
     }
   },
   zip: {
@@ -47,7 +62,10 @@ const Campus = conn.define('campus', {
     defaultValue: '',
     allowNull: false,
     validate: {
-      // notEmpty: true
+      // notEmpty: {
+      //   args: true,
+      //   msg: 'Please enter a campus zip code'
+      // }
     }
   },
   image_url: {

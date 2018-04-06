@@ -8,7 +8,6 @@ import { Helmet } from 'react-helmet';
 
 const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
   if (!campus) return null
-  console.log(campus_students)
   return (
     <div style={{margin: '0px 10px 40px'}}>
       <Helmet><title>Campus Info</title></Helmet>
