@@ -29,10 +29,10 @@ class Campuses extends React.Component {
       return memo
     }, [])
     return (
-      <div style={{ margin: '0px 10px 60px' }}>
+      <div className="default-margins">
         <Helmet><title>All Campuses</title></Helmet>
 
-        <div className="flex" style={{ alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px'  }}>
+        <div className="flex space-btw center margin-bot-20">
           <div>
             <h1>All Campuses</h1>
           </div>
@@ -45,7 +45,7 @@ class Campuses extends React.Component {
             />
           </div>
           <div>
-            <Link to='/campuses/create'>
+            <Link className="btn-pad" to='/campuses/create'>
               <button className="btn btn-primary">Add Campus</button>
             </Link>
           </div>
@@ -61,8 +61,8 @@ class Campuses extends React.Component {
             }
           </div>
         ) : (
-          <div style={{marginTop: '20px', textAlign: 'center' }}>
-          <h2 style={{ paddingBottom: '20px'}}>We don't have any campuses.</h2>
+          <div className="margin-top-20 text-center">
+          <h2 className="pad-bot-20">We don't have any campuses.</h2>
             <Link to='/campuses/create'>
               <button className="btn btn-primary">Add Campus</button>
             </Link>
@@ -71,8 +71,8 @@ class Campuses extends React.Component {
       }
       {
         matching.length ? (null) : (
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
-            <h2 style={{ paddingBottom: '20px' }}>No campuses match that search.</h2>
+          <div className="margin-top-20 text-center">
+            <h2 className="pad-bot-20">No campuses match that search.</h2>
             <Link to='/campuses/create'>
               <button className="btn btn-primary">Add Campus</button>
             </Link>

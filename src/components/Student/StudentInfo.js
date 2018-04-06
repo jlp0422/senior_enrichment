@@ -44,22 +44,22 @@ class StudentInfo extends React.Component {
     const match = student && student.campus_id === campus_id * 1 ? true : false
     if (!student) return null
     return (
-      <div style={{ margin: '0px 10px 40px' }}>
+      <div className="default-margins">
         <Helmet><title>Student Info</title></Helmet>
 
         <h1>Information for {student.full_name}</h1>
 
-        <div className="flex" style={{ backgroundColor: '#f0f3f8', padding: '10px 10px 10px', borderRadius: '5px'}}>
+        <div className="flex border-5-20 padding-10" style={{ backgroundColor: '#f0f3f8' }}>
 
           <div style={{ marginRight: '20px'}}>
-            <img style={{borderRadius: '5px' }} src={student.image_url} />
+            <img className="border-5-20" src={student.image_url} />
           </div>
 
           <div>
             <h2>Student: {student.full_name} </h2>
             <h3>Email: {student.email}</h3>
             <h3>GPA: {student.gpa}</h3>
-            <div className="flex" style={{ justifyContent: 'space-between', marginTop: '15px' }}>
+            <div className="flex space-btw margin-top-20">
               <Link to={`/students/${student.id}/edit`}>
                 <button className="btn btn-outline-success">Edit</button>
               </Link>
@@ -77,7 +77,7 @@ class StudentInfo extends React.Component {
                 <div>
                   <form style={{ margin: '0px 0px 10px'}} onSubmit={ onSave }>
                     <div className="form-row">
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                         <input className="form-control-plaintext font-weight-bold" value="Change Campus" readOnly />
                       </div>
                       <div className="col-md-6">
@@ -106,7 +106,7 @@ class StudentInfo extends React.Component {
               </div>
             ) : (
                 <div>
-                  <h2 style={{ margin: '20px 0px 15px' }}>No campus</h2>
+                  <h2 className="margin-tb-20">No campus</h2>
                   <h3>Add Campus</h3>
                   <form onSubmit={onSave}>
                     <div className="form-row">

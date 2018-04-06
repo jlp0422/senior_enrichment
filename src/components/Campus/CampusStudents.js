@@ -45,13 +45,13 @@ class CampusStudents extends React.Component {
     if (!campus) return null
     if (!other_students) return null
     return (
-      <div style={{margin: '0px 10px 40px'}}>
+      <div className="default-margins">
         <Helmet><title>Add Students</title></Helmet>
         <h1 style={{margin: '0px 0px 10px'}}>Add Students to {campus.name} Campus</h1>
 
-        <form className={''/*"form-inline"*/} onSubmit={ onSave }>
+        <form onSubmit={ onSave }>
 
-          <div className={"form-row"/* mx-sm-3 mb-2*/}>
+          <div className="form-row">
             <div className="col-md-9">
               <select
                 name="id"

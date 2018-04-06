@@ -44,8 +44,8 @@ class StudentsEdit extends React.Component {
     const { onChange, onCheck, onUpdate } = this
     if (!campuses) return null
     return (
-      <div style={{margin: '0px 10px 60px'}}>
-      <div className="flex" style={{justifyContent: 'space-between', alignItems: 'center'}}>
+      <div className="default-margins">
+      <div className="flex space-btw center">
         <div><h1>Edit Students</h1></div>
         <div>
           <Link to='/students'>
@@ -55,7 +55,7 @@ class StudentsEdit extends React.Component {
       </div>
 
       <h3>Choose campus for students</h3>
-      <form style={{marginBottom: '15px' }}>
+      <form className="margin-bot-20">
         <select className="form-control" onChange={onChange} name="campus_id" value={campus_id}>
           <option value="-1">Select campus...</option>
           {
@@ -75,7 +75,7 @@ class StudentsEdit extends React.Component {
           </div>
         ))
       }
-      <button style={{ marginTop: '15px'}} className="btn btn-success" disabled={campus_id === -1 ? true : false } onClick={ onUpdate }>Update all students</button>
+      <button className="btn btn-success btn-pad-20" disabled={campus_id === -1 ? true : false } onClick={ onUpdate }>Update all students</button>
       </div>
     )
   }

@@ -61,9 +61,8 @@ class CampusForm extends React.Component {
     const { name, description, street, city, state, zip, image_url, details } = this.state
     const { onChange, onSave, showDetails, dismissError } = this
     const match = campus && campus.name === name && campus.description === description && campus.street === street && campus.city === city && campus.state === state && campus.zip === zip && campus.image_url === image_url ? true : false
-    console.log(details)
     return (
-      <div style={{ margin: '0px 10px 40px' }}>
+      <div className="default-margins">
         <Helmet><title>{ campus ? ('Edit Campus') : ('Add Campus')}</title></Helmet>
 
         {
@@ -88,7 +87,7 @@ class CampusForm extends React.Component {
         {
           details ? (
             <div>
-              <form style={{ marginTop: '15px' }} onSubmit={onSave}>
+              <form className="margin-top-10" onSubmit={onSave}>
                 <div className="form-row">
                   <div className="form-group col-md-12">
                     <label>Name</label>
@@ -102,17 +101,17 @@ class CampusForm extends React.Component {
                   </div>
                 </div>
               </form>
-              <div className="flex" style={{ flexDirection: 'column' }}>
-                <div>
+              <div className="flex">
+                <div style={{marginRight: '20px'}}>
                   <button disabled={ !name } title="Add the name now and the details later!" className="btn btn-success" onClick={onSave}>Quick Create</button>
                 </div>
                 <div>
-                  <button style={{marginTop: '15px'}} disabled={ !name } title="Add more information to the campus." className="btn btn-primary" onClick={showDetails}>Add Details</button>
+                  <button disabled={ !name } title="Add more information to the campus." className="btn btn-primary" onClick={showDetails}>Add Details</button>
                 </div>
               </div>
             </div>
           ) : (
-            <form style={{ marginTop: '15px' }} onSubmit={onSave}>
+            <form className="margin-top-10" onSubmit={onSave}>
               <div className="form-row">
                 <div className="form-group col-md-12">
                   <label>Name</label>

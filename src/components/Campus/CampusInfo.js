@@ -9,15 +9,15 @@ import { Helmet } from 'react-helmet';
 const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
   if (!campus) return null
   return (
-    <div style={{margin: '0px 10px 40px'}}>
+    <div className="default-margins">
       <Helmet><title>Campus Info</title></Helmet>
-      <div style={{backgroundColor: '#f0f3f8', margin: '0px 10px', padding: '10px 10px 30px', borderRadius: '5px'}}>
+      <div className="border-5-20 margin-lr-10" style={{backgroundColor: '#f0f3f8', padding: '10px 10px 30px' }}>
 
-        <div className="flex" style={{ paddingBottom: '15px'}}>
+        <div className="flex pad-bot-20">
           <div style={{ flex: '1 250px', margin: '0px 10px 0px 0px'}}>
-            <img style={{ borderRadius: '5px', width: '100%'}} src={campus.image_url} />
+            <img className="border-5-20" style={{ width: '100%'}} src={campus.image_url} />
           </div>
-          <div style={{ margin: '0px 10px', flex: '2 250px' }}>
+          <div className="margin-lr-10" style={{ flex: '2 250px' }}>
             <h2>{campus.name}</h2>
 
             {
@@ -47,11 +47,11 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
           </div>
         </div>
       </div>
-      <div className="flex" style={{margin: '20px 10px 0px', justifyContent: 'space-between'}}>
+      <div className="flex space-btw margin-10">
         <div><h2>Students on campus</h2></div>
         <div>
           <Link to={`/campuses/${campus.id}/students`}>
-            <button style={{ marginTop: '8px' }} className="btn btn-outline-primary">Add Students</button>
+            <button className="btn btn-outline-primary">Add Students</button>
           </Link>
         </div>
       </div>
@@ -61,7 +61,7 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
           campus_students.map(student => (
             <StudentCard key={student.id} student={student} campus={ campus }/>
           )) :
-          <div style={{margin: '0px 10px'}}>
+          <div className="margin-lr-10">
             <h4>No students on this campus</h4>
           </div>
         }

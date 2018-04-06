@@ -32,10 +32,10 @@ class Students extends React.Component {
       return memo
     }, [])
     return (
-      <div style={{ margin: '0px 10px 60px' }}>
+      <div className="default-margins">
         <Helmet><title>All Students</title></Helmet>
 
-        <div className="flex" style={{justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <div className="flex space-btw center margin-bot-20">
           <div>
             <h1>All Students</h1>
           </div>
@@ -62,7 +62,7 @@ class Students extends React.Component {
         {
           students.length ? (
             <div>
-              <form style={{ marginBottom: '20px' }}>
+              <form className="margin-bot-20">
                 <div className="form-row">
                   <h3 className="col-md-4">View students for: </h3>
                   <select className="form-control col-md-8" onChange={ onChange } value={ campus_id } name="campus_id">
@@ -92,8 +92,8 @@ class Students extends React.Component {
               </div>
             </div>
           ) : (
-              <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                <h2 style={{ paddingBottom: '20px' }}>We don't have any students.</h2>
+              <div className="margin-top-20 text-center">
+                <h2 className="pad-bot-20">We don't have any students.</h2>
                 <Link to='/students/create'>
                   <button className="btn btn-primary">Add Student</button>
                 </Link>
@@ -102,8 +102,8 @@ class Students extends React.Component {
         }
         {
           matching.length ? (null) : (
-            <div style={{ marginTop: '20px', textAlign: 'center' }}>
-              <h2 style={{ paddingBottom: '20px' }}>No students match that search.</h2>
+            <div className="margin-top-20 text-center">
+              <h2 className="pad-bot-20">No students match that search.</h2>
               <Link to='/students/create'>
                 <button className="btn btn-primary">Add Student</button>
               </Link>

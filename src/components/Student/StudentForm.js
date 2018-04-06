@@ -55,7 +55,7 @@ class StudentForm extends React.Component {
     const { onChange, onSave, dismissError } = this
     const match = (student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1) || campus_id === '-1' ? true : false
     return (
-      <div style={{ margin: '0px 10px 40px' }}>
+      <div className="default-margins">
         <Helmet><title>{ student ? ('Edit Student') : ('Add Student')}</title></Helmet>
           { student ? (
             <h1>Editing: {student.full_name}</h1>
@@ -74,7 +74,7 @@ class StudentForm extends React.Component {
               null
             )
           }
-        <form style={{ marginTop: '15px' }} onSubmit={ onSave }>
+        <form className="margin-top-20" onSubmit={ onSave }>
           <div className="form-row">
             <div className="form-group col-md-3">
               <label>First name</label>

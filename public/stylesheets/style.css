@@ -31,8 +31,87 @@ a:hover {
   text-decoration: none;
 }
 
-@media (max-width: 1200px) {
+.default-margins {
+  margin: 0px 10px 60px
+}
+
+.btn-pad-10 {
+  margin-top: 10px
+}
+
+.btn-pad-20 {
+  margin-top: 20px
+}
+
+.border-5-20 {
+  border-radius: 5px 20px
+}
+
+.space-btw {
+  justify-content: space-between
+}
+
+.center {
+  align-items: center
+}
+
+.column {
+  flex-direction: column
+}
+
+.text-center {
+  text-align: center
+}
+
+.padding-10 {
+  padding: 10px
+}
+
+.pad-bot-20 {
+  padding-bottom: 20px
+}
+
+.margin-10 {
+  margin: 10px
+}
+
+.margin-tb-10 {
+  margin: 10px 0
+}
+
+.margin-tb-20 {
+  margin: 20px 0
+}
+
+.margin-lr-10 {
+  margin: 0px 10px
+}
+
+.margin-bot-20 {
+  margin-bottom: 20px
+}
+
+.margin-top-20 {
+  margin-top: 20px
+}
+
+@media (max-width: 1400px) {
   .wrapper {
     max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .flex {
+    display: block;
+  }
+
+  button {
+    margin: 10px 0px;
+  }
+
+  .campus-image, .student-image {
+    visibility: hidden;
+    display: none;
   }
 }
