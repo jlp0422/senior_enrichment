@@ -74,7 +74,7 @@ class Students extends React.Component {
             <div>
               <form className="margin-bot-20">
                 <div className="form-row">
-                  <h3 className="col-md-4">View students for: </h3>
+                  <h3 className="col-md-4 right-text">View students for: </h3>
                   <select className="form-control col-md-8" onChange={ onChange } value={ campus_id } name="campus_id">
                     <option value='-1'>All Campuses</option>
                     {
@@ -87,7 +87,7 @@ class Students extends React.Component {
               </form>
               <form className="margin-bot-20">
                 <div className="form-row">
-                  <h3 className="col-md-4">Sort by:</h3>
+                  <h3 className="col-md-4 right-text">Sort by:</h3>
                   <select className="form-control col-md-8" onChange={onChangeSort} value={sort_method} name="sort_method">
                     <option value='sortLastName'>Last name</option>
                     <option value='sortGPA'>GPA</option>

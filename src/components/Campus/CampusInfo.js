@@ -14,8 +14,8 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
       <div className="border-5-20 margin-lr-10" style={{backgroundColor: '#f0f3f8', padding: '10px 10px 30px' }}>
 
         <div className="flex pad-bot-20">
-          <div style={{ flex: '1 250px', margin: '0px 10px 0px 0px'}}>
-            <img className="border-5-20" style={{ width: '100%'}} src={campus.image_url} />
+          <div className="campus-image-wrapper" style={{ flex: '1 250px'}}>
+            <img className="border-5-20 width-100" src={campus.image_url} />
           </div>
           <div className="margin-lr-10" style={{ flex: '2 250px' }}>
             <h2>{campus.name}</h2>
