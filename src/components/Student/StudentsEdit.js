@@ -76,6 +76,18 @@ class StudentsEdit extends React.Component {
             }
           </select>
         </form>
+        <div className="flex margin-tb-10">
+          <div className="margin-r-20">
+            <button className="btn btn-success btn-block-top" disabled={campus_id === -1 || studentsToChange.length === 0 ? true : false} onClick={onUpdate}>
+              Update selected students
+            </button>
+          </div>
+          <div>
+            <button className="btn btn-danger" disabled={studentsToChange.length ? false : true} onClick={onDelete}>
+              Delete selected students
+            </button>
+          </div>
+        </div>
         {
           students.map(student => (
             <div key={student.id} className="form-check">
@@ -86,18 +98,6 @@ class StudentsEdit extends React.Component {
             </div>
           ))
         }
-        <div className="flex column">
-          <div>
-            <button className="btn btn-success btn-pad-20" disabled={campus_id === -1 || studentsToChange.length === 0? true : false } onClick={ onUpdate }>
-              Update selected students
-            </button>
-          </div>
-          <div>
-            <button className="btn btn-danger btn-pad-20" disabled={studentsToChange.length ? false : true} onClick={onDelete}>
-              Delete selected students
-            </button>
-          </div>
-        </div>
       </div>
     )
   }
