@@ -31,10 +31,8 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
                 <h4>No address information</h4>
               )
             }
-
           </div>
         </div>
-
 
         <div className="flex" style={{ justifyContent: 'flex-start' }}>
           <div>

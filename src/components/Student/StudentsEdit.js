@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { saveStudentOnServer, deleteStudentFromServer } from '../../store/students';
 
 class StudentsEdit extends React.Component {
@@ -53,6 +54,8 @@ class StudentsEdit extends React.Component {
     if (!students) return null
     return (
       <div className="default-margins">
+        <Helmet><title>Edit Students</title></Helmet>
+
         <div className="flex space-btw center">
           <div><h1>Edit Students</h1></div>
           <div>

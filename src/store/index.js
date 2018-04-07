@@ -8,8 +8,12 @@ const reducer = combineReducers({
   students: studentsReducer,
   campuses: campusesReducer,
   error: errorReducer
-})
+});
 
-const store = createStore(reducer, applyMiddleware(thunk))
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;
+
+export * from './students';
+export * from './campuses';
+export * from './error';

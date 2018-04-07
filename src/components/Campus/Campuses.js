@@ -15,7 +15,8 @@ class Campuses extends React.Component {
   }
 
   onChange(ev) {
-    this.setState({name: ev.target.value})
+    const name = ev.target.value
+    this.setState({name})
   }
 
   render() {
