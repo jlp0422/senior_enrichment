@@ -23,6 +23,31 @@ img {
   max-width: 250px;
 }
 
+.footer {
+  position: fixed;
+  width: 100%;
+  background-color: rgb(212, 212, 212);
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  padding: 8px 0px;
+}
+
+.footer-image {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.footer-text {
+  vertical-align: middle;
+}
+
+.footer-text > p {
+  margin-bottom: 5px;
+}
+
 /*** FLEX BOX STYLING ***/
 .flex {
   display: flex;
@@ -164,7 +189,7 @@ a:hover {
   }
 
   html {
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
 
   .flex {
@@ -183,6 +208,14 @@ a:hover {
 
   .btn-inline {
     margin: 0px 10px;
+  }
+
+  .footer {
+    position: relative;
+  }
+
+  .default-margins {
+    margin: 0px 10px 30px;
   }
 
   /*** SHOW ON MOBILE ***/

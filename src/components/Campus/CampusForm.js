@@ -112,7 +112,7 @@ class CampusForm extends React.Component {
                 <span onClick={dismissError}>&times;</span>
               </button>
             </div>
-          ) : (
+            ) : (
               null
             )
         }
@@ -161,7 +161,7 @@ class CampusForm extends React.Component {
                 <div className="form-group col-md-12">
                   <label>Description</label>
                   <textarea
-                      className={`form-control ${errors.description ? `is-invalid` : ''}`}
+                    className={`form-control ${errors.description ? `is-invalid` : ''}`}
                     value={description}
                     onChange={onChange}
                     name="description"
@@ -173,7 +173,7 @@ class CampusForm extends React.Component {
               <div className="form-group">
                 <label>Street</label>
                 <input
-                    className={`form-control ${errors.street ? `is-invalid` : ''}`}
+                  className={`form-control ${errors.street ? `is-invalid` : ''}`}
                   value={street}
                   onChange={onChange}
                   name="street"
@@ -185,7 +185,7 @@ class CampusForm extends React.Component {
                 <div className="form-group col-md-7">
                   <label>City</label>
                   <input
-                      className={`form-control ${errors.city ? `is-invalid` : ''}`}
+                    className={`form-control ${errors.city ? `is-invalid` : ''}`}
                     value={city}
                     onChange={onChange}
                     name="city"
@@ -196,7 +196,7 @@ class CampusForm extends React.Component {
                 <div className="form-group col-md-2">
                   <label>State</label>
                   <select
-                      className={`form-control ${errors.state ? `is-invalid` : ''}`}
+                    className={`form-control ${errors.state ? `is-invalid` : ''}`}
                     value={state}
                     onChange={onChange}
                     name="state"
@@ -214,7 +214,7 @@ class CampusForm extends React.Component {
                 <div className="form-group col-md-3">
                   <label>Zip</label>
                   <input
-                      className={`form-control ${errors.zip ? `is-invalid` : ''}`}
+                    className={`form-control ${errors.zip ? `is-invalid` : ''}`}
                     value={zip}
                     onChange={onChange}
                     name="zip"
@@ -250,7 +250,6 @@ class CampusForm extends React.Component {
             </form>
           )
         }
-
       </div>
     )
   }

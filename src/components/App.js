@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from './Nav';
 import Home from './Home';
+import Footer from './Footer';
 import Students from './Student/Students';
 import StudentInfo from'./Student/StudentInfo';
 import StudentForm from './Student/StudentForm';
@@ -58,6 +59,7 @@ class App extends React.Component {
               )} />
             </Switch>
           </div>
+        <Route path='/' component={ Footer } />
         </div>
       </Router>
     )
