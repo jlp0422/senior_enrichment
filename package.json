@@ -21,6 +21,7 @@
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "cartoon-avatar": "^1.0.2",
+    "chance": "^1.0.13",
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "pg": "^7.4.1",
