@@ -108,11 +108,6 @@ a:hover {
   text-align: center
 }
 
-/*** HIDE ON MOBILE ***/
-.show-small {
-  display: none;
-  visibility: hidden;
-}
 
 .student-image-info {
   max-width: 250px;
@@ -121,6 +116,12 @@ a:hover {
 
 .student-image-wrapper {
   margin-right: 20px;
+}
+
+/*** HIDE ON MOBILE ***/
+.show-small {
+  display: none;
+  visibility: hidden;
 }
 
 @media (max-width: 1400px) {
@@ -148,10 +149,10 @@ a:hover {
   .campus-bar {
     display: block;
   }
-
 }
 
 @media (max-width: 480px) {
+
   .student-image-info {
     padding-bottom: 15px;
     width: 100%;

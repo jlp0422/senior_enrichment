@@ -34,8 +34,8 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`port of call: ${port}`));
 
-// Database syncing
-// db.sync()
-//   .then(() => console.log('database is synced'))
-//   .then(() => db.seed())
-//   .then(() => console.log('database is seeded'))
+// Database syncing is in seed file
+db.sync()
+  .then(() => console.log('database is synced'))
+  .then(() => db.seed())
+  .then(() => console.log('database is seeded'))

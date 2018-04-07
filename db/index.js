@@ -23,7 +23,6 @@ module.exports = {
   }
 }
 
-
 // const generateStudent = () => {
 //   return {
 //     first_name: faker.name.firstName(),
