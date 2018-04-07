@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { saveStudentOnServer } from '../../store/students';
+import { saveStudentOnServer, deleteStudentFromServer } from '../../store/students';
 
 class StudentsEdit extends React.Component {
   constructor(props) {
@@ -14,12 +14,20 @@ class StudentsEdit extends React.Component {
     this.onChange = this.onChange.bind(this)
     this.onCheck = this.onCheck.bind(this)
     this.onUpdate = this.onUpdate.bind(this)
+    this.onDelete = this.onDelete.bind(this)
   }
 
   onUpdate() {
     const { studentsToChange, campus_id } = this.state
     studentsToChange.map(id => (
       this.props.saveStudent({id: id*1, campus_id: campus_id*1}, 'massedit')
+    ))
+  }
+
+  onDelete() {
+    const {studentsToChange} = this.state
+    studentsToChange.map(id => (
+      this.props.deleteStudent(id)
     ))
   }
 
@@ -41,8 +49,9 @@ class StudentsEdit extends React.Component {
   render() {
     const { students, campuses } = this.props
     const { studentsToChange, campus_id } = this.state
-    const { onChange, onCheck, onUpdate } = this
+    const { onChange, onCheck, onUpdate, onDelete } = this
     if (!students) return null
+    console.log(studentsToChange)
     return (
       <div className="default-margins">
       <div className="flex space-btw center">
@@ -75,7 +84,8 @@ class StudentsEdit extends React.Component {
           </div>
         ))
       }
-      <button className="btn btn-success btn-pad-20" disabled={campus_id === -1 ? true : false } onClick={ onUpdate }>Update all students</button>
+      <button className="btn btn-success btn-pad-20" disabled={campus_id === -1 ? true : false } onClick={ onUpdate }>Update selected students</button>
+      <button className="btn btn-danger btn-pad-20" disabled={studentsToChange.length ? false : true} onClick={onDelete}>Delete selected students</button>
       </div>
     )
   }
@@ -87,7 +97,8 @@ const mapState = ({ students, campuses }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    saveStudent: (student, page) => dispatch(saveStudentOnServer(student, page))
+    saveStudent: (student, page) => dispatch(saveStudentOnServer(student, page)),
+    deleteStudent: (id) => dispatch(deleteStudentFromServer(id))
   }
 }
 
