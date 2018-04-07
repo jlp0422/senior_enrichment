@@ -51,26 +51,36 @@ export const saveCampusOnServer = (campus, page) => {
   }
 }
 
+/************ SORTING CAMPUSES BY LAST NAME ************/
+function alphabetize(a, b) {
+  const campusA = a.name.toUpperCase()
+  const campusB = b.name.toUpperCase()
+  let comparison = 0;
+  if (campusA > campusB) comparison = 1
+  else if (campusA < campusB) comparison = -1
+  return comparison
+}
+
 /*********** REDUCER ***********/
 const campusesReducer = (state = [], action) => {
   switch (action.type) {
 
     case GET_CAMPUSES:
-      state = action.campuses
+      state = action.campuses.sort(alphabetize)
       break;
 
     case DELETE_CAMPUS:
-      const campuses = state.filter(campus => campus.id !== action.id * 1)
-      state = campuses
+      state = state.filter(campus => campus.id !== action.id * 1)
+      state = state.sort(alphabetize)
       break;
 
     case UPDATE_CAMPUS:
-      const otherCampuses = state.filter(campus => campus.id !== action.campus.id * 1)
-      state = [...otherCampuses, action.campus ]
+      const campuses = state.filter(campus => campus.id !== action.campus.id * 1)
+      state = [...otherCampuses, action.campus].sort(alphabetize)
       break;
 
     case ADD_CAMPUS:
-      state = [ ...state, action.campus ]
+      state = [...state, action.campus].sort(alphabetize)
 
   }
   return state

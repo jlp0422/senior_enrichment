@@ -6,7 +6,7 @@ const Nav = () => {
   const url = location.hash.slice(1)
   window.scrollTo(0, 0)
   return (
-    <div className="navbar-light bg-light">
+    <div className="navbar-light bg-light sticky-top">
       <div className="wrapper center-all">
         <nav style={{ marginBottom: '15px'}} className="navbar">
           <Link className="navbar-brand" to='/'>

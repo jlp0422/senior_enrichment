@@ -58,40 +58,35 @@ export const saveStudentOnServer = (student, page) => {
 }
 
 /************ SORTING STUDENTS BY LAST NAME ************/
-// function compare(a, b) {
-//   var splitA = a.split(" ");
-//   var splitB = b.split(" ");
-//   var lastA = splitA[splitA.length - 1];
-//   var lastB = splitB[splitB.length - 1];
-
-//   if (lastA < lastB) return -1;
-//   if (lastA > lastB) return 1;
-//   return 0;
-// }
-
-// var names = ["John H Newman", "Jenny Craig", "Kelly Young", "Bob"];
-// var sorted = names.sort(compare);
-// console.log(sorted);
+function alphabetize(a, b) {
+  const studentA = a.last_name.toUpperCase()
+  const studentB = b.last_name.toUpperCase()
+  let comparison = 0;
+  if (studentA > studentB) comparison = 1
+  else if (studentA < studentB) comparison = -1
+  return comparison
+}
 
 /************ REDUCER ************/
 const studentsReducer = (state = [], action) => {
   switch (action.type) {
 
     case GET_STUDENTS:
-      state = action.students
+      state = action.students.sort(alphabetize)
       break;
 
     case DELETE_STUDENT:
       state = state.filter(student => student.id !== action.id * 1)
+      state = state.sort(alphabetize)
       break;
 
     case ADD_STUDENT:
-      state = [ ...state, action.student ]
+      state = [ ...state, action.student ].sort(alphabetize)
       break;
 
     case UPDATE_STUDENT:
       const students = state.filter(s => s.id !== action.student.id * 1)
-      state = [...students, action.student]
+      state = [...students, action.student].sort(alphabetize)
       break;
 
   }
