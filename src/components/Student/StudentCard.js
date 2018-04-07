@@ -11,7 +11,7 @@ const StudentCard = ({ student, campus }) => {
       </Link>
       <div className="flex card-body space-btw column">
         <h4 className="card-title">{ student.full_name }</h4>
-        <h6 className="card-text">GPA: { student.gpa } </h6>
+        <h6 className="card-text">GPA: <span className={`badge badge-${student.gpa > 3 ? `success` : `${student.gpa > 2 ? `warning` : `danger`}`}`}>{student.gpa}</span> </h6>
         <h6>Campus: { campus ? campus.name : ('Not enrolled') }</h6>
         <Link to={`/students/${student.id}`}>
           <button className="btn btn-outline-primary">More Info</button>

@@ -58,7 +58,7 @@ class StudentInfo extends React.Component {
           <div>
             <h2>Student: {student.full_name} </h2>
             <h3>Email: {student.email}</h3>
-            <h3>GPA: {student.gpa}</h3>
+            <h3>GPA: <span className={`badge badge-${student.gpa > 3 ? `success` : `${student.gpa > 2 ? `warning` : `danger`}`}`}>{student.gpa}</span></h3>
             <div className="flex space-btw margin-top-20">
               <Link to={`/students/${student.id}/edit`}>
                 <button className="btn btn-outline-success btn-inline">Edit</button>
@@ -106,7 +106,7 @@ class StudentInfo extends React.Component {
               </div>
             ) : (
                 <div>
-                  <h2 className="margin-tb-20">No campus</h2>
+                  <h2 className="margin-tb-20">{student.full_name} is not currently enrolled</h2>
                   <h3>Add Campus</h3>
                   <form onSubmit={onSave}>
                     <div className="form-row">
