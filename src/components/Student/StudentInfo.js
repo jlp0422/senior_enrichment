@@ -111,7 +111,7 @@ class StudentInfo extends React.Component {
                   <form onSubmit={onSave}>
                     <div className="form-row">
                       <div className="col-md-2">
-                        <input className="form-control-plaintext font-weight-bold" value="Change Campus" readOnly />
+                        <input className="form-control-plaintext font-weight-bold" value="Add Campus" readOnly />
                       </div>
                       <div className="col-md-6">
                         <select className="form-control" value={campus_id * 1} onChange={onChange}>

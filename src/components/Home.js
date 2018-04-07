@@ -7,7 +7,7 @@ const Home = ({ studentCount, campusCount }) => {
     <div>
       <Helmet><title>Home</title></Helmet>
       <h1>Home page info will go here</h1>
-      <h3>We have {studentCount} students across {campusCount} campuses.</h3>
+      <h3>We have {studentCount} {studentCount === 1 ? ('student') : ('students')} across {campusCount} {campusCount === 1 ? ('campus') : ('campuses')}.</h3>
     </div>
   )
 }
