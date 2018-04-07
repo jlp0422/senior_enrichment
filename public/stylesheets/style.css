@@ -56,6 +56,10 @@ img {
   margin-top: 0px;
 }
 
+.jumbotron {
+  background-color: #FBFBFB;
+}
+
 /*** FLEX BOX STYLING ***/
 .flex {
   display: flex;
