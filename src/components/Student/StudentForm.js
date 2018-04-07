@@ -100,6 +100,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="email"
                 value={ email }
+                type="email"
                 // required
                 className={`form-control ${error.path === 'email' ? `is-invalid` : ''}`} />
             </div>
@@ -112,6 +113,9 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="gpa"
                 value={ gpa }
+                type="number"
+                // min="0"
+                // max="4"
                 // required
                 className="form-control" />
             </div>
