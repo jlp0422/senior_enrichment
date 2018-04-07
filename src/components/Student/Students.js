@@ -4,15 +4,18 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import StudentCard from './StudentCard';
 import { Helmet } from 'react-helmet';
+import { sortStudents } from '../../store/students'
 
 class Students extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
-      campus_id: '-1'
+      campus_id: '-1',
+      sort_method: 'sortLastName'
     }
     this.onChange = this.onChange.bind(this)
+    this.onChangeSort = this.onChangeSort.bind(this)
   }
 
   onChange(ev) {
@@ -21,10 +24,18 @@ class Students extends React.Component {
     this.setState( obj )
   }
 
+  onChangeSort(ev) {
+    const obj = {}
+    obj[ev.target.name] = ev.target.value
+    this.setState(obj)
+    this.props.sort(this.state.sort_method)
+  }
+
   render() {
+    // console.log(this.state.sort_method)
     const { students, campuses } = this.props
-    const { name, campus_id } = this.state
-    const { onChange } = this
+    const { name, campus_id, sort_method } = this.state
+    const { onChange, onChangeSort } = this
     const matching = students.reduce((memo, student) => {
       if (student.full_name.toLowerCase().match(name.toLowerCase())) {
         return memo.concat(student)
@@ -75,6 +86,15 @@ class Students extends React.Component {
                   </select>
                 </div>
               </form>
+              <form className="margin-bot-20">
+                <div className="form-row">
+                  <h3 className="col-md-4">Sort by</h3>
+                  <select className="form-control col-md-8" onChange={onChangeSort} value={sort_method} name="sort_method">
+                    <option value='sortLastName'>Last name</option>
+                    <option value='sortGPA'>GPA</option>
+                  </select>
+                </div>
+              </form>
               <div className="card-group">
                 {
                   students && campuses &&
@@ -90,6 +110,7 @@ class Students extends React.Component {
                   ))
                 }
               </div>
+
             </div>
           ) : (
               <div className="margin-top-20 text-center">
@@ -121,4 +142,10 @@ const mapState = ({ students, campuses }) => {
   return { students, campuses }
 }
 
-export default connect(mapState)(Students);
+const mapDispatch = (dispatch) => {
+  return {
+    sort: (sortType) => dispatch(sortStudents(sortType))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Students);

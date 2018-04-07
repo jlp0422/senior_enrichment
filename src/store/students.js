@@ -8,6 +8,8 @@ const DELETE_STUDENT = 'DELETE_STUDENT';
 const ADD_STUDENT = 'ADD_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
+const SORT_GPA = 'SORT_GPA';
+const SORT_LAST_NAME = 'SORT_LAST_NAME';
 import { error, clearError } from './error';
 
 /************ ACTION CREATORS **************/
@@ -57,8 +59,16 @@ export const saveStudentOnServer = (student, page) => {
   }
 }
 
-/************ SORTING STUDENTS BY LAST NAME ************/
-function alphabetize(a, b) {
+export const sortStudents = (sortType) => {
+  return (dispatch) => {
+    console.log(sortType)
+    if (sortType === 'sortLastName') dispatch({ type: SORT_GPA })
+    else dispatch({ type: SORT_LAST_NAME })
+  }
+}
+
+/************ SORTING STUDENTS ************/
+function sortLastName(a, b) {
   const studentA = a.last_name.toUpperCase()
   const studentB = b.last_name.toUpperCase()
   let comparison = 0;
@@ -67,28 +77,44 @@ function alphabetize(a, b) {
   return comparison
 }
 
+function sortGPA(a, b) {
+  const studentA = a.gpa*1
+  const studentB = b.gpa*1
+  let comparison = 0;
+  if (studentA > studentB) comparison = -1
+  else if (studentA < studentB) comparison = 1
+  return comparison
+}
+
 /************ REDUCER ************/
 const studentsReducer = (state = [], action) => {
   switch (action.type) {
 
     case GET_STUDENTS:
-      state = action.students.sort(alphabetize)
+      state = action.students.sort(sortLastName)
       break;
 
     case DELETE_STUDENT:
       state = state.filter(student => student.id !== action.id * 1)
-      state = state.sort(alphabetize)
+      state = state.sort(sortLastName)
       break;
 
     case ADD_STUDENT:
-      state = [ ...state, action.student ].sort(alphabetize)
+      state = [ ...state, action.student ].sort(sortLastName)
       break;
 
     case UPDATE_STUDENT:
       const students = state.filter(s => s.id !== action.student.id * 1)
-      state = [...students, action.student].sort(alphabetize)
+      state = [...students, action.student].sort(sortLastName)
       break;
 
+    case SORT_GPA:
+      state = state.sort(sortGPA)
+      break;
+
+    case SORT_LAST_NAME:
+      state = state.sort(sortLastName)
+      break;
   }
   return state
 }
