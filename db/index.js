@@ -15,8 +15,8 @@ const sync = () => {
 Student.belongsTo(Campus);
 Campus.hasMany(Student)
 
-const numStudents = 18;
-const numCampuses = 5;
+const numStudents = 35;
+const numCampuses = 9;
 
 const doTimes = (n, func) => {
   const results = []

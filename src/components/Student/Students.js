@@ -32,7 +32,6 @@ class Students extends React.Component {
   }
 
   render() {
-    // console.log(this.state.sort_method)
     const { students, campuses } = this.props
     const { name, campus_id, sort_method } = this.state
     const { onChange, onChangeSort } = this
@@ -88,7 +87,7 @@ class Students extends React.Component {
               </form>
               <form className="margin-bot-20">
                 <div className="form-row">
-                  <h3 className="col-md-4">Sort by</h3>
+                  <h3 className="col-md-4">Sort by:</h3>
                   <select className="form-control col-md-8" onChange={onChangeSort} value={sort_method} name="sort_method">
                     <option value='sortLastName'>Last name</option>
                     <option value='sortGPA'>GPA</option>

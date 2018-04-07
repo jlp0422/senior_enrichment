@@ -1,3 +1,7 @@
+body {
+  background-color: #E5E7E9;
+}
+
 html {
   font-size: 1rem;
 }
@@ -48,6 +52,10 @@ img {
   margin-bottom: 5px;
 }
 
+.badge {
+  margin-top: 0px;
+}
+
 /*** FLEX BOX STYLING ***/
 .flex {
   display: flex;
@@ -80,7 +88,7 @@ a:hover {
 
 /*** PAGE DEFAULTS ***/
 .default-margins {
-  margin: 0px 10px 60px
+  margin: 0px 10px 80px
 }
 
 /*** MARGIN AND PADDING ***/

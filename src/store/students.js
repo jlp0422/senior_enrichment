@@ -61,7 +61,6 @@ export const saveStudentOnServer = (student, page) => {
 
 export const sortStudents = (sortType) => {
   return (dispatch) => {
-    console.log(sortType)
     if (sortType === 'sortLastName') dispatch({ type: SORT_GPA })
     else dispatch({ type: SORT_LAST_NAME })
   }
