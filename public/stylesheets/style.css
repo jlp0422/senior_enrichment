@@ -62,6 +62,7 @@ img {
 
 .jumbotron {
   background-color: #FBFBFB;
+  box-shadow: 0px 5px 15px 5px gray;
 }
 
 /*** FLEX BOX STYLING ***/
