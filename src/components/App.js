@@ -31,7 +31,7 @@ class App extends React.Component {
       <Router>
         <div>
         <Route path='/' component={ Nav } />
-          <div className="wrapper">
+          <div className="wrapper center-all">
             <Switch>
               <Route exact path='/' component={ Home } />
               {/* Student Routes */}
