@@ -19,12 +19,34 @@ class CampusForm extends React.Component {
       state: campus ? campus.state : '',
       zip: campus ? campus.zip : '',
       image_url: campus ? campus.image_url : '',
-      details: campus ? false : true
+      details: campus ? false : true,
+      error: null,
+      errors: {}
     }
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
     this.showDetails = this.showDetails.bind(this)
     this.dismissError = this.dismissError.bind(this)
+    this.validators = {
+      name: (value) => {
+        if (!value) return 'Please enter a campus name.'
+      },
+      description: (value) => {
+        if (!value && !this.state.details) return 'Please enter a campus description.'
+      },
+      street: (value) => {
+        if (!value && !this.state.details) return 'Please enter a street.'
+      },
+      city: (value) => {
+        if (!value && !this.state.details) return 'Please enter a city.'
+      },
+      state: (value) => {
+        if (!value && !this.state.details) return 'Please select a state.'
+      },
+      zip: (value) => {
+        if (!value && !this.state.details) return 'Please enter a zip code.'
+      },
+    }
   }
 
   componentDidMount() {
@@ -47,6 +69,16 @@ class CampusForm extends React.Component {
 
   onSave(ev) {
     ev.preventDefault()
+    // ERROR HANDLING
+    const errors = Object.keys(this.validators).reduce((memo, key) => {
+      const validator = this.validators[key]
+      const value = this.state[key]
+      const error = (validator(value))
+      if (error) memo[key] = error
+      return memo
+    }, {})
+    this.setState({ errors })
+    if (Object.keys(errors).length) return;
     const { id } = this.props
     const { name, description, street, city, state, zip, image_url } = this.state
     this.props.saveCampus({ id, name, description, street, city, state, zip, image_url })
@@ -58,9 +90,9 @@ class CampusForm extends React.Component {
 
   render() {
     const { campus, page, error } = this.props
-    const { name, description, street, city, state, zip, image_url, details } = this.state
+    const { name, description, street, city, state, zip, image_url, details, errors } = this.state
     const { onChange, onSave, showDetails, dismissError } = this
-    const match = campus && campus.name === name && campus.description === description && campus.street === street && campus.city === city && campus.state === state && campus.zip === zip && campus.image_url === image_url ? true : false
+    const infoMatch = campus && campus.name === name && campus.description === description && campus.street === street && campus.city === city && campus.state === state && campus.zip === zip && campus.image_url === image_url ? true : false
     return (
       <div className="default-margins">
         <Helmet><title>{ campus ? ('Edit Campus') : ('Add Campus')}</title></Helmet>
@@ -92,21 +124,22 @@ class CampusForm extends React.Component {
                   <div className="form-group col-md-12">
                     <label>Name</label>
                     <input
-                      className="form-control"
                       value={name}
                       onChange={onChange}
                       name="name"
                       // required
+                      className={`form-control ${errors.name ? `is-invalid` : ''}`}
                     />
+                      <div className="text-danger">{errors.name}</div>
                   </div>
                 </div>
               </form>
               <div className="flex">
                 <div style={{marginRight: '20px'}}>
-                  <button disabled={ !name } title="Add the name now and the details later!" className="btn btn-success" onClick={onSave}>Quick Create</button>
+                  <button className="btn btn-success" onClick={onSave}>Quick Create</button>
                 </div>
                 <div>
-                  <button disabled={ !name } title="Add more information to the campus." className="btn btn-primary" onClick={showDetails}>Add Details</button>
+                  <button disabled={!name} className="btn btn-primary" onClick={showDetails}>Add Details</button>
                 </div>
               </div>
             </div>
@@ -116,50 +149,54 @@ class CampusForm extends React.Component {
                 <div className="form-group col-md-12">
                   <label>Name</label>
                   <input
-                    className="form-control"
+                    className={`form-control ${errors.name ? `is-invalid` : ''}`}
                     value={name}
                     onChange={onChange}
                     name="name"
                   />
+                  <div className="text-danger">{errors.name}</div>
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group col-md-12">
                   <label>Description</label>
                   <textarea
-                    className="form-control"
+                      className={`form-control ${errors.description ? `is-invalid` : ''}`}
                     value={description}
                     onChange={onChange}
                     name="description"
                     rows="4"
                   />
+                  <div className="text-danger">{errors.description}</div>
                 </div>
               </div>
               <div className="form-group">
                 <label>Street</label>
                 <input
-                  className="form-control"
+                    className={`form-control ${errors.street ? `is-invalid` : ''}`}
                   value={street}
                   onChange={onChange}
                   name="street"
                 />
+                <div className="text-danger">{errors.street}</div>
               </div>
 
               <div className="form-row">
                 <div className="form-group col-md-7">
                   <label>City</label>
                   <input
-                    className="form-control"
+                      className={`form-control ${errors.city ? `is-invalid` : ''}`}
                     value={city}
                     onChange={onChange}
                     name="city"
                   />
+                  <div className="text-danger">{errors.city}</div>
                 </div>
 
                 <div className="form-group col-md-2">
                   <label>State</label>
                   <select
-                    className="form-control"
+                      className={`form-control ${errors.state ? `is-invalid` : ''}`}
                     value={state}
                     onChange={onChange}
                     name="state"
@@ -171,16 +208,18 @@ class CampusForm extends React.Component {
                       ))
                     }
                   </select>
+                  <div className="text-danger">{errors.state}</div>
                 </div>
 
                 <div className="form-group col-md-3">
                   <label>Zip</label>
                   <input
-                    className="form-control"
+                      className={`form-control ${errors.zip ? `is-invalid` : ''}`}
                     value={zip}
                     onChange={onChange}
                     name="zip"
                   />
+                  <div className="text-danger">{errors.zip}</div>
                 </div>
               </div>
 
@@ -198,7 +237,7 @@ class CampusForm extends React.Component {
               {
                 campus ? (
                   <div>
-                    <button disabled={match} className="btn btn-success">Update Campus</button>
+                    <button disabled={infoMatch} className="btn btn-success">Update Campus</button>
                     <br /><br />
                     <Link to={`/campuses/${campus.id}`}>
                       <button className="btn btn-secondary">Cancel Edit</button>
