@@ -71,13 +71,15 @@ class Campuses extends React.Component {
         )
       }
       {
-        matching.length ? (null) : (
+        !matching.length && name && campuses.length ? (
           <div className="margin-top-20 text-center">
             <h2 className="pad-bot-20">No campuses match that search.</h2>
             <Link to='/campuses/create'>
               <button className="btn btn-primary">Add Campus</button>
             </Link>
           </div>
+        ) : (
+          null
         )
       }
       </div>

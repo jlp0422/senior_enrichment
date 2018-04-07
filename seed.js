@@ -1,7 +1,6 @@
 /* eslint-disable */
 const faker = require('faker')
-const Chance = require('chance');
-const chance = new Chance()
+const chance = require('chance')(1234567);
 const avatar = require('cartoon-avatar');
 const db = require('./db');
 const { Student, Campus } = db.models;
@@ -65,8 +64,11 @@ db.sync()
     seed()
   })
   .then(() => console.log('database has seeded'))
-  .catch(err => console.log(err))
-  .finally(() => {
-    db.close();
-    return null;
-  });
+  .catch(err => {
+    console.error('Error while seeding')
+    console.error(err.stack)
+  })
+  // .finally(() => {
+  //   db.conn.close();
+  //   return null;
+  // });
