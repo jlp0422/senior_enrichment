@@ -47,7 +47,7 @@ class Campuses extends React.Component {
           </div>
           <div>
             <Link className="btn-pad" to='/campuses/create'>
-              <button className="btn btn-primary">Add Campus</button>
+              <button className="btn btn-primary btn-block-top">Add Campus</button>
             </Link>
           </div>
         </div>

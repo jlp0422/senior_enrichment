@@ -56,7 +56,7 @@ a:hover {
 
 /*** MARGIN AND PADDING ***/
 .border-5-20 {
-  border-radius: 5px 20px
+  border-radius: 20px 5px
 }
 
 .btn-pad-10 {
@@ -122,17 +122,30 @@ a:hover {
 }
 
 @media (max-width: 480px) {
+  .student-image-info {
+    padding-bottom: 15px;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1.3em;
+  }
+
   .flex {
     display: block;
   }
 
-  button {
+  .btn-block-top {
     margin: 10px 0px;
   }
 
   .campus-image, .student-image {
     visibility: hidden;
     display: none;
+  }
+
+  .btn-inline {
+    margin: 0px 10px;
   }
 
   /*** SHOW ON MOBILE ***/

@@ -65,7 +65,7 @@ class StudentsEdit extends React.Component {
           </div>
         </div>
 
-        <h3>Choose campus for students</h3>
+        <h3 className="margin-tb-10">Choose campus for students</h3>
         <form className="margin-bot-20">
           <select className="form-control" onChange={onChange} name="campus_id" value={campus_id}>
             <option value="-1">Select campus...</option>

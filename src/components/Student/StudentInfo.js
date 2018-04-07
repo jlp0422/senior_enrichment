@@ -41,7 +41,7 @@ class StudentInfo extends React.Component {
     const { students, student, campus, campuses, deleteStudent, saveStudent } = this.props
     const { campus_id } = this.state
     const { onChange, onSave } = this
-    const match = student && student.campus_id === campus_id * 1 ? true : false
+    const infoMatch = student && student.campus_id === campus_id * 1 ? true : false
     if (!student) return null
     return (
       <div className="default-margins">
@@ -61,9 +61,9 @@ class StudentInfo extends React.Component {
             <h3>GPA: {student.gpa}</h3>
             <div className="flex space-btw margin-top-20">
               <Link to={`/students/${student.id}/edit`}>
-                <button className="btn btn-outline-success">Edit</button>
+                <button className="btn btn-outline-success btn-inline">Edit</button>
               </Link>
-              <button onClick={() => deleteStudent(`${student.id}`)} className="btn btn-outline-danger">Delete</button>
+              <button onClick={() => deleteStudent(`${student.id}`)} className="btn btn-outline-danger btn-inline">Delete</button>
             </div>
           </div>
 
@@ -73,7 +73,7 @@ class StudentInfo extends React.Component {
           {
             student && campus ? (
               <div>
-                <h2 style={{margin: '20px 0px 15px'}}>{student.first_name} is registered to {campus.name} Campus</h2>
+                <h2 className="margin-tb-20">{student.first_name} is registered to {campus.name} Campus</h2>
                 <div>
                   <form style={{ margin: '0px 0px 10px'}} onSubmit={ onSave }>
                     <div className="form-row">
@@ -90,7 +90,7 @@ class StudentInfo extends React.Component {
                         </select>
                       </div>
                       <div className="col-md-2">
-                        <button disabled={match} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
+                        <button disabled={infoMatch} className={`btn btn-mb2 btn-block-top ${infoMatch ? `btn-outline-success` : `btn btn-success`}`}>Save Campus</button>
                       </div>
                     </div>
                   </form>
@@ -124,7 +124,7 @@ class StudentInfo extends React.Component {
                         </select>
                       </div>
                       <div className="col-md-2">
-                        <button disabled={match} disabled={campus_id === ""} className={match ? ('btn btn-outline-success mb-2') : ('btn btn-success mb-2')}>Save Campus</button>
+                        <button disabled={infoMatch} disabled={campus_id === ""} className={`btn mb-2 btn-block-top ${infoMatch ? `btn-outline-success` : `btn-success`}`}>Save Campus</button>
                       </div>
                     </div>
                   </form>
