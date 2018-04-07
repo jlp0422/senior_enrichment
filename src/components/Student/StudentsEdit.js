@@ -42,7 +42,7 @@ class StudentsEdit extends React.Component {
     const { students, campuses } = this.props
     const { studentsToChange, campus_id } = this.state
     const { onChange, onCheck, onUpdate } = this
-    if (!campuses) return null
+    if (!students) return null
     return (
       <div className="default-margins">
       <div className="flex space-btw center">

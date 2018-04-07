@@ -61,7 +61,7 @@ class CampusStudents extends React.Component {
                 {
                   other_students.map( student => (
                     <option value={student.id} key={student.id}>{student.full_name} (
-                      {campuses.find(campus => campus.id === student.campus_id).name}
+                      {student.campus_id ? campuses.find(campus => campus.id === student.campus_id).name : ('No campus')}
                     )</option>
                   ))
                 }
