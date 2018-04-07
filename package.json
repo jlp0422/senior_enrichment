@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run webpack",
+    "seed": "node seed.js",
+    "postinstall": "npm run webpack && npm run seed",
     "webpack": "./node_modules/webpack/bin/webpack.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "npm run webpack -- -w & nodemon server.js --ignore src/ --ignore dist/"
+    "start:dev": "npm run webpack -- -w & nodemon server.js --ignore src/ --ignore dist/",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
