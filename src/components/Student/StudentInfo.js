@@ -90,7 +90,7 @@ class StudentInfo extends React.Component {
                         </select>
                       </div>
                       <div className="col-md-2">
-                        <button disabled={infoMatch} className={`btn btn-mb2 btn-block-top ${infoMatch ? `btn-outline-success` : `btn btn-success`}`}>Save Campus</button>
+                        <button disabled={infoMatch} className={`btn btn-mb2 btn-block-bar ${infoMatch ? `btn-outline-success` : `btn btn-success`}`}>Save Campus</button>
                       </div>
                     </div>
                   </form>
@@ -124,7 +124,7 @@ class StudentInfo extends React.Component {
                         </select>
                       </div>
                       <div className="col-md-2">
-                        <button disabled={infoMatch} disabled={campus_id === ""} className={`btn mb-2 btn-block-top ${infoMatch ? `btn-outline-success` : `btn-success`}`}>Save Campus</button>
+                        <button disabled={infoMatch} disabled={campus_id === ""} className={`btn mb-2 btn-block-bar ${infoMatch ? `btn-outline-success` : `btn-success`}`}>Save Campus</button>
                       </div>
                     </div>
                   </form>

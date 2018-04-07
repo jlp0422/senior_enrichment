@@ -136,7 +136,7 @@ class CampusForm extends React.Component {
               </form>
               <div className="flex">
                 <div style={{marginRight: '20px'}}>
-                  <button className="btn btn-success" onClick={onSave}>Quick Create</button>
+                  <button className="btn btn-success btn-block-top" onClick={onSave}>Quick Create</button>
                 </div>
                 <div>
                   <button disabled={!name} className="btn btn-primary" onClick={showDetails}>Add Details</button>
