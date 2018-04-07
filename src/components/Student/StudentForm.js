@@ -17,10 +17,28 @@ class StudentForm extends React.Component {
       gpa: student ? student.gpa : '',
       image_url: student ? student.image_url : '',
       campus_id: student ? student.campus_id : '',
+      error: null,
+      errors: {}
     }
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
     this.dismissError = this.dismissError.bind(this)
+    this.validators = {
+      first_name: (value) => {
+        if (!value) return 'Please enter a first name.'
+      },
+      last_name: (value) => {
+        if (!value) return 'Please enter a last name.'
+      },
+      email: (value) => {
+        if (!value) return 'Please enter an email address.'
+      },
+      gpa: (value) => {
+        if (!value) return 'Please enter a valid GPA.'
+        if (value > 4) return 'Please enter a GPA below 4.'
+        if (value < 0) return 'Please enter a GPA above 0.'
+      }
+    }
   }
 
   componentDidMount() {
@@ -43,6 +61,16 @@ class StudentForm extends React.Component {
 
   onSave(ev) {
     ev.preventDefault()
+    // ERROR HANDLING
+    const errors = Object.keys(this.validators).reduce((memo, key) => {
+      const validator = this.validators[key]
+      const value = this.state[key]
+      const error = validator(value)
+      if (error) memo[key] = error
+      return memo
+    }, {})
+    this.setState({ errors })
+    if (Object.keys(errors).length) return;
     const { id } = this.props
     const { first_name, last_name, email, gpa, image_url } = this.state
     const campus_id = this.state.campus_id * 1
@@ -50,7 +78,7 @@ class StudentForm extends React.Component {
   }
 
   render() {
-    const { first_name, last_name, email, gpa, image_url, campus_id } = this.state
+    const { first_name, last_name, email, gpa, image_url, campus_id, errors } = this.state
     const { student, id, campuses, error } = this.props
     const { onChange, onSave, dismissError } = this
     const match = (student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1) || campus_id === '-1' ? true : false
@@ -83,7 +111,8 @@ class StudentForm extends React.Component {
                 name="first_name"
                 value={ first_name }
                 // required
-                className={`form-control ${error.path === 'first_name' ? `is-invalid` : ''}`} />
+                className={`form-control ${errors.first_name ? `is-invalid` : ''}`} />
+                <div className="text-danger">{errors.first_name}</div>
             </div>
             <div className="form-group col-md-3">
               <label>Last name</label>
@@ -92,7 +121,8 @@ class StudentForm extends React.Component {
                 name="last_name"
                 value={ last_name }
                 // required
-                className={`form-control ${error.path === 'last_name' ? `is-invalid` : ''}`} />
+                className={`form-control ${errors.last_name ? `is-invalid` : ''}`} />
+              <div className="text-danger">{errors.last_name}</div>
             </div>
             <div className="form-group col-md-6">
               <label>Email</label>
@@ -100,26 +130,25 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="email"
                 value={ email }
-                type="email"
                 // required
-                className={`form-control ${error.path === 'email' ? `is-invalid` : ''}`} />
+                className={`form-control ${errors.email ? `is-invalid` : ''}`} />
+              <div className="text-danger">{errors.email}</div>
             </div>
           </div>
 
           <div className="form-row">
-            <div className="form-group col-md-2">
+            <div className="form-group col-md-3">
               <label>GPA</label>
               <input
                 onChange={ onChange }
                 name="gpa"
                 value={ gpa }
                 type="number"
-                // min="0"
-                // max="4"
                 // required
-                className="form-control" />
+                className={`form-control ${errors.gpa ? `is-invalid` : ''}`}  />
+              <div className="text-danger">{errors.gpa}</div>
             </div>
-            <div className="form-group col-md-10">
+            <div className="form-group col-md-9">
               <label>Campus</label>
               <select
                 onChange={onChange}
