@@ -1,3 +1,7 @@
+html {
+  font-size: 1rem;
+}
+
 /*** GLOBAL STYLES ***/
 .center-all {
   margin: 0 auto;
@@ -121,22 +125,40 @@ a:hover {
   }
 }
 
+@media (max-width: 760px) {
+  html {
+    font-size: 0.9em;
+  }
+
+  .student-bar {
+    display: block;
+  }
+
+  .btn-block-top {
+    margin: 10px 0px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .campus-bar {
+    display: block;
+  }
+
+}
+
 @media (max-width: 480px) {
   .student-image-info {
     padding-bottom: 15px;
     width: 100%;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-size: 1.3em;
+  html {
+    font-size: 0.8em;
   }
 
   .flex {
     display: block;
-  }
-
-  .btn-block-top {
-    margin: 10px 0px;
   }
 
   .campus-image, .student-image {

@@ -33,7 +33,7 @@ class Campuses extends React.Component {
       <div className="default-margins">
         <Helmet><title>All Campuses</title></Helmet>
 
-        <div className="flex space-btw center margin-bot-20">
+        <div className="flex space-btw center margin-bot-20 campus-bar">
           <div>
             <h1>All Campuses</h1>
           </div>
