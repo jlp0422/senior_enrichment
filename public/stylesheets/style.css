@@ -15,6 +15,11 @@ img {
   max-width: 100%;
 }
 
+.show-small {
+  display: none;
+  visibility: hidden;
+}
+
 .card {
   max-width: 250px;
 }
@@ -113,5 +118,10 @@ a:hover {
   .campus-image, .student-image {
     visibility: hidden;
     display: none;
+  }
+
+  .show-small {
+    visibility: initial;
+    display: inline;
   }
 }

@@ -23,7 +23,7 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
             {
               campus.street ? (
                 <div>
-                  <h4>Address</h4>
+                  <h4>Address:</h4>
                   <h5>{campus.street}<br />{campus.city_state_zip}</h5>
                   <p>{campus.description}</p>
                 </div>
