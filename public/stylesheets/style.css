@@ -1,13 +1,10 @@
+/*** GLOBAL STYLES ***/
 .center-all {
   margin: 0 auto;
 }
 
 .wrapper {
   max-width: 1200px;
-}
-
-.flex {
-  display: flex;
 }
 
 label {
@@ -18,41 +15,13 @@ img {
   max-width: 100%;
 }
 
-.show-small {
-  display: none;
-  visibility: hidden;
-}
-
 .card {
   max-width: 250px;
 }
 
-li.nav-item {
-  border-bottom: 2px solid #f8f9fa;
-}
-
-li.nav-item:hover {
-  border-bottom: 2px solid lightgray;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-.default-margins {
-  margin: 0px 10px 60px
-}
-
-.btn-pad-10 {
-  margin-top: 10px
-}
-
-.btn-pad-20 {
-  margin-top: 20px
-}
-
-.border-5-20 {
-  border-radius: 5px 20px
+/*** FLEX BOX STYLING ***/
+.flex {
+  display: flex;
 }
 
 .space-btw {
@@ -67,8 +36,35 @@ a:hover {
   flex-direction: column
 }
 
-.text-center {
-  text-align: center
+/*** NAV LINK ***/
+li.nav-item {
+  border-bottom: 2px solid #f8f9fa;
+}
+
+li.nav-item:hover {
+  border-bottom: 2px solid lightgray;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/*** PAGE DEFAULTS ***/
+.default-margins {
+  margin: 0px 10px 60px
+}
+
+/*** MARGIN AND PADDING ***/
+.border-5-20 {
+  border-radius: 5px 20px
+}
+
+.btn-pad-10 {
+  margin-top: 10px
+}
+
+.btn-pad-20 {
+  margin-top: 20px
 }
 
 .padding-10 {
@@ -95,12 +91,28 @@ a:hover {
   margin: 0px 10px
 }
 
+.margin-top-20 {
+  margin-top: 20px
+}
+
 .margin-bot-20 {
   margin-bottom: 20px
 }
 
-.margin-top-20 {
-  margin-top: 20px
+/*** ALIGNMENT ***/
+.text-center {
+  text-align: center
+}
+
+/*** HIDE ON MOBILE ***/
+.show-small {
+  display: none;
+  visibility: hidden;
+}
+
+.student-image-info {
+  max-width: 185px;
+  width: 100%
 }
 
 @media (max-width: 1400px) {
@@ -123,6 +135,7 @@ a:hover {
     display: none;
   }
 
+  /*** SHOW ON MOBILE ***/
   .show-small {
     visibility: initial;
     display: inline;

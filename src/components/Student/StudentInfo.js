@@ -52,7 +52,7 @@ class StudentInfo extends React.Component {
         <div className="flex border-5-20 padding-10" style={{ backgroundColor: '#f0f3f8' }}>
 
           <div style={{ marginRight: '20px'}}>
-            <img className="border-5-20" src={student.image_url} />
+            <img className="border-5-20 student-image-info" src={student.image_url} />
           </div>
 
           <div>
