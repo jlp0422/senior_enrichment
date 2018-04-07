@@ -47,7 +47,7 @@ class CampusStudents extends React.Component {
     return (
       <div className="default-margins">
         <Helmet><title>Add Students</title></Helmet>
-        <h1 style={{margin: '0px 0px 10px'}}>Add Students to {campus.name} Campus</h1>
+        <h1 className="margin-tb-10">Add Students to {campus.name} Campus</h1>
 
         <form onSubmit={ onSave }>
 
@@ -68,7 +68,7 @@ class CampusStudents extends React.Component {
                 </select>
               </div>
             <div className="col-md-3">
-              <button className="btn btn-success mb-2" disabled={disabled}>Add to {campus.name}</button>
+              <button className="btn btn-success mb-2 btn-block-top" disabled={disabled}>Add to {campus.name}</button>
             </div>
           </div>
         </form>

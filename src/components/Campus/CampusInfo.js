@@ -37,7 +37,7 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
         <div className="flex" style={{ justifyContent: 'flex-start' }}>
           <div>
             <Link style={{marginRight: '20px'}} to={`/campuses/${campus.id}/edit`}>
-              <button className="btn btn-outline-success">Edit {campus.name}</button>
+              <button className="btn btn-outline-success btn-block-top">Edit {campus.name}</button>
             </Link>
           </div>
           <div>

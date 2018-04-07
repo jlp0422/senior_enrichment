@@ -115,8 +115,12 @@ a:hover {
 }
 
 .student-image-info {
-  max-width: 185px;
+  max-width: 250px;
   width: 100%
+}
+
+.student-image-wrapper {
+  margin-right: 20px;
 }
 
 @media (max-width: 1400px) {
@@ -134,7 +138,7 @@ a:hover {
     display: block;
   }
 
-  .btn-block-top {
+  .btn-block-bar {
     margin: 10px 0px;
   }
 
@@ -151,6 +155,11 @@ a:hover {
   .student-image-info {
     padding-bottom: 15px;
     width: 100%;
+    margin: 0 auto;
+  }
+
+  .btn-block-top {
+    margin: 10px 0px;
   }
 
   html {
@@ -159,6 +168,11 @@ a:hover {
 
   .flex {
     display: block;
+  }
+
+  .student-image-wrapper {
+    max-width: 250px;
+    margin: 0 auto;
   }
 
   .campus-image, .student-image {

@@ -50,7 +50,7 @@ class Students extends React.Component {
           </div>
           <div>
             <Link to='/students/edit'>
-              <button className="btn btn-success btn-block-top">Edit Students</button>
+              <button className="btn btn-success btn-block-bar">Edit Students</button>
             </Link>
           </div>
           <div>

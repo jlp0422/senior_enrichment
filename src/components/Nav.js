@@ -10,8 +10,8 @@ const Nav = () => {
       <div className="wrapper center-all">
         <nav style={{ marginBottom: '15px'}} className="navbar">
           <Link className="navbar-brand" to='/'>
-            <img className="d-inline-block align-top" style={{ width: '30px'}} src="../../vendor/images/logo-black-no-bkg.png" />&nbsp;
-            Home
+            <img className="d-inline-block align-center" style={{ width: '30px'}} src="../../vendor/images/logo-black-no-bkg.png" />
+            &nbsp;Home
           </Link>
 
           <ul className="nav">
