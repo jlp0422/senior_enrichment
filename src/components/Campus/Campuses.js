@@ -23,7 +23,7 @@ class Campuses extends React.Component {
     const { students, campuses } = this.props
     const { name } = this.state
     const { onChange } = this
-    const matching = campuses.reduce((memo, campus) => {
+    const matchingCampuses = campuses.reduce((memo, campus) => {
       if (campus.name.toLowerCase().match(name.toLowerCase())) {
         return memo.concat(campus)
       }
@@ -56,7 +56,7 @@ class Campuses extends React.Component {
           <div>
             {
               campuses &&
-                matching.map(campus => (
+                matchingCampuses.map(campus => (
                   <CampusCard key={campus.id} campus={campus} studentCount={students.filter(student => student.campus_id === campus.id).length} />
                 ))
             }
@@ -71,7 +71,7 @@ class Campuses extends React.Component {
         )
       }
       {
-        !matching.length && name && campuses.length ? (
+        !matchingCampuses.length && name && campuses.length ? (
           <div className="margin-top-20 text-center">
             <h2 className="pad-bot-20">No campuses match that search.</h2>
             <Link to='/campuses/create'>

@@ -35,7 +35,7 @@ class Students extends React.Component {
     const { students, campuses } = this.props
     const { name, campus_id, sort_method } = this.state
     const { onChange, onChangeSort } = this
-    const matching = students.reduce((memo, student) => {
+    const matchingStudents = students.reduce((memo, student) => {
       if (student.full_name.toLowerCase().match(name.toLowerCase())) {
         return memo.concat(student)
       }
@@ -97,11 +97,11 @@ class Students extends React.Component {
               <div className="card-group">
                 {
                   students && campuses &&
-                  matching.map(student => (
+                  matchingStudents.map(student => (
                     campus_id === '-1' ?
                       <StudentCard key={student.id} student={student} campus={campuses.find(campus => campus.id === student.campus_id)} />
                       :
-                      student.campus_id*1 === campus_id*1? (
+                      student.campus_id*1 === campus_id*1 ? (
                         <StudentCard key={student.id} student={student} campus={campuses.find(campus => campus.id === student.campus_id)} />
                       ) : (
                         null
@@ -109,7 +109,6 @@ class Students extends React.Component {
                   ))
                 }
               </div>
-
             </div>
           ) : (
               <div className="margin-top-20 text-center">
@@ -121,7 +120,7 @@ class Students extends React.Component {
           )
         }
         {
-          !matching.length && name && students.length ? (
+          !matchingStudents.length && name && students.length ? (
             <div className="margin-top-20 text-center">
               <h2 className="pad-bot-20">No students match that search.</h2>
               <Link to='/students/create'>
