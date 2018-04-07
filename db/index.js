@@ -41,17 +41,22 @@ const seed = () => {
     Student.create(generateStudent()),
     Student.create(generateStudent()),
     Student.create(generateStudent()),
+    Student.create(generateStudent()),
+    Student.create(generateStudent()),
+    Campus.create(generateCampus()),
+    Campus.create(generateCampus()),
     Campus.create(generateCampus()),
     Campus.create(generateCampus()),
     Campus.create(generateCampus())
   ])
-  .then(([s1, s2, s3, s4, s5, s6, c1, c2, c3]) => {
+  .then(([s1, s2, s3, s4, s5, s6, s7, s8, c1, c2, c3, c4, c5]) => {
     s1.setCampus(c1)
     s2.setCampus(c2)
     s3.setCampus(c2)
     s4.setCampus(c1)
     s5.setCampus(c2)
-    s6.setCampus(c3)
+    s6.setCampus(c3),
+    s7.setCampus(c5)
   })
 }
 
