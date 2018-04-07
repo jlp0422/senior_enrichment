@@ -84,8 +84,16 @@ class StudentsEdit extends React.Component {
           ))
         }
         <div className="flex column">
-        <div><button className="btn btn-success btn-pad-20" disabled={campus_id === -1 ? true : false } onClick={ onUpdate }>Update selected students</button></div>
-        <div><button className="btn btn-danger btn-pad-20" disabled={studentsToChange.length ? false : true} onClick={onDelete}>Delete selected students</button></div>
+          <div>
+            <button className="btn btn-success btn-pad-20" disabled={campus_id === -1 || studentsToChange.length === 0? true : false } onClick={ onUpdate }>
+              Update selected students
+            </button>
+          </div>
+          <div>
+            <button className="btn btn-danger btn-pad-20" disabled={studentsToChange.length ? false : true} onClick={onDelete}>
+              Delete selected students
+            </button>
+          </div>
         </div>
       </div>
     )
