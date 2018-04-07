@@ -51,41 +51,42 @@ class StudentsEdit extends React.Component {
     const { studentsToChange, campus_id } = this.state
     const { onChange, onCheck, onUpdate, onDelete } = this
     if (!students) return null
-    console.log(studentsToChange)
     return (
       <div className="default-margins">
-      <div className="flex space-btw center">
-        <div><h1>Edit Students</h1></div>
-        <div>
-          <Link to='/students'>
-            <button className="btn btn-secondary">Cancel Edit</button>
-          </Link>
-        </div>
-      </div>
-
-      <h3>Choose campus for students</h3>
-      <form className="margin-bot-20">
-        <select className="form-control" onChange={onChange} name="campus_id" value={campus_id}>
-          <option value="-1">Select campus...</option>
-          {
-            campuses.map(campus => (
-              <option key={campus.id} value={campus.id}>{campus.name}</option>
-            ))
-          }
-        </select>
-      </form>
-      {
-        students.map(student => (
-          <div key={student.id} className="form-check">
-            <input onChange={ onCheck } name="student" className="form-check-input" type="checkbox" value={student.id} />
-            <p className="form-check-label">
-              <strong>{student.full_name}</strong> ({student.campus_id && campuses ? campuses.find(campus => campus.id === student.campus_id).name : ('No campus')})
-            </p>
+        <div className="flex space-btw center">
+          <div><h1>Edit Students</h1></div>
+          <div>
+            <Link to='/students'>
+              <button className="btn btn-secondary">Cancel Edit</button>
+            </Link>
           </div>
-        ))
-      }
-      <button className="btn btn-success btn-pad-20" disabled={campus_id === -1 ? true : false } onClick={ onUpdate }>Update selected students</button>
-      <button className="btn btn-danger btn-pad-20" disabled={studentsToChange.length ? false : true} onClick={onDelete}>Delete selected students</button>
+        </div>
+
+        <h3>Choose campus for students</h3>
+        <form className="margin-bot-20">
+          <select className="form-control" onChange={onChange} name="campus_id" value={campus_id}>
+            <option value="-1">Select campus...</option>
+            {
+              campuses.map(campus => (
+                <option key={campus.id} value={campus.id}>{campus.name}</option>
+              ))
+            }
+          </select>
+        </form>
+        {
+          students.map(student => (
+            <div key={student.id} className="form-check">
+              <input onChange={ onCheck } name="student" className="form-check-input" type="checkbox" value={student.id} />
+              <p className="form-check-label">
+                <strong>{student.full_name}</strong> ({student.campus_id && campuses ? campuses.find(campus => campus.id === student.campus_id).name : ('No campus')})
+              </p>
+            </div>
+          ))
+        }
+        <div className="flex column">
+        <div><button className="btn btn-success btn-pad-20" disabled={campus_id === -1 ? true : false } onClick={ onUpdate }>Update selected students</button></div>
+        <div><button className="btn btn-danger btn-pad-20" disabled={studentsToChange.length ? false : true} onClick={onDelete}>Delete selected students</button></div>
+        </div>
       </div>
     )
   }
