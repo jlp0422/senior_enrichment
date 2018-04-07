@@ -91,7 +91,7 @@ const studentsReducer = (state = [], action) => {
 
     case UPDATE_STUDENT:
       const students = state.filter(s => s.id !== action.student.id * 1)
-      state = [...otherStudents, action.student]
+      state = [...students, action.student]
       break;
 
   }
