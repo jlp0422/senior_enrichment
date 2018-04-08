@@ -21,9 +21,10 @@ class StudentsEdit extends React.Component {
 
   onUpdate() {
     const { studentsToChange, campus_id } = this.state
-    studentsToChange.map(id => (
-      this.props.saveStudent({id: id*1, campus_id: campus_id*1}, 'massedit')
-    ))
+    const confirm = window.confirm(`Are you sure you want to transfer ${studentsToChange.length} students?`)
+    if (confirm) {
+      studentsToChange.map(id => this.props.saveStudent({id: id*1, campus_id: campus_id*1}, 'massedit'))
+    }
   }
 
   onDelete() {
@@ -34,9 +35,10 @@ class StudentsEdit extends React.Component {
 
   onRemoveCampus() {
     const { studentsToChange } = this.state
-    studentsToChange.map(id => (
-      this.props.saveStudent({ id: id * 1, campus_id: null }, 'massedit')
-    ))
+    const confirm = window.confirm(`Are you sure you want to remove enrollment for ${studentsToChange.length} students?`)
+    if (confirm) {
+      studentsToChange.map(id => this.props.saveStudent({ id: id * 1, campus_id: null }, 'massedit'))
+    }
   }
 
   onChange(ev) {
