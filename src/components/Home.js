@@ -7,9 +7,9 @@ const Home = ({ studentCount, campusCount }) => {
     <div>
       <Helmet><title>Home</title></Helmet>
       <div className="jumbotron text-center">
-        <img style={{width: '75px', height: '75px'}}src="./vendor/images/logo-black-no-bkg.png" />
+        <img style={{width: '75px', height: '75px'}} src="./vendor/images/logo-black-no-bkg.png" />
         <h1 className="display-3">Welcome to the School</h1>
-        <p className="lead">We have {studentCount} {studentCount === 1 ? ('student') : ('students')} across {campusCount} {campusCount === 1 ? ('campus') : ('campuses')}.</p>
+        <p className="lead">We have {studentCount} {studentCount === 1 ? ('student') : ('students')}&nbsp;across {campusCount}&nbsp;{campusCount === 1 ? ('campus') : ('campuses')}.</p>
         <hr className="my-4" />
         <h5>Take time to explore all of our students and campuses.</h5>
       </div>

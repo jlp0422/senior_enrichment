@@ -45,7 +45,7 @@ img {
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .footer-text {
@@ -54,6 +54,7 @@ img {
 
 .footer-text > p {
   margin-bottom: 5px;
+  width: 180px;
 }
 
 .badge {
@@ -180,7 +181,7 @@ a:hover {
   margin-right: 10px;
 }
 
-/*** HIDE ON MOBILE ***/
+/*** HIDE ON DESKTOP ***/
 .show-small {
   display: none;
   visibility: hidden;
@@ -218,6 +219,9 @@ a:hover {
 }
 
 @media (max-width: 480px) {
+  .display-3 {
+    font-size: 3em;
+  }
 
   .student-image-info {
     padding-bottom: 15px;
@@ -251,9 +255,20 @@ a:hover {
     margin: 0px 10px;
   }
 
-  .footer {
-    position: relative;
+  .footer-text {
+    visibility: hidden;
+    display: none;
   }
+
+  .footer-image {
+    margin: 0 auto;
+    height: 25px;
+    width: 25px;
+  }
+
+  /* .footer {
+    position: relative;
+  } */
 
   .default-margins {
     margin: 0px 10px 30px;

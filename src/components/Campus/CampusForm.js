@@ -107,13 +107,7 @@ class CampusForm extends React.Component {
       <div className="default-margins">
         <Helmet><title>{ campus ? ('Edit Campus') : ('Add Campus')}</title></Helmet>
 
-        {
-          campus ? (
-          <h1>Editing: {campus.name}</h1>
-          ) : (
-          <h1>Add new Campus</h1>
-          )
-        }
+        { campus ? <h1>Editing: {campus.name}</h1> : <h1>Add new Campus</h1> }
         {
           error.message ? (
             <div className="alert alert-danger alert-dismissible" role="alert">
