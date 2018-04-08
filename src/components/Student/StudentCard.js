@@ -17,11 +17,11 @@ const StudentCard = ({ student, campus, campusInfo, saveStudent }) => {
         {
           campusInfo ? (
             <div>
-            <button
-            onClick={() => saveStudent({ id: student.id, campus_id: null }, student.campus_id)}
-            className="btn btn-outline-danger">
-            Drop student
-            </button>
+              <button
+              onClick={() => saveStudent({ id: student.id, campus_id: null }, student.campus_id)}
+              className="btn btn-outline-danger">
+              Drop student
+              </button>
             </div>)
             :
             <Link to={`/students/${student.id}`}>

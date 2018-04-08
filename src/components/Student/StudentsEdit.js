@@ -16,6 +16,7 @@ class StudentsEdit extends React.Component {
     this.onCheck = this.onCheck.bind(this)
     this.onUpdate = this.onUpdate.bind(this)
     this.onDelete = this.onDelete.bind(this)
+    this.onRemoveCampus = this.onRemoveCampus.bind(this)
   }
 
   onUpdate() {
@@ -29,6 +30,13 @@ class StudentsEdit extends React.Component {
     const {studentsToChange} = this.state
     studentsToChange.map(id => (
       this.props.deleteStudent(id)
+    ))
+  }
+
+  onRemoveCampus() {
+    const { studentsToChange } = this.state
+    studentsToChange.map(id => (
+      this.props.saveStudent({ id: id * 1, campus_id: null }, 'massedit')
     ))
   }
 
@@ -50,7 +58,7 @@ class StudentsEdit extends React.Component {
   render() {
     const { students, campuses } = this.props
     const { studentsToChange, campus_id } = this.state
-    const { onChange, onCheck, onUpdate, onDelete } = this
+    const { onChange, onCheck, onUpdate, onDelete, onRemoveCampus } = this
     if (!students) return null
     return (
       <div className="default-margins">
@@ -82,9 +90,15 @@ class StudentsEdit extends React.Component {
               Update selected students
             </button>
           </div>
-          <div>
+          <div className="margin-r-20">
             <button className="btn btn-danger" disabled={studentsToChange.length ? false : true} onClick={onDelete}>
               Delete selected students
+            </button>
+          </div>
+          <div>
+
+            <button className="btn btn-warning btn-block-top" disabled={studentsToChange.length ? false : true} onClick={ onRemoveCampus }>
+              Remove campus
             </button>
           </div>
         </div>
