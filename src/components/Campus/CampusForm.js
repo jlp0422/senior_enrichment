@@ -19,7 +19,7 @@ class CampusForm extends React.Component {
       state: campus ? campus.state : '',
       zip: campus ? campus.zip : '',
       image_url: campus ? campus.image_url : '',
-      details: campus ? false : true,
+      details: this.props.id ? false : true,
       error: null,
       errors: {}
     }
