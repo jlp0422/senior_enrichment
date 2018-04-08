@@ -1,9 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Strait');
+
+
+
+* {
+  font-family: 'Strait', sans-serif;
+}
+
+/* h1 {
+  font-family: 'Share Tech Mono', sans-serif;
+} */
+
 body {
   background-color: #E5E7E9;
 }
 
 html {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 /*** GLOBAL STYLES ***/
@@ -45,9 +57,13 @@ img {
   margin-top: 0px;
 }
 
-.jumbotron {
+.jumbo-home {
   background-color: #FBFBFB;
   box-shadow: 0px 5px 15px 5px gray;
+}
+
+.jumbotron {
+  background-color: #FBFBFB;
 }
 
 /*** PAGE DEFAULTS ***/
@@ -67,7 +83,7 @@ img {
 }
 
 .footer-text > p {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   min-width: 180px;
 }
 
@@ -213,7 +229,7 @@ a:hover {
 
 @media (max-width: 760px) {
   html {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 
   .student-bar {

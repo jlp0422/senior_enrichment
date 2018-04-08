@@ -6,7 +6,7 @@ const Home = ({ studentCount, campusCount }) => {
   return (
     <div>
       <Helmet><title>Home</title></Helmet>
-      <div className="jumbotron text-center">
+      <div className="jumbotron jumbo-home text-center">
         <img style={{width: '75px', height: '75px'}} src="./vendor/images/logo-black-no-bkg.png" />
         <h1 className="display-3">Welcome to the School</h1>
         <p className="lead">We have {studentCount} {studentCount === 1 ? ('student') : ('students')}&nbsp;across {campusCount}&nbsp;{campusCount === 1 ? ('campus') : ('campuses')}.</p>
