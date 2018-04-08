@@ -70,7 +70,7 @@ const Campus = conn.define('campus', {
   },
   image_url: {
     type: Sequelize.STRING,
-    defaultValue: '../vendor/images/default-campus.png'
+    defaultValue: '../vendor/images/default-campus-sim.jpg'
   }
 }, {
   getterMethods: {

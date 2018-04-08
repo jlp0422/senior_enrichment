@@ -12,7 +12,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/', (req, res, next) => {
-  if (req.body.image_url === '') req.body.image_url = '../vendor/images/default-campus.png'
+  if (req.body.image_url === '') req.body.image_url = '../vendor/images/default-campus-sim.jpg'
   Campus.create(req.body)
     .then( campus => res.send(campus))
     .catch(next)
