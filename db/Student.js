@@ -53,6 +53,10 @@ const Student = conn.define('student', {
       min: {
         args: [0],
         msg: 'Please enter a GPA above 0'
+      },
+      isDecimal: {
+        args: true,
+        msg: 'Please enter a valid GPA'
       }
     }
   },

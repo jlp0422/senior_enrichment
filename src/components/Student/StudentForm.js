@@ -143,7 +143,6 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="gpa"
                 value={ gpa }
-                type="number"
                 // required
                 className={`form-control ${errors.gpa ? `is-invalid` : ''}`}  />
               <div className="text-danger">{errors.gpa}</div>
