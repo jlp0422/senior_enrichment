@@ -282,10 +282,6 @@ a:hover {
     width: 25px;
   }
 
-  .default-margins {
-    margin: 0px 10px 30px;
-  }
-
   /*** SHOW ON MOBILE ***/
   .show-small {
     visibility: initial;

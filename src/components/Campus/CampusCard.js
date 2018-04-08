@@ -19,7 +19,7 @@ const CampusCard = ({ campus, studentCount, deleteCampus }) => {
         <div>
           <h4>Students: {studentCount}</h4>
           <Link to={`/campuses/${campus.id}`}>
-            <button className="btn btn-primary show-small">More info</button>
+            <button className="btn btn-outline-primary show-small">More info</button>
           </Link>
         </div>
 

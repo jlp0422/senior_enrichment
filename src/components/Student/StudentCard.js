@@ -6,7 +6,7 @@ import { saveStudentOnServer } from '../../store/students';
 
 const StudentCard = ({ student, campus, campusInfo, saveStudent }) => {
   return (
-    <div className="card margin-10" style={{ minWidth: '23.2%' }}>
+    <div className="card margin-10" style={{ minWidth: '23.2%', margin: '10px' }}>
       <Link to={`/students/${student.id}`}>
         <img className="card-img-top student-image" src={student.image_url} />
       </Link>
@@ -20,7 +20,7 @@ const StudentCard = ({ student, campus, campusInfo, saveStudent }) => {
               <button
               onClick={() => saveStudent({ id: student.id, campus_id: null }, student.campus_id)}
               className="btn btn-outline-danger">
-              Drop student
+                Drop student
               </button>
             </div>)
             :
