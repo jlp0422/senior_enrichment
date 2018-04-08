@@ -57,8 +57,8 @@ class StudentInfo extends React.Component {
 
           <div>
             <h2>Student: {student.full_name} </h2>
-            <h3>Email: {student.email}</h3>
-            <h3>GPA: <span className={`badge badge-${student.gpa > 3 ? `success` : `${student.gpa > 2 ? `warning` : `danger`}`}`}>{student.gpa}</span></h3>
+            <h4>Email: {student.email}</h4>
+            <h4>GPA: <span className={`badge badge-${student.gpa > 3 ? `success` : `${student.gpa > 2 ? `warning` : `danger`}`}`}>{student.gpa}</span></h4>
             <div className="flex space-btw margin-top-20">
               <Link to={`/students/${student.id}/edit`}>
                 <button className="btn btn-outline-success btn-inline">Edit</button>

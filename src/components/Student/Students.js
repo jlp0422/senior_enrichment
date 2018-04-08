@@ -35,13 +35,14 @@ class Students extends React.Component {
     const { students, campuses } = this.props
     const { name, campus_id, sort_method } = this.state
     const { onChange, onChangeSort } = this
+    const studentsForCampus = students.filter(student => student.campus_id === campus_id*1)
     const matchingStudents = students.reduce((memo, student) => {
       if (student.full_name.toLowerCase().match(name.toLowerCase())) {
         return memo.concat(student)
       }
       return memo
     }, [])
-    const studentsForCampus = students.filter(student => student.campus_id === campus_id*1)
+    if (!campuses) return null
     return (
       <div className="default-margins">
         <Helmet><title>All Students</title></Helmet>
@@ -133,9 +134,9 @@ class Students extends React.Component {
           )
         }
         {
-          matchingStudents.length && !studentsForCampus.length ? (
+          matchingStudents.length && !studentsForCampus.length && campus_id !== '-1' ? (
             <div className="margin-top-20 text-center">
-              <h2 className="pad-bot-20">No students are enrolled at this campus.</h2>
+              <h2 className="pad-bot-20">No students are enrolled at {campuses.find(campus => campus.id === campus_id*1).name}.</h2>
               <Link to='/students/create'>
                 <button className="btn btn-primary">Add Student</button>
               </Link>
