@@ -89,7 +89,6 @@ img {
   min-width: 180px;
 }
 
-
 /*** FLEX BOX STYLING ***/
 .flex {
   display: flex;
@@ -194,6 +193,8 @@ a:hover {
 .right-text {
   text-align: right;
 }
+
+/*** STUDENTS AND CAMPUSES ***/
 
 .student-image-info {
   max-width: 250px;

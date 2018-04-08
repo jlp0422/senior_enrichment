@@ -108,7 +108,7 @@ class StudentsEdit extends React.Component {
             <div key={student.id} className="form-check">
               <input onChange={ onCheck } name="student" className="form-check-input" type="checkbox" value={student.id} />
               <p className="form-check-label">
-                <strong>&nbsp;{student.full_name}</strong> ({student.campus_id ? campuses.find(campus => campus.id === student.campus_id).name : ('No campus')})
+                <strong>&nbsp;{student.full_name}</strong> ({student && campuses && student.campus_id ? campuses.find(campus => campus.id === student.campus_id).name : ('No campus')})
               </p>
             </div>
           ))
