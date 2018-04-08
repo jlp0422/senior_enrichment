@@ -88,7 +88,7 @@ class StudentsEdit extends React.Component {
         <div className="flex flex-600 margin-tb-10">
           <div className="margin-r-20">
             <button className="btn btn-success btn-block-600" disabled={campus_id === -1 || studentsToChange.length === 0 ? true : false} onClick={onUpdate}>
-              Update selected students
+              Transfer selected students
             </button>
           </div>
           <div className="margin-r-20">
@@ -98,7 +98,7 @@ class StudentsEdit extends React.Component {
           </div>
           <div>
             <button className="btn btn-warning btn-block-600" disabled={studentsToChange.length ? false : true} onClick={ onRemoveCampus }>
-              Remove campus
+              Unenroll selected students
             </button>
           </div>
         </div>

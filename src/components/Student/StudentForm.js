@@ -16,7 +16,7 @@ class StudentForm extends React.Component {
       email: student ? student.email : '',
       gpa: student ? student.gpa : '',
       image_url: student ? student.image_url : '',
-      campus_id: student ? student.campus_id : '',
+      campus_id: student && student.campus_id !== null ? student.campus_id : '',
       error: null,
       errors: {}
     }
@@ -73,7 +73,7 @@ class StudentForm extends React.Component {
     if (Object.keys(errors).length) return;
     const { id } = this.props
     const { first_name, last_name, email, gpa, image_url } = this.state
-    const campus_id = this.state.campus_id * 1
+    const campus_id = this.state.campus_id ? this.state.campus_id*1 : null
     this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url, campus_id })
   }
 
