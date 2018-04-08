@@ -20,7 +20,7 @@ const StudentCard = ({ student, campus, campusInfo, saveStudent }) => {
             <button
             onClick={() => saveStudent({ id: student.id, campus_id: null }, student.campus_id)}
             className="btn btn-outline-danger">
-            Remove
+            Drop student
             </button>
             </div>)
             :
