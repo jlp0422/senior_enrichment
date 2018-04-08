@@ -15,6 +15,7 @@ class StudentInfo extends React.Component {
     }
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
+    this.onDelete = this.onDelete.bind(this)
   }
 
   componentDidMount() {
@@ -30,6 +31,11 @@ class StudentInfo extends React.Component {
     this.setState({ campus_id })
   }
 
+  onDelete(id) {
+    const confirm = window.confirm('Are you sure you want to delete this student?')
+    if (confirm) this.props.deleteStudent(id)
+  }
+
   onSave(ev) {
     ev.preventDefault()
     const { id } = this.props
@@ -40,7 +46,7 @@ class StudentInfo extends React.Component {
   render() {
     const { students, student, campus, campuses, deleteStudent, saveStudent } = this.props
     const { campus_id } = this.state
-    const { onChange, onSave } = this
+    const { onChange, onSave, onDelete } = this
     const infoMatch = student && student.campus_id === campus_id * 1 ? true : false
     if (!student) return null
     return (
@@ -63,7 +69,7 @@ class StudentInfo extends React.Component {
               <Link to={`/students/${student.id}/edit`}>
                 <button className="btn btn-outline-success btn-inline">Edit</button>
               </Link>
-              <button onClick={() => deleteStudent(`${student.id}`)} className="btn btn-outline-danger btn-inline">Delete</button>
+              <button onClick={() => onDelete(`${student.id}`)} className="btn btn-outline-danger btn-inline">Delete</button>
             </div>
           </div>
 

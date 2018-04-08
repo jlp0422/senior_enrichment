@@ -28,9 +28,8 @@ class StudentsEdit extends React.Component {
 
   onDelete() {
     const {studentsToChange} = this.state
-    studentsToChange.map(id => (
-      this.props.deleteStudent(id)
-    ))
+    const confirm = window.confirm(`Are you sure you want to delete ${studentsToChange.length} students?`)
+    if (confirm) studentsToChange.map(id => this.props.deleteStudent(id))
   }
 
   onRemoveCampus() {
