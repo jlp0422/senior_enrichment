@@ -2,8 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { saveStudentOnServer } from '../../store/students';
 
-const StudentCard = ({ student, campus }) => {
+const StudentCard = ({ student, campus, campusInfo, saveStudent }) => {
   return (
     <div className="card margin-10" style={{ minWidth: '23.2%' }}>
       <Link to={`/students/${student.id}`}>
@@ -16,9 +17,25 @@ const StudentCard = ({ student, campus }) => {
         <Link to={`/students/${student.id}`}>
           <button className="btn btn-outline-primary">More Info</button>
         </Link>
+        {
+          campusInfo ? (
+            <button
+              onClick={() => saveStudent({ id: student.id, campus_id: null }, student.campus_id)}
+              className="btn btn-outline-danger">
+              Remove
+            </button>)
+            :
+            (null)
+        }
       </div>
     </div>
   )
 }
 
-export default StudentCard;
+const mapDispatch = (dispatch) => {
+  return {
+    saveStudent: (student, page) => dispatch(saveStudentOnServer(student, page))
+  }
+}
+
+export default connect(null, mapDispatch)(StudentCard);

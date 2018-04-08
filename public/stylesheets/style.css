@@ -41,22 +41,6 @@ img {
   padding: 8px 0px;
 }
 
-.footer-image {
-  width: 30px;
-  height: 30px;
-  margin: 0 auto;
-  /* margin-bottom: 5px; */
-}
-
-.footer-text {
-  vertical-align: middle;
-}
-
-.footer-text > p {
-  margin-bottom: 5px;
-  width: 180px;
-}
-
 .badge {
   margin-top: 0px;
 }
@@ -66,9 +50,35 @@ img {
   box-shadow: 0px 5px 15px 5px gray;
 }
 
+/*** PAGE DEFAULTS ***/
+.default-margins {
+  margin: 0px 10px 80px
+}
+
+/*** FOOTER ***/
+.footer-image {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  vertical-align: middle;
+}
+
+.footer-text > p {
+  margin-bottom: 5px;
+  min-width: 180px;
+}
+
+
 /*** FLEX BOX STYLING ***/
 .flex {
   display: flex;
+}
+
+.flex-start {
+  justify-content: flex-start
 }
 
 .space-btw {
@@ -97,17 +107,12 @@ a:hover {
 }
 
 .navbar-light {
-  opacity: 0.7;
+  opacity: 0.9;
   transition: 0.5s;
 }
 
 .navbar-light:hover {
   opacity: 1;
-}
-
-/*** PAGE DEFAULTS ***/
-.default-margins {
-  margin: 0px 10px 80px
 }
 
 /*** MARGIN AND PADDING ***/
@@ -209,7 +214,6 @@ a:hover {
   .right-text {
     text-align: left;
   }
-
 }
 
 @media (max-width: 600px) {
@@ -265,10 +269,6 @@ a:hover {
     height: 25px;
     width: 25px;
   }
-
-  /* .footer {
-    position: relative;
-  } */
 
   .default-margins {
     margin: 0px 10px 30px;

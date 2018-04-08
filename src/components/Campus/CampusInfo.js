@@ -34,7 +34,7 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
           </div>
         </div>
 
-        <div className="flex" style={{ justifyContent: 'flex-start' }}>
+        <div className="flex flex-start">
           <div>
             <Link className="margin-r-20" to={`/campuses/${campus.id}/edit`}>
               <button className="btn btn-outline-success btn-block-top">Edit {campus.name}</button>
@@ -45,10 +45,10 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
           </div>
         </div>
       </div>
-      <div className="flex space-btw margin-10">
+      <div className="flex space-btw margin-10 center">
         <div><h2>Students on campus</h2></div>
         <div>
-          <Link to={`/campuses/${campus.id}/students`}>
+          <Link className="" to={`/campuses/${campus.id}/students`}>
             <button className="btn btn-outline-primary">Add Students</button>
           </Link>
         </div>
@@ -57,7 +57,7 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
         {
           campus_students.length ?
           campus_students.map(student => (
-            <StudentCard key={student.id} student={student} campus={ campus }/>
+            <StudentCard campusInfo={true} key={student.id} student={student} campus={ campus }/>
           )) :
           <div className="margin-lr-10">
             <h4>No students on this campus</h4>
