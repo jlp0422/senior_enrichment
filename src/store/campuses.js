@@ -43,6 +43,7 @@ export const saveCampusOnServer = (campus, page) => {
       .then( res => res.data)
       .then( _campus => {
         camp = _campus
+        // console.log(camp)
         return dispatch(action(_campus))
         // return {_campus, page}
       })
@@ -76,7 +77,7 @@ const campusesReducer = (state = [], action) => {
 
     case UPDATE_CAMPUS:
       const campuses = state.filter(campus => campus.id !== action.campus.id * 1)
-      state = [...otherCampuses, action.campus].sort(alphabetize)
+      state = [...campuses, action.campus].sort(alphabetize)
       break;
 
     case ADD_CAMPUS:

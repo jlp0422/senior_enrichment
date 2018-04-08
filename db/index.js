@@ -68,6 +68,7 @@ const seed = () => {
 module.exports = {
   sync,
   seed,
+  conn,
   models: {
     Campus,
     Student

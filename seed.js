@@ -68,7 +68,7 @@ db.sync()
     console.error('Error while seeding')
     console.error(err.stack)
   })
-  // .finally(() => {
-  //   db.conn.close();
-  //   return null;
-  // });
+  .finally(() => {
+    db.conn.close();
+    return null;
+  });
