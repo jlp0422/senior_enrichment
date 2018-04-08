@@ -3,11 +3,10 @@ const faker = require('faker')
 const chance = require('chance')(1234567);
 const avatar = require('cartoon-avatar');
 const db = require('./db');
-const _conn = require('./db/conn')
 const { Student, Campus } = db.models;
 
-const numStudents = 40;
-const numCampuses = 7;
+const numStudents = 50;
+const numCampuses = 12;
 
 const campus_images = ['../vendor/images/bu-campus.jpg', '../vendor/images/syracuse-campus.jpg', '../vendor/images/penn-campus.jpg'];
 
@@ -27,7 +26,7 @@ function randomStudent() {
     first_name: first_name,
     last_name: last_name,
     email: `${first_name.toLowerCase()}.${last_name.toLowerCase()}@school.edu`,
-    gpa: Math.round((Math.random() * 3) * 100) / 100 + 1,
+    gpa: chance.floating({min: 1, max: 4, fixed: 2}),
     image_url: avatar.generate_avatar({gender: gender })
   })
 };
@@ -49,29 +48,18 @@ const campuses = doTimes(numCampuses, randomCampus)
 
 const seed = () => {
   return Promise.all(campuses.map(campus => campus.save()))
-    .then(() => Promise.all(students.map(student => {
-      student.save()
+    .then(() => Promise.all(students.map(student => student.save()
       .then( student => {
         student.setCampus(chance.pickone(campuses))
       })
-    }))
+    ))
 )}
 
 console.log("database is syncing...")
-// console.log(_conn.close)
-
-_conn.sync({force: true})
+db.sync()
   .then(() => {
     console.log('database is seeding...')
-    return Promise.all(campuses.map(campus => campus.save()))
-      .then(() => {
-        return Promise.all(students.map(student => {
-        student.save()
-          .then(student => {
-            student.setCampus(chance.pickone(campuses))
-          })
-      })
-      )})
+    return seed()
   })
   .then(() => console.log('database has seeded'))
   .catch(err => {
@@ -79,6 +67,6 @@ _conn.sync({force: true})
     console.error(err.stack)
   })
   .then(() => {
-    _conn.close();
+    db.conn.close();
     return null;
   });

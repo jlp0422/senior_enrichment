@@ -22,11 +22,12 @@ const StudentCard = ({ student, campus, campusInfo, saveStudent }) => {
               className="btn btn-outline-danger">
                 Drop student
               </button>
-            </div>)
-            :
+            </div>
+          ) : (
             <Link to={`/students/${student.id}`}>
               <button className="btn btn-outline-primary">More Info</button>
             </Link>
+          )
         }
       </div>
     </div>
