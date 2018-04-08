@@ -41,6 +41,7 @@ class Students extends React.Component {
       }
       return memo
     }, [])
+    const studentsForCampus = students.filter(student => student.campus_id === campus_id*1)
     return (
       <div className="default-margins">
         <Helmet><title>All Students</title></Helmet>
@@ -130,6 +131,18 @@ class Students extends React.Component {
           ) : (
             null
           )
+        }
+        {
+          matchingStudents.length && !studentsForCampus.length ? (
+            <div className="margin-top-20 text-center">
+              <h2 className="pad-bot-20">No students are enrolled at this campus.</h2>
+              <Link to='/students/create'>
+                <button className="btn btn-primary">Add Student</button>
+              </Link>
+            </div>
+          ) : (
+              null
+            )
         }
     </div>
     )
