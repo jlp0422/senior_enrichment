@@ -190,6 +190,15 @@ a:hover {
   margin-right: 10px;
 }
 
+#student-card {
+  min-width: 23.2%;
+  margin: 10px;
+}
+
+#campus-card {
+  background-color: #F2F3F4
+}
+
 /*** HIDE ON DESKTOP ***/
 .show-small {
   display: none;
@@ -280,6 +289,12 @@ a:hover {
     margin: 0 auto;
     height: 25px;
     width: 25px;
+  }
+
+  #student-card {
+    max-width: initial;
+    margin: 0 auto 15px;
+    width: 100%
   }
 
   /*** SHOW ON MOBILE ***/

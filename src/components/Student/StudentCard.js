@@ -6,7 +6,7 @@ import { saveStudentOnServer } from '../../store/students';
 
 const StudentCard = ({ student, campus, campusInfo, saveStudent }) => {
   return (
-    <div className="card margin-10" style={{ minWidth: '23.2%', margin: '10px' }}>
+    <div id="student-card" className="card margin-10">
       <Link to={`/students/${student.id}`}>
         <img className="card-img-top student-image" src={student.image_url} />
       </Link>
