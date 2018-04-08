@@ -25,18 +25,18 @@ class StudentForm extends React.Component {
     this.dismissError = this.dismissError.bind(this)
     this.validators = {
       first_name: (value) => {
-        if (!value) return 'Please enter a first name.'
+        if (!value) return 'Please enter a first name'
       },
       last_name: (value) => {
-        if (!value) return 'Please enter a last name.'
+        if (!value) return 'Please enter a last name'
       },
       email: (value) => {
-        if (!value) return 'Please enter an email address.'
+        if (!value) return 'Please enter an email address'
       },
       gpa: (value) => {
-        if (!value) return 'Please enter a valid GPA.'
-        if (value > 4) return 'Please enter a GPA below 4.'
-        if (value < 0) return 'Please enter a GPA above 0.'
+        if (!value) return 'Please enter a valid GPA'
+        if (value > 4) return 'Please enter a GPA below 4'
+        if (value < 0) return 'Please enter a GPA above 0'
       }
     }
   }

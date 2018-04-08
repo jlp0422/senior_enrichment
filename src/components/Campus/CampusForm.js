@@ -42,6 +42,7 @@ class CampusForm extends React.Component {
       },
       state: (value) => {
         if (!value && !this.state.details) return 'Please select a state'
+        if (value === '-1' && !this.state.details) return 'Please select a state'
       },
       zip: (value) => {
         if (!value && !this.state.details) return 'Please enter a zip code'
@@ -75,6 +76,7 @@ class CampusForm extends React.Component {
       const value = this.state[key]
       const error = (validator(value))
       if (error) memo[key] = error
+      if (value === '-1') memo[key] = error
       return memo
     }, {})
     this.setState({ errors })
@@ -85,7 +87,15 @@ class CampusForm extends React.Component {
   }
 
   showDetails() {
-    this.setState({ details: false })
+    const errors = Object.keys(this.validators).reduce((memo, key) => {
+      const validator = this.validators[key]
+      const value = this.state[key]
+      const error = (validator(value))
+      if (error) memo[key] = error
+      return memo
+    }, {})
+    this.setState({ details: false, errors })
+    if (Object.keys(errors).length) return;
   }
 
   render() {
@@ -182,7 +192,7 @@ class CampusForm extends React.Component {
               </div>
 
               <div className="form-row">
-                <div className="form-group col-md-7">
+                <div className="form-group col-md-6">
                   <label>City</label>
                   <input
                     className={`form-control ${errors.city ? `is-invalid` : ''}`}
@@ -193,7 +203,7 @@ class CampusForm extends React.Component {
                   <div className="text-danger">{errors.city}</div>
                 </div>
 
-                <div className="form-group col-md-2">
+                <div className="form-group col-md-3">
                   <label>State</label>
                   <select
                     className={`form-control ${errors.state ? `is-invalid` : ''}`}
@@ -201,10 +211,10 @@ class CampusForm extends React.Component {
                     onChange={onChange}
                     name="state"
                   >
-                    <option>Choose...</option>
+                    <option value='-1'>Choose...</option>
                     {
                       states.map(state => (
-                        <option key={state.id}>{state.abbrev}</option>
+                        <option value={state.abbrev} key={state.id}>{state.abbrev}</option>
                       ))
                     }
                   </select>
