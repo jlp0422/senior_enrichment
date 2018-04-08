@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
-import { HashRouter as Router, Route, Switch, Link, IndexRoute} from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 import Nav from './Nav';
 import Home from './Home';
 import Footer from './Footer';
@@ -35,7 +35,8 @@ class App extends React.Component {
         <Route path='/' component={ Nav } />
           <div className="wrapper center-all">
             <Switch>
-              <Route exact path='/' component={ Home } />
+              <Route exact path='/' render={() => <Redirect to='/home' />} />
+              <Route exact path='/home' component={ Home } />
               <Route exact path='/infinityandbeyond' component={EasterEgg} />
               {/* Student Routes */}
               <Route exact path='/students' component={ Students } />

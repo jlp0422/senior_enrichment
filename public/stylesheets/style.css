@@ -1,23 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Strait');
 
-
-
 * {
   font-family: 'Strait', sans-serif;
 }
-
-/* h1 {
-  font-family: 'Share Tech Mono', sans-serif;
-} */
 
 body {
   background-color: #E5E7E9;
 }
 
 html {
-  font-size: 1.1rem;
+  font-size: 1.1em;
 }
-
 /*** GLOBAL STYLES ***/
 .center-all {
   margin: 0 auto;
@@ -29,6 +22,10 @@ html {
 
 label {
   font-weight: bold;
+}
+
+.form-check-label {
+  font-size: 1.2em;
 }
 
 img {
@@ -233,7 +230,7 @@ a:hover {
 }
 
 @media (max-width: 760px) {
-  html {
+  html, .form-check-label {
     font-size: 1em;
   }
 

@@ -9,7 +9,7 @@ const Nav = () => {
     <div className="navbar-light bg-light sticky-top">
       <div className="wrapper center-all">
         <nav style={{ marginBottom: '15px'}} className="navbar">
-          <Link className="navbar-brand" to='/'>
+          <Link className="navbar-brand" to='/home'>
             <img className="d-inline-block align-center" style={{ width: '30px'}} src="../../vendor/images/logo-black-no-bkg.png" />
             &nbsp;Home
           </Link>

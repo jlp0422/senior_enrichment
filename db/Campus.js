@@ -2,6 +2,8 @@
 const Sequelize = require('sequelize')
 const conn = require('./conn');
 
+// had to allow empty for 'quick create' functionality
+
 const Campus = conn.define('campus', {
   name: {
     type: Sequelize.STRING,

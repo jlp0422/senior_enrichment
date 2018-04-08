@@ -5,8 +5,8 @@ const EasterEgg = () => {
     <div className="jumbotron">
       <blockquote className="blockquote text-center">
       {/* broken link on purpose */}
-      <img src="/block.png" />
-      <h2>"It's a feature, not a bug."</h2>
+      <img src="/easter-egg.png" />
+      <h3>"It's a feature, not&nbsp;a&nbsp;bug."</h3>
       <footer className="blockquote-footer"><cite title="Source Title">undefined</cite></footer>
       </blockquote>
     </div>
