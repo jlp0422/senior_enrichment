@@ -8,11 +8,12 @@ import Footer from './Footer';
 import Students from './Student/Students';
 import StudentInfo from'./Student/StudentInfo';
 import StudentForm from './Student/StudentForm';
-import StudentsEdit from './Student/StudentsEdit'
+import StudentsEdit from './Student/StudentsEdit';
 import Campuses from './Campus/Campuses';
 import CampusInfo from './Campus/CampusInfo';
 import CampusForm from './Campus/CampusForm';
 import CampusStudents from './Campus/CampusStudents';
+import EasterEgg from './DoNotLook';
 import { getCampusesFromServer } from '../store/campuses';
 import { getStudentsFromServer } from '../store/students';
 
@@ -35,6 +36,7 @@ class App extends React.Component {
           <div className="wrapper center-all">
             <Switch>
               <Route exact path='/' component={ Home } />
+              <Route exact path='/infinityandbeyond' component={EasterEgg} />
               {/* Student Routes */}
               <Route exact path='/students' component={ Students } />
               <Route exact path='/students/create' component={ StudentForm } />

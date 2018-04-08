@@ -60,6 +60,7 @@ class StudentsEdit extends React.Component {
     const { studentsToChange, campus_id } = this.state
     const { onChange, onCheck, onUpdate, onDelete, onRemoveCampus } = this
     if (!students) return null
+    if (!campuses) return null
     return (
       <div className="default-margins">
         <Helmet><title>Edit Students</title></Helmet>
@@ -74,7 +75,7 @@ class StudentsEdit extends React.Component {
         </div>
 
         <h3 className="margin-tb-10">Choose campus for students</h3>
-        <form className="margin-bot-20">
+        <form className="margin-bot-10">
           <select className="form-control" onChange={onChange} name="campus_id" value={campus_id}>
             <option value="-1">Select campus...</option>
             {
@@ -84,9 +85,9 @@ class StudentsEdit extends React.Component {
             }
           </select>
         </form>
-        <div className="flex margin-tb-10">
+        <div className="flex flex-600 margin-tb-10">
           <div className="margin-r-20">
-            <button className="btn btn-success btn-block-top" disabled={campus_id === -1 || studentsToChange.length === 0 ? true : false} onClick={onUpdate}>
+            <button className="btn btn-success btn-block-600" disabled={campus_id === -1 || studentsToChange.length === 0 ? true : false} onClick={onUpdate}>
               Update selected students
             </button>
           </div>
@@ -96,8 +97,7 @@ class StudentsEdit extends React.Component {
             </button>
           </div>
           <div>
-
-            <button className="btn btn-warning btn-block-top" disabled={studentsToChange.length ? false : true} onClick={ onRemoveCampus }>
+            <button className="btn btn-warning btn-block-600" disabled={studentsToChange.length ? false : true} onClick={ onRemoveCampus }>
               Remove campus
             </button>
           </div>
@@ -107,7 +107,7 @@ class StudentsEdit extends React.Component {
             <div key={student.id} className="form-check">
               <input onChange={ onCheck } name="student" className="form-check-input" type="checkbox" value={student.id} />
               <p className="form-check-label">
-                <strong>&nbsp;{student.full_name}</strong> ({student.campus_id && campuses ? campuses.find(campus => campus.id === student.campus_id).name : ('No campus')})
+                <strong>&nbsp;{student.full_name}</strong> ({student.campus_id ? campuses.find(campus => campus.id === student.campus_id).name : ('No campus')})
               </p>
             </div>
           ))
