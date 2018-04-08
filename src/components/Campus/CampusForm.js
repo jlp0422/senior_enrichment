@@ -32,19 +32,19 @@ class CampusForm extends React.Component {
         if (!value) return 'Please enter a campus name.'
       },
       description: (value) => {
-        if (!value && !this.state.details) return 'Please enter a campus description.'
+        if (!value && !this.state.details) return 'Please enter a campus description'
       },
       street: (value) => {
-        if (!value && !this.state.details) return 'Please enter a street.'
+        if (!value && !this.state.details) return 'Please enter a street'
       },
       city: (value) => {
-        if (!value && !this.state.details) return 'Please enter a city.'
+        if (!value && !this.state.details) return 'Please enter a city'
       },
       state: (value) => {
-        if (!value && !this.state.details) return 'Please select a state.'
+        if (!value && !this.state.details) return 'Please select a state'
       },
       zip: (value) => {
-        if (!value && !this.state.details) return 'Please enter a zip code.'
+        if (!value && !this.state.details) return 'Please enter a zip code'
       },
     }
   }

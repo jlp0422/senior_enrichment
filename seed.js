@@ -3,6 +3,7 @@ const faker = require('faker')
 const chance = require('chance')(1234567);
 const avatar = require('cartoon-avatar');
 const db = require('./db');
+const _conn = require('./db/conn')
 const { Student, Campus } = db.models;
 
 const numStudents = 40;
@@ -57,18 +58,27 @@ const seed = () => {
 )}
 
 console.log("database is syncing...")
+// console.log(_conn.close)
 
-db.sync()
+_conn.sync({force: true})
   .then(() => {
     console.log('database is seeding...')
-    seed()
+    return Promise.all(campuses.map(campus => campus.save()))
+      .then(() => {
+        return Promise.all(students.map(student => {
+        student.save()
+          .then(student => {
+            student.setCampus(chance.pickone(campuses))
+          })
+      })
+      )})
   })
   .then(() => console.log('database has seeded'))
   .catch(err => {
     console.error('Error while seeding')
     console.error(err.stack)
   })
-  .finally(() => {
-    db.conn.close();
+  .then(() => {
+    _conn.close();
     return null;
   });
