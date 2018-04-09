@@ -21,24 +21,27 @@ class StudentsEdit extends React.Component {
 
   onUpdate() {
     const { studentsToChange, campus_id } = this.state
-    const confirm = window.confirm(`Are you sure you want to transfer ${studentsToChange.length} students?`)
-    if (confirm) {
+    // removed confirm, does not work on mobile
+    // const confirm = window.confirm(`Are you sure you want to transfer ${studentsToChange.length} students?`)
+    // if (confirm) {
       studentsToChange.map(id => this.props.saveStudent({id: id*1, campus_id: campus_id*1}, 'massedit'))
-    }
+    // }
   }
 
   onDelete() {
     const {studentsToChange} = this.state
-    const confirm = window.confirm(`Are you sure you want to delete ${studentsToChange.length} students?`)
-    if (confirm) studentsToChange.map(id => this.props.deleteStudent(id))
+    // const confirm = window.confirm(`Are you sure you want to delete ${studentsToChange.length} students?`)
+    // if (confirm) {
+      studentsToChange.map(id => this.props.deleteStudent(id))
+    // }
   }
 
   onRemoveCampus() {
     const { studentsToChange } = this.state
-    const confirm = window.confirm(`Are you sure you want to remove enrollment for ${studentsToChange.length} students?`)
-    if (confirm) {
+    // const confirm = window.confirm(`Are you sure you want to remove enrollment for ${studentsToChange.length} students?`)
+    // if (confirm) {
       studentsToChange.map(id => this.props.saveStudent({ id: id * 1, campus_id: null }, 'massedit'))
-    }
+    // }
   }
 
   onChange(ev) {
