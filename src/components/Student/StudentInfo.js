@@ -61,9 +61,9 @@ class StudentInfo extends React.Component {
             <h4>GPA: <span className={`badge badge-${student.gpa > 3 ? `success` : `${student.gpa > 2 ? `warning` : `danger`}`}`}>{student.gpa}</span></h4>
             <div className="flex space-btw margin-top-20">
               <Link to={`/students/${student.id}/edit`}>
-                <button className="btn btn-outline-success btn-inline">Edit</button>
+                <button className="btn btn-outline-success btn-inline">Edit {student.first_name}</button>
               </Link>
-              <button onClick={() => deleteStudent(`${student.id}`)} className="btn btn-outline-danger btn-inline">Delete</button>
+              <button onClick={() => deleteStudent(`${student.id}`)} className="btn btn-outline-danger btn-inline">Delete {student.first_name}</button>
             </div>
           </div>
 
