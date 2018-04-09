@@ -49,6 +49,17 @@ img {
   margin: 0 auto;
 }
 
+.home-link {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.home-link:hover {
+  color: black;
+  text-decoration: underline;
+}
+
 .footer {
   position: fixed;
   width: 100%;
@@ -274,6 +285,10 @@ a:hover {
 
   .display-3 {
     font-size: 3em;
+  }
+
+  .navbar-light {
+    opacity: 1;
   }
 
   .student-image-info {
