@@ -26,6 +26,7 @@ export const getStudentsFromServer = () => {
     return axios.get('/api/students')
       .then(res => res.data)
       .then(students => dispatch(getStudents(students)))
+      .catch(err => dispatch(error(err.response.data)))
   }
 }
 
@@ -34,6 +35,7 @@ export const deleteStudentFromServer = (id) => {
     return axios.delete(`/api/students/${id}`)
       .then(() => dispatch(deleteStudent(id)))
       .then(() => location.hash = '/students')
+      .catch(err => dispatch(error(err.response.data)))
   }
 }
 
@@ -68,6 +70,7 @@ export const sortStudents = (sortType) => {
 }
 
 /************ SORTING STUDENTS ************/
+/* SORT BY LAST NAME */
 function sortLastName(a, b) {
   const studentA = a.last_name.toUpperCase()
   const studentB = b.last_name.toUpperCase()
@@ -77,6 +80,7 @@ function sortLastName(a, b) {
   return comparison
 }
 
+/* SORT BY GPA DESCENDING */
 function sortGPA(a, b) {
   const studentA = a.gpa*1
   const studentB = b.gpa*1

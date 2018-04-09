@@ -16,7 +16,7 @@ class StudentForm extends React.Component {
       email: student ? student.email : '',
       gpa: student ? student.gpa : '',
       image_url: student ? student.image_url : '',
-      campus_id: student && student.campus_id !== null ? student.campus_id : '',
+      campus_id: student ? student.campus_id : '',
       error: null,
       errors: {}
     }
@@ -49,6 +49,10 @@ class StudentForm extends React.Component {
     this.setState(nextProps.student)
   }
 
+  componentWillMount() {
+    this.props.clearError({})
+  }
+
   dismissError() {
     this.props.clearError({})
   }
@@ -74,6 +78,7 @@ class StudentForm extends React.Component {
     const { id } = this.props
     const { first_name, last_name, email, gpa, image_url } = this.state
     const campus_id = this.state.campus_id ? this.state.campus_id*1 : null
+    console.log(campus_id)
     this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url, campus_id })
   }
 
@@ -130,6 +135,7 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="email"
                 value={ email }
+                type="email"
                 // required
                 className={`form-control ${errors.email ? `is-invalid` : ''}`} />
               <div className="text-danger">{errors.email}</div>
@@ -143,6 +149,8 @@ class StudentForm extends React.Component {
                 onChange={ onChange }
                 name="gpa"
                 value={ gpa }
+                type="number"
+                step="0.1"
                 // required
                 className={`form-control ${errors.gpa ? `is-invalid` : ''}`}  />
               <div className="text-danger">{errors.gpa}</div>
@@ -178,7 +186,7 @@ class StudentForm extends React.Component {
           {
             student ? (
               <div>
-                <button className="btn btn-success">Update Student</button>
+                <button disabled={match} className="btn btn-success">Update Student</button>
                 <br /> <br />
                 <Link to={`/students/${student.id}`}>
                   <button className="btn btn-secondary">Cancel Edit</button>

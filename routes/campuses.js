@@ -1,3 +1,4 @@
+/* eslint-disable */
 const app = require('express').Router()
 const db = require('../db')
 const { Campus } = db.models
@@ -12,7 +13,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/', (req, res, next) => {
-  if (req.body.image_url === '') req.body.image_url = '../vendor/images/default-campus-sim.jpg'
+  if (req.body.image_url === '') req.body.image_url = undefined
   Campus.create(req.body)
     .then( campus => res.send(campus))
     .catch(next)

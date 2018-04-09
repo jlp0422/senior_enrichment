@@ -58,6 +58,10 @@ class CampusForm extends React.Component {
     this.setState(nextProps.campus)
   }
 
+  componentWillMount() {
+    this.props.clearError({})
+  }
+
   dismissError() {
     this.props.clearError({})
   }

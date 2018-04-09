@@ -20,6 +20,7 @@ export const getCampusesFromServer = () => {
     return axios.get('/api/campuses')
       .then( res => res.data)
       .then( campuses => dispatch(getCampuses(campuses)))
+      .catch(err => dispatch(error(err.response.data)))
   }
 }
 
@@ -29,6 +30,7 @@ export const deleteCampusOnServer = (id) => {
       .then( res => res.data)
       .then( campuses => dispatch(deleteCampus(id)))
       .then(() => location.hash = '/campuses')
+      .catch(err => dispatch(error(err.response.data)))
   }
 }
 
@@ -43,16 +45,14 @@ export const saveCampusOnServer = (campus, page) => {
       .then( res => res.data)
       .then( _campus => {
         camp = _campus
-        // console.log(camp)
         return dispatch(action(_campus))
-        // return {_campus, page}
       })
       .then(() => location.hash = `/campuses/${camp.id}`)
       .catch(err => dispatch(error(err.response.data)))
   }
 }
 
-/************ SORTING CAMPUSES BY LAST NAME ************/
+/************ SORTING CAMPUSES BY NAME ************/
 function alphabetize(a, b) {
   const campusA = a.name.toUpperCase()
   const campusB = b.name.toUpperCase()
