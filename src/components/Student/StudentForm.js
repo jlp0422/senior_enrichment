@@ -39,29 +39,29 @@ class StudentForm extends React.Component {
         if (value < 0) return 'Please enter a GPA above 0'
       }
     }
-  }
+  };
 
   componentDidMount() {
     this.setState(this.props.student)
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps.student)
-  }
+  };
 
   componentWillMount() {
     this.props.clearError({})
-  }
+  };
 
   dismissError() {
     this.props.clearError({})
-  }
+  };
 
   onChange(ev) {
     const student = {}
     student[ev.target.name] = ev.target.value
     this.setState(student)
-  }
+  };
 
   onSave(ev) {
     ev.preventDefault()
@@ -79,7 +79,7 @@ class StudentForm extends React.Component {
     const { first_name, last_name, email, gpa, image_url } = this.state
     const campus_id = this.state.campus_id ? this.state.campus_id*1 : null
     this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url, campus_id })
-  }
+  };
 
   render() {
     const { first_name, last_name, email, gpa, image_url, campus_id, errors } = this.state
@@ -199,18 +199,18 @@ class StudentForm extends React.Component {
       </div>
     )
   }
-}
+};
 
 const mapState = ({ students, campuses, error }, { id }) => {
   const student = students.find(s => s.id === id)
   return { student, id, campuses, error }
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     saveStudent: (student) => dispatch(saveStudentOnServer(student)),
     clearError: (clear) => dispatch(clearError(clear))
   }
-}
+};
 
 export default connect(mapState, mapDispatch)(StudentForm);

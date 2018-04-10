@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { saveCampusOnServer } from '../../store/campuses';
 import { clearError } from '../../store/error'
 import { Helmet } from 'react-helmet';
-import { states } from '../../states'
+import { states } from '../../states';
 
 class CampusForm extends React.Component {
   constructor(props) {
@@ -48,29 +48,29 @@ class CampusForm extends React.Component {
         if (!value && !this.state.details) return 'Please enter a zip code'
       },
     }
-  }
+  };
 
   componentDidMount() {
     this.setState(this.props.campus)
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps.campus)
-  }
+  };
 
   componentWillMount() {
     this.props.clearError({})
-  }
+  };
 
   dismissError() {
     this.props.clearError({})
-  }
+  };
 
   onChange(ev) {
     const campus = {}
     campus[ev.target.name] = ev.target.value
     this.setState(campus)
-  }
+  };
 
   onSave(ev) {
     ev.preventDefault()
@@ -88,7 +88,7 @@ class CampusForm extends React.Component {
     const { id } = this.props
     const { name, description, street, city, state, zip, image_url } = this.state
     this.props.saveCampus({ id, name, description, street, city, state, zip, image_url })
-  }
+  };
 
   showDetails() {
     const errors = Object.keys(this.validators).reduce((memo, key) => {
@@ -100,7 +100,7 @@ class CampusForm extends React.Component {
     }, {})
     this.setState({ details: false, errors })
     if (Object.keys(errors).length) return;
-  }
+  };
 
   render() {
     const { campus, page, error } = this.props
@@ -261,19 +261,19 @@ class CampusForm extends React.Component {
       </div>
     )
   }
-}
+};
 
 const mapState = ({ campuses, students, error }, { id, page }) => {
   const campus = campuses.find(campus => campus.id === id)
   const campus_students = students.find(s => s.campus_id === id)
   return { campus, campus_students, page, error }
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     saveCampus: (campus) => dispatch(saveCampusOnServer(campus)),
     clearError: (err) => dispatch(clearError(err))
   }
-}
+};
 
 export default connect(mapState, mapDispatch)(CampusForm);

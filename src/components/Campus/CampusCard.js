@@ -35,12 +35,12 @@ const CampusCard = ({ campus, studentCount, deleteCampus }) => {
       </div>
     </div>
   )
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     deleteCampus: (id) => dispatch(deleteCampusOnServer(id))
   }
-}
+};
 
 export default connect(null, mapDispatch)(CampusCard);

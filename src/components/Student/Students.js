@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import StudentCard from './StudentCard';
 import { Helmet } from 'react-helmet';
-import { sortStudents } from '../../store/students'
+import { sortStudents } from '../../store/students';
 
 class Students extends React.Component {
   constructor(props) {
@@ -16,20 +16,20 @@ class Students extends React.Component {
     }
     this.onChange = this.onChange.bind(this)
     this.onChangeSort = this.onChangeSort.bind(this)
-  }
+  };
 
   onChange(ev) {
     const obj = {}
     obj[ev.target.name] = ev.target.value
     this.setState( obj )
-  }
+  };
 
   onChangeSort(ev) {
     const obj = {}
     obj[ev.target.name] = ev.target.value
     this.setState(obj)
     this.props.sort(this.state.sort_method)
-  }
+  };
 
   render() {
     const { students, campuses } = this.props
@@ -148,16 +148,16 @@ class Students extends React.Component {
     </div>
     )
   }
-}
+};
 
 const mapState = ({ students, campuses }) => {
   return { students, campuses }
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     sort: (sortType) => dispatch(sortStudents(sortType))
   }
-}
+};
 
 export default connect(mapState, mapDispatch)(Students);

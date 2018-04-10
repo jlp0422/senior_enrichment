@@ -6,14 +6,12 @@ const faker = require('faker');
 const chance = require('chance')(1234567);
 const avatar = require('cartoon-avatar');
 
-const campus_images = [ '../vendor/images/bu-campus.jpg', '../vendor/images/syracuse-campus.jpg', '../vendor/images/penn-campus.jpg' ]
+const campus_images = [ '../vendor/images/bu-campus.jpg', '../vendor/images/syracuse-campus.jpg', '../vendor/images/penn-campus.jpg' ];
 
-const sync = () => {
-  return conn.sync({ force: true })
-}
+const sync = () => conn.sync({ force: true });
 
 Student.belongsTo(Campus);
-Campus.hasMany(Student)
+Campus.hasMany(Student);
 
 module.exports = {
   sync,
@@ -22,4 +20,4 @@ module.exports = {
     Campus,
     Student
   }
-}
+};

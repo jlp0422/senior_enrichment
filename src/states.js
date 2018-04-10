@@ -49,4 +49,4 @@ export const states = [
   { id: 47, abbrev: 'WA' },
   { id: 48, abbrev: 'WV' },
   { id: 49, abbrev: 'WI' },
-  { id: 50, abbrev: 'WY' }]
+  { id: 50, abbrev: 'WY' }];

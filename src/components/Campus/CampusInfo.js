@@ -66,18 +66,18 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
       </div>
     </div>
   )
-}
+};
 
 const mapState = ({students, campuses}, { id }) => {
   const campus = campuses && campuses.find( campus => campus.id === id)
   const campus_students = students && students.filter(student => student.campus_id === id)
   return { campus, campus_students }
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     deleteCampus: (id) => dispatch(deleteCampusOnServer(id))
   }
-}
+};
 
 export default connect(mapState, mapDispatch)(CampusInfo);

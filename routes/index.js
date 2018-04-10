@@ -1,6 +1,6 @@
-const app = require('express').Router()
-const db = require('../db')
-const { Campus } = db.models
+const app = require('express').Router();
+const db = require('../db');
+const { Campus } = db.models;
 
 module.exports = app;
 

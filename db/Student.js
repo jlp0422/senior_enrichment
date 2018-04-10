@@ -71,6 +71,6 @@ const Student = conn.define('student', {
     }
   },
   underscored: true
-})
+});
 
-module.exports = Student
+module.exports = Student;

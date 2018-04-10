@@ -15,27 +15,27 @@ class StudentInfo extends React.Component {
     }
     this.onChange = this.onChange.bind(this)
     this.onSave = this.onSave.bind(this)
-  }
+  };
 
   componentDidMount() {
     this.props.campus ? this.setState({campus_id: this.props.campus.id}) : null
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     nextProps.campus ? this.setState({ campus_id: nextProps.campus.id}) : null
-  }
+  };
 
   onChange(ev) {
     const campus_id = ev.target.value
     this.setState({ campus_id })
-  }
+  };
 
   onSave(ev) {
     ev.preventDefault()
     const { id } = this.props
     const { campus_id } = this.state
     this.props.saveStudent({id, campus_id: campus_id*1 })
-  }
+  };
 
   render() {
     const { students, student, campus, campuses, deleteStudent, saveStudent } = this.props
@@ -135,19 +135,19 @@ class StudentInfo extends React.Component {
       </div>
     )
   }
-}
+};
 
 const mapState = ({ students, campuses }, { id }) => {
   const student = students && students.find(s => s.id === id)
   const campus = campuses && student && campuses.find(c => c.id === student.campus_id)
   return { students, student, campus, campuses, id }
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     deleteStudent: (id) => dispatch(deleteStudentFromServer(id)),
     saveStudent: (student) => dispatch(saveStudentOnServer(student))
   }
-}
+};
 
 export default connect(mapState, mapDispatch)(StudentInfo);

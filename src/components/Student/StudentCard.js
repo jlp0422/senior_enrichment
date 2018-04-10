@@ -35,12 +35,12 @@ const StudentCard = ({ student, campus, campusInfo, saveStudent }) => {
       </div>
     </div>
   )
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     saveStudent: (student, page) => dispatch(saveStudentOnServer(student, page))
   }
-}
+};
 
 export default connect(null, mapDispatch)(StudentCard);

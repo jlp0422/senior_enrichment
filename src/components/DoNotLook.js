@@ -11,6 +11,6 @@ const EasterEgg = () => {
       </blockquote>
     </div>
   )
-}
+};
 
 export default EasterEgg;

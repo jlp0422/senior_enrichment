@@ -17,27 +17,27 @@ class StudentsEdit extends React.Component {
     this.onUpdate = this.onUpdate.bind(this)
     this.onDelete = this.onDelete.bind(this)
     this.onRemoveCampus = this.onRemoveCampus.bind(this)
-  }
+  };
 
   // removed confirm pop-up for onUpdate, onDelete, and onRemoveCampus, does not work on mobile
   onUpdate() {
     const { studentsToChange, campus_id } = this.state
     studentsToChange.map(id => this.props.saveStudent({id: id*1, campus_id: campus_id*1}, 'massedit'))
-  }
+  };
 
   onDelete() {
     const {studentsToChange} = this.state
     studentsToChange.map(id => this.props.deleteStudent(id))
-  }
+  };
 
   onRemoveCampus() {
     const { studentsToChange } = this.state
     studentsToChange.map(id => this.props.saveStudent({ id: id * 1, campus_id: null }, 'massedit'))
-  }
+  };
 
   onChange(ev) {
     this.setState({campus_id: ev.target.value*1})
-  }
+  };
 
   onCheck(ev) {
     let { studentsToChange } = this.state
@@ -48,7 +48,7 @@ class StudentsEdit extends React.Component {
       studentsToChange.push(ev.target.value)
     }
     this.setState({ studentsToChange })
-  }
+  };
 
   render() {
     const { students, campuses } = this.props
@@ -110,17 +110,17 @@ class StudentsEdit extends React.Component {
       </div>
     )
   }
-}
+};
 
 const mapState = ({ students, campuses }) => {
   return { students, campuses }
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     saveStudent: (student, page) => dispatch(saveStudentOnServer(student, page)),
     deleteStudent: (id) => dispatch(deleteStudentFromServer(id))
   }
-}
+};
 
 export default connect(mapState, mapDispatch)(StudentsEdit);

@@ -20,12 +20,12 @@ const Home = ({ studentCount, campusCount }) => {
       </div>
     </div>
   )
-}
+};
 
 const mapState = ( {students, campuses }) => {
   const campusCount = campuses.length
   const studentCount = students.length
   return { studentCount, campusCount }
-}
+};
 
 export default connect(mapState)(Home);

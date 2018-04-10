@@ -85,10 +85,10 @@ class Campuses extends React.Component {
       </div>
     )
   }
-}
+};
 
 const mapState = ({ students, campuses }) => {
   return { campuses, students }
-}
+};
 
 export default connect(mapState)(Campuses);

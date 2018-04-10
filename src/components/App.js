@@ -22,7 +22,7 @@ class App extends React.Component {
     const { getCampuses, getStudents } = this.props
     getCampuses()
     getStudents()
-  }
+  };
 
   render() {
     return (
@@ -63,13 +63,13 @@ class App extends React.Component {
       </Router>
     )
   }
-}
+};
 
 const mapDispatch = (dispatch) => {
   return {
     getCampuses: () => dispatch(getCampusesFromServer()),
     getStudents: () => dispatch(getStudentsFromServer())
   }
-}
+};
 
 export default connect(null, mapDispatch)(App);
