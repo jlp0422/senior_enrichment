@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize')
 const conn = require('./conn');
 
-// had to allow empty for 'quick create' functionality
+// had to allow empty for 'quick create' functionality, where you can enter just a campus name
 
 const Campus = conn.define('campus', {
   name: {

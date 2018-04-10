@@ -251,7 +251,7 @@ class CampusForm extends React.Component {
                       <button className="btn btn-secondary">Cancel Edit</button>
                     </Link>
                   </div>
-                ) : (
+                  ) : (
                     <button className="btn btn-success">Save Campus</button>
                   )
               }

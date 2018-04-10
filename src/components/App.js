@@ -18,10 +18,6 @@ import { getCampusesFromServer } from '../store/campuses';
 import { getStudentsFromServer } from '../store/students';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     const { getCampuses, getStudents } = this.props
     getCampuses()

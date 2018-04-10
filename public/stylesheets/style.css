@@ -41,6 +41,10 @@ img {
   width: 100%;
 }
 
+.width-40 {
+  width: 40%
+}
+
 .card {
   max-width: 250px;
 }
@@ -88,22 +92,6 @@ img {
   margin: 0px 10px 80px
 }
 
-/*** FOOTER ***/
-.footer-image {
-  width: 30px;
-  height: 30px;
-  margin: 0 auto;
-}
-
-.footer-text {
-  vertical-align: middle;
-}
-
-.footer-text > p {
-  margin-bottom: 0px;
-  min-width: 180px;
-}
-
 /*** FLEX BOX STYLING ***/
 .flex {
   display: flex;
@@ -147,6 +135,43 @@ a:hover {
   opacity: 1;
 }
 
+.nav-word-selected {
+  border-bottom: 2px solid black;
+  margin: 0px 5px;
+}
+
+.nav-word-link, .nav-word-link:hover {
+  color: black;
+}
+
+.nav-logo {
+  width: 30px;
+}
+
+.nav-item {
+  margin: 0px 5px;
+}
+
+/*** FOOTER ***/
+.footer-image {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  vertical-align: middle;
+}
+
+.footer-text > p {
+  margin-bottom: 0px;
+  min-width: 180px;
+}
+
+#footer-flex {
+  justify-content: space-between
+}
+
 /*** MARGIN AND PADDING ***/
 .border-5-20 {
   border-radius: 20px 5px
@@ -166,6 +191,10 @@ a:hover {
 
 .pad-bot-20 {
   padding-bottom: 20px
+}
+
+.margin-r-5 {
+  margin-right: 5px;
 }
 
 .margin-10 {
@@ -210,10 +239,13 @@ a:hover {
 }
 
 /*** STUDENTS AND CAMPUSES ***/
-
 .student-image-info {
   max-width: 250px;
   width: 100%
+}
+
+.student-bkg {
+  background-color: #f0f3f8
 }
 
 .student-image-wrapper {

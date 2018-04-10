@@ -49,7 +49,7 @@ class StudentInfo extends React.Component {
 
         <h1>Information for {student.full_name}</h1>
 
-        <div className="flex border-5-20 padding-10" style={{ backgroundColor: '#f0f3f8' }}>
+        <div className="flex border-5-20 padding-10 student-bkg">
 
           <div className="student-image-wrapper">
             <img className="border-5-20 student-image-info" src={student.image_url} />

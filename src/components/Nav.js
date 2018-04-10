@@ -8,28 +8,28 @@ const Nav = () => {
   return (
     <div className="navbar-light bg-light sticky-top">
       <div className="wrapper center-all">
-        <nav style={{ marginBottom: '15px'}} className="navbar">
+        <nav className="navbar margin-bot-10">
           <Link className="navbar-brand" to='/home'>
-            <img className="d-inline-block align-center" style={{ width: '30px'}} src="../../vendor/images/logo-black-no-bkg.png" />
+            <img className="d-inline-block align-center nav-logo" src="../../vendor/images/logo-black-no-bkg.png" />
             &nbsp;Home
           </Link>
 
           <ul className="nav">
             {
               url === '/campuses' ? (
-                <span className="nav-item" style={{ borderBottom: '2px solid black', margin: '0px 5px' }}>Campuses</span>
+                <span className="nav-item nav-word-selected">Campuses</span>
               ) : (
-                  <li className="nav-item" style={{ margin: '0px 5px' }}>
-                  <Link to='/campuses' style={{ color: 'black'}}>Campuses</Link>
+                <li className="nav-item">
+                  <Link className="nav-word-link" to='/campuses'>Campuses</Link>
                 </li>
               )
             }
             {
               url === '/students' ? (
-                <span className="nav-item" style={{ borderBottom: '2px solid black', margin: '0px 5px'}}>Students</span>
+                <span className="nav-item nav-word-selected">Students</span>
               ) : (
-                  <li className="nav-item" style={{ margin: '0px 5px' }}>
-                  <Link to='/students' style={{ color: 'black'}}>Students</Link>
+                <li className="nav-item">
+                  <Link className="nav-word-link" to='/students'>Students</Link>
                 </li>
               )
             }

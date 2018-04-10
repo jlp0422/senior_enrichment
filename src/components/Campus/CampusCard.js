@@ -7,7 +7,7 @@ import { deleteCampusOnServer } from '../../store/campuses';
 const CampusCard = ({ campus, studentCount, deleteCampus }) => {
   return (
     <div id="campus-card" className="flex border-5-20 margin-tb-20 padding-10">
-      <div style={{ maxWidth: '40%', margin: '0px 5px 0px 0px' }}>
+      <div className="margin-r-5 width-40">
         <Link to={`/campuses/${campus.id}`}>
           <img className="campus-image border-5-20" src={campus.image_url} />
         </Link>

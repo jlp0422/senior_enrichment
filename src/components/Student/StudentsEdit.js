@@ -19,29 +19,20 @@ class StudentsEdit extends React.Component {
     this.onRemoveCampus = this.onRemoveCampus.bind(this)
   }
 
+  // removed confirm pop-up for onUpdate, onDelete, and onRemoveCampus, does not work on mobile
   onUpdate() {
     const { studentsToChange, campus_id } = this.state
-    // removed confirm, does not work on mobile
-    // const confirm = window.confirm(`Are you sure you want to transfer ${studentsToChange.length} students?`)
-    // if (confirm) {
-      studentsToChange.map(id => this.props.saveStudent({id: id*1, campus_id: campus_id*1}, 'massedit'))
-    // }
+    studentsToChange.map(id => this.props.saveStudent({id: id*1, campus_id: campus_id*1}, 'massedit'))
   }
 
   onDelete() {
     const {studentsToChange} = this.state
-    // const confirm = window.confirm(`Are you sure you want to delete ${studentsToChange.length} students?`)
-    // if (confirm) {
-      studentsToChange.map(id => this.props.deleteStudent(id))
-    // }
+    studentsToChange.map(id => this.props.deleteStudent(id))
   }
 
   onRemoveCampus() {
     const { studentsToChange } = this.state
-    // const confirm = window.confirm(`Are you sure you want to remove enrollment for ${studentsToChange.length} students?`)
-    // if (confirm) {
-      studentsToChange.map(id => this.props.saveStudent({ id: id * 1, campus_id: null }, 'massedit'))
-    // }
+    studentsToChange.map(id => this.props.saveStudent({ id: id * 1, campus_id: null }, 'massedit'))
   }
 
   onChange(ev) {
