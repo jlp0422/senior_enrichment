@@ -70,13 +70,6 @@ const Student = conn.define('student', {
       return `${this.first_name} ${this.last_name}`
     }
   },
-  // setterMethods: {
-  //   full_name: function(value) {
-  //     const names = value.split(' ');
-  //     this.setDataValue('first_name', names.slice(0, -1).join(' '));
-  //     this.setDataValue('last_name', names.slice(-1).join(' '));
-  //   }
-  // },
   underscored: true
 })
 

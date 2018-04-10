@@ -27,7 +27,7 @@ function randomStudent() {
     last_name: last_name,
     email: `${first_name.toLowerCase()}.${last_name.toLowerCase()}@school.edu`,
     gpa: Math.round((Math.random() * 3) * 100) / 100 + 1,
-    image_url: avatar.generate_avatar({gender: gender })
+    image_url: avatar.generate_avatar({ gender: gender })
   })
 };
 
