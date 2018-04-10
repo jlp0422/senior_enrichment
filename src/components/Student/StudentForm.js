@@ -78,7 +78,6 @@ class StudentForm extends React.Component {
     const { id } = this.props
     const { first_name, last_name, email, gpa, image_url } = this.state
     const campus_id = this.state.campus_id ? this.state.campus_id*1 : null
-    console.log(campus_id)
     this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url, campus_id })
   }
 
