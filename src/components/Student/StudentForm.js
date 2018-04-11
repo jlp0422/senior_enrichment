@@ -77,7 +77,7 @@ class StudentForm extends React.Component {
     if (Object.keys(errors).length) return;
     const { id } = this.props
     const { first_name, last_name, email, gpa, image_url } = this.state
-    const campus_id = this.state.campus_id ? this.state.campus_id*1 : null
+    const campus_id = this.state.campus_id*1 !== -1 ? this.state.campus_id*1 : null
     this.props.saveStudent({ id, first_name, last_name, email, gpa, image_url, campus_id })
   };
 
@@ -86,6 +86,7 @@ class StudentForm extends React.Component {
     const { student, id, campuses, error } = this.props
     const { onChange, onSave, dismissError } = this
     const match = (student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1) || campus_id === '-1' ? true : false
+    console.log(campus_id)
     return (
       <div className="default-margins">
         <Helmet><title>{ student ? ('Edit Student') : ('Add Student')}</title></Helmet>
