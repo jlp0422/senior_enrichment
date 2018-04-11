@@ -74,7 +74,7 @@ class CampusStudents extends React.Component {
         </form>
 
         {
-          campus.students ? (
+          campus_students.length ? (
             <div>
               <h3>Current students at {campus.name}</h3>
               <div className="card-group">
