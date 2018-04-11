@@ -49,7 +49,7 @@ const CampusInfo = ({ campus, campus_students, deleteCampus }) => {
         <div><h2>Students on campus</h2></div>
         <div>
           <Link className="" to={`/campuses/${campus.id}/students`}>
-            <button className="btn btn-outline-primary">Add Students</button>
+            <button className="btn btn-primary">Add Students</button>
           </Link>
         </div>
       </div>
