@@ -103,6 +103,14 @@ const studentsReducer = (state = [], action) => {
       state = state.sort(sortLastName)
       break;
 
+    case DELETE_CAMPUS:
+      const newState = state.map(student => {
+        if (student.campus_id === action.id*1) student.campus_id = null
+        return student
+      })
+      state = newState.sort(sortLastName)
+      break;
+
     case ADD_STUDENT:
       state = [ ...state, action.student ].sort(sortLastName)
       break;

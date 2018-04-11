@@ -54,8 +54,9 @@ class StudentsEdit extends React.Component {
     const { students, campuses } = this.props
     const { studentsToChange, campus_id } = this.state
     const { onChange, onCheck, onUpdate, onDelete, onRemoveCampus } = this
-    if (!students) return null
-    if (!campuses) return null
+    if (!students || !campuses) return null
+    console.log(students.map(student => student.campus_id))
+    console.log(campuses.map(campus => campus.id))
     return (
       <div className="default-margins">
         <Helmet><title>Edit Students</title></Helmet>
