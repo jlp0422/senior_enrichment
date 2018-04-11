@@ -5,8 +5,8 @@ const avatar = require('cartoon-avatar');
 const db = require('./db');
 const { Student, Campus } = db.models;
 
-const numStudents = 60;
-const numCampuses = 12;
+const numStudents = 30;
+const numCampuses = 7;
 
 const campus_images = ['../vendor/images/bu-campus.jpg', '../vendor/images/syracuse-campus.jpg', '../vendor/images/penn-campus.jpg'];
 
