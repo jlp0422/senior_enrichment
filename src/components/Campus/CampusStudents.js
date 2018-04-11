@@ -73,14 +73,22 @@ class CampusStudents extends React.Component {
           </div>
         </form>
 
-        <h3>Current students at {campus.name}</h3>
-        <div className="card-group">
-          {
-            campus_students.map(student => (
-              <StudentCard key={student.id} student={student} campus={campus}/>
-            ))
-          }
-          </div>
+        {
+          campus.students ? (
+            <div>
+              <h3>Current students at {campus.name}</h3>
+              <div className="card-group">
+                {
+                  campus_students.map(student => (
+                    <StudentCard key={student.id} student={student} campus={campus}/>
+                  ))
+                }
+              </div>
+            </div>
+            ) : (
+              <h3>No students are currently enrolled at {campus.name}.</h3>
+            )
+        }
       </div>
     )
   }
