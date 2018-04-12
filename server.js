@@ -16,7 +16,7 @@ app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
 app.use('/vendor', express.static(path.join(__dirname, 'public')));
 
-// Route
+// Only Route
 app.use('/api', require('./routes'));
 
 // Single 'get' to send index file
