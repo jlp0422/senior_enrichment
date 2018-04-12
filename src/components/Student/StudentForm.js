@@ -86,7 +86,6 @@ class StudentForm extends React.Component {
     const { student, id, campuses, error } = this.props
     const { onChange, onSave, dismissError } = this
     const match = (student && student.first_name === first_name && student.last_name === last_name && student.email === email && student.gpa*1 === gpa*1 && student.image_url === image_url && student.campus_id*1 === campus_id*1) || campus_id === '-1' ? true : false
-    console.log(campus_id)
     return (
       <div className="default-margins">
         <Helmet><title>{ student ? ('Edit Student') : ('Add Student')}</title></Helmet>
