@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 /* ********** ACTION CONSTANTS **************/
-
 const GET_STUDENTS = 'GET_STUDENTS';
 const DELETE_STUDENT = 'DELETE_STUDENT';
 const ADD_STUDENT = 'ADD_STUDENT';
@@ -13,14 +12,12 @@ const SORT_LAST_NAME = 'SORT_LAST_NAME';
 import { error, clearError } from './error';
 
 /************ ACTION CREATORS **************/
-
 const getStudents = (students) => ({ type: GET_STUDENTS, students })
 const deleteStudent = (id) => ({ type: DELETE_STUDENT, id })
 const addStudent = (student) => ({ type: ADD_STUDENT, student })
 const updateStudent = (student) => ({ type: UPDATE_STUDENT, student })
 
 /************ THUNKS **************/
-
 export const getStudentsFromServer = () => {
   return (dispatch) => {
     return axios.get('/api/students')
