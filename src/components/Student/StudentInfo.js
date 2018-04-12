@@ -73,7 +73,7 @@ class StudentInfo extends React.Component {
           {
             student && campus ? (
               <div>
-                <h2 className="margin-tb-20">{student.first_name} is registered to {campus.name} Campus</h2>
+                <h2 className="margin-tb-20">{student.first_name} is enrolled at {campus.name} Campus</h2>
                 <div>
                   <form style={{ margin: '0px 0px 10px'}} onSubmit={ onSave }>
                     <div className="form-row">
